@@ -1,2 +1,523 @@
-local _1=game:GetService("Players")local _2=game:GetService("TweenService")local _3=game:GetService("RunService")local _4=game:GetService("UserInputService")local _5=game:GetService("CoreGui")pcall(function()for _6,_7 in pairs(game:GetDescendants())do if _7:IsA("Script")and(string.find(string.lower(_7.Name),"anti")or string.find(string.lower(_7.Name),"detect"))then _7.Disabled=true end end end)local _8=_1.LocalPlayer local _9=(gethui and gethui())or _5 if _9:FindFirstChild("VoidHubGui")then _9.VoidHubGui:Destroy()end local _10=Instance.new("ScreenGui")_10.Name="VoidHubGui"_10.ResetOnSpawn=false _10.Parent=_9 local _11=Instance.new("Frame")_11.Size=UDim2.new(0,100,0,30)_11.Position=UDim2.new(0,15,0,15)_11.BackgroundColor3=Color3.fromRGB(20,20,28)_11.BorderSizePixel=0 _11.Parent=_10 local _12=Instance.new("UICorner")_12.CornerRadius=UDim.new(0,8)_12.Parent=_11 local _13=Instance.new("UIStroke")_13.Color=Color3.fromRGB(138,43,226)_13.Thickness=1.5 _13.Parent=_11 local _14=Instance.new("TextLabel")_14.Size=UDim2.new(1,0,1,0)_14.BackgroundTransparency=1 _14.Text="FPS: 60"_14.TextColor3=Color3.fromRGB(190,140,255)_14.TextSize=13 _14.Font=Enum.Font.GothamBold _14.Parent=_11 local _15=0 local _16=tick()_3.RenderStepped:Connect(function()_15=_15+1 local _17=tick()if _17-_16>=1 then _14.Text="FPS: "..tostring(math.floor(_15/(_17-_16))) _15=0 _16=_17 end end)local _18=Instance.new("Frame")_18.Size=UDim2.new(0,360,0,240)_18.Position=UDim2.new(0.5,-180,0.5,-120)_18.BackgroundColor3=Color3.fromRGB(20,20,28)_18.BorderSizePixel=0 _18.ClipsDescendants=true _18.Parent=_10 local _19=Instance.new("UICorner")_19.CornerRadius=UDim.new(0,12)_19.Parent=_18 local _20=Instance.new("UIStroke")_20.Color=Color3.fromRGB(138,43,226)_20.Thickness=2 _20.Parent=_18 local _21=Instance.new("TextLabel")_21.Size=UDim2.new(1,0,0,40)_21.Position=UDim2.new(0,0,0,10)_21.BackgroundTransparency=1 _21.Text="VOID HUB"_21.TextColor3=Color3.fromRGB(220,220,255)_21.TextSize=16 _21.Font=Enum.Font.GothamBold _21.Parent=_18 local _22=Instance.new("Frame")_22.Size=UDim2.new(0.85,0,0,40)_22.Position=UDim2.new(0.075,0,0,70)_22.BackgroundColor3=Color3.fromRGB(30,30,42)_22.BorderSizePixel=0 _22.Parent=_18 local _23=Instance.new("UICorner")_23.CornerRadius=UDim.new(0,8)_23.Parent=_22 local _24=Instance.new("TextBox")_24.Size=UDim2.new(1,-20,1,0)_24.Position=UDim2.new(0,10,0,0)_24.BackgroundTransparency=1 _24.Text=""_24.PlaceholderText="Cole a Key aqui..."_24.TextColor3=Color3.fromRGB(255,255,255)_24.TextSize=13 _24.Font=Enum.Font.GothamSemibold _24.Parent=_22 local _25=Instance.new("TextButton")_25.Size=UDim2.new(0.85,0,0,40)_25.Position=UDim2.new(0.075,0,0,130)_25.BackgroundColor3=Color3.fromRGB(138,43,226)_25.Text="ENTRAR"_25.TextColor3=Color3.fromRGB(255,255,255)_25.TextSize=14 _25.Font=Enum.Font.GothamBold _25.Parent=_18 local _26=Instance.new("UICorner")_26.CornerRadius=UDim.new(0,8)_26.Parent=_25 local _27=Instance.new("TextLabel")_27.Size=UDim2.new(1,0,0,20)_27.Position=UDim2.new(0,0,0,185)_27.BackgroundTransparency=1 _27.Text=""_27.TextSize=12 _27.Font=Enum.Font.GothamSemibold _27.TextColor3=Color3.fromRGB(255,255,255)_27.Parent=_18 local _28=Instance.new("Frame")_28.Name="MainFrame"_28.Size=UDim2.new(0,360,0,240)_28.Position=UDim2.new(0.5,-180,0.5,-120)_28.BackgroundColor3=Color3.fromRGB(20,20,28)_28.BorderSizePixel=0 _28.ClipsDescendants=true _28.Visible=false _28.Parent=_10 local _29=Instance.new("UICorner")_29.CornerRadius=UDim.new(0,12)_29.Parent=_28 local _30=Instance.new("UIStroke")_30.Color=Color3.fromRGB(138,43,226)_30.Thickness=2 _30.Parent=_28 local _31=Instance.new("Frame")_31.Name="TopBar"_31.Size=UDim2.new(1,0,0,40)_31.BackgroundColor3=Color3.fromRGB(30,30,42)_31.BorderSizePixel=0 _31.Parent=_28 local _32=Instance.new("UICorner")_32.CornerRadius=UDim.new(0,12)_32.Parent=_31 local _33=Instance.new("TextLabel")_33.Size=UDim2.new(1,-90,1,0)_33.Position=UDim2.new(0,40,0,0)_33.BackgroundTransparency=1 _33.Text="VOID HUB"_33.TextColor3=Color3.fromRGB(220,220,255)_33.TextSize=16 _33.Font=Enum.Font.GothamBold _33.TextXAlignment=Enum.TextXAlignment.Left _33.Parent=_31 local _34=Instance.new("TextButton")_34.Name="MinimizeBtn"_34.Size=UDim2.new(0,30,0,30)_34.Position=UDim2.new(0,5,0.5,-15)_34.BackgroundColor3=Color3.fromRGB(45,45,60)_34.Text="-"_34.TextColor3=Color3.fromRGB(255,255,255)_34.TextSize=18 _34.Font=Enum.Font.GothamBold _34.Parent=_31 local _35=Instance.new("UICorner")_35.CornerRadius=UDim.new(0,8)_35.Parent=_34 local _36=Instance.new("TextButton")_36.Name="LockBtn"_36.Size=UDim2.new(0,30,0,30)_36.Position=UDim2.new(1,-35,0.5,-15)_36.BackgroundColor3=Color3.fromRGB(45,45,60)_36.Text="🔓"_36.TextSize=14 _36.Parent=_31 local _37=Instance.new("UICorner")_37.CornerRadius=UDim.new(0,8)_37.Parent=_36 local _38=Instance.new("Frame")_38.Name="ContentFrame"_38.Size=UDim2.new(1,-20,1,-50)_38.Position=UDim2.new(0,10,0,45)_38.BackgroundTransparency=1 _38.Parent=_28 local _39=Instance.new("UIListLayout")_39.Parent=_38 _39.SortOrder=Enum.SortOrder.LayoutOrder _39.Padding=UDim.new(0,10)local function _40(_41,_42)local _43=Instance.new("TextButton")_43.Name=_41 _43.Size=UDim2.new(1,0,0,40)_43.BackgroundColor3=Color3.fromRGB(35,35,50)_43.Text=_42 _43.TextColor3=Color3.fromRGB(200,200,200)_43.TextSize=14 _43.Font=Enum.Font.GothamSemibold _43.Parent=_38 local _44=Instance.new("UICorner")_44.CornerRadius=UDim.new(0,8)_44.Parent=_43 local _45=Instance.new("UIStroke")_45.Color=Color3.fromRGB(60,60,80)_45.Thickness=1 _45.Parent=_43 return _43,_45 end local _46,_47=_40("GojoBtn","Gojo 0.2: [ OFF ]")local _48,_49=_40("FlyBtn","Fly Mobile: [ OFF ]")local _50=false local _51=false local _52=false local _53=false _25.MouseButton1Click:Connect(function()if _24.Text=="voidhubseguro"then _27.TextColor3=Color3.fromRGB(100,220,120)_27.Text="Acesso Concedido!"task.wait(0.4)_18:Destroy()_28.Visible=true else _27.TextColor3=Color3.fromRGB(240,80,80)_27.Text="Key Incorreta!"task.wait(1.2)_27.Text=""end end)local _54,_55,_56 _31.InputBegan:Connect(function(_57)if not _50 and(_57.UserInputType==Enum.UserInputType.MouseButton1 or _57.UserInputType==Enum.UserInputType.Touch)then _52=true _55=_57.Position _56=_28.Position end end)_31.InputChanged:Connect(function(_57)if not _50 and(_57.UserInputType==Enum.UserInputType.MouseMovement or _57.UserInputType==Enum.UserInputType.Touch)then _54=_57 end end)_4.InputChanged:Connect(function(_57)if _57==_54 and _52 and not _50 then local _58=_57.Position-_55 _28.Position=UDim2.new(_56.X.Scale,_56.X.Offset+_58.X,_56.Y.Scale,_56.Y.Offset+_58.Y)end end)_36.MouseButton1Click:Connect(function()_50=not _50 _36.Text=_50 and"🔒"or"🔓"_36.BackgroundColor3=_50 and Color3.fromRGB(120,40,40)or Color3.fromRGB(45,45,60)end)_34.MouseButton1Click:Connect(function()_51=not _51 if _51 then _38.Visible=false _28:TweenSize(UDim2.new(0,360,0,40),Enum.EasingDirection.Out,Enum.EasingStyle.Quart,0.3,true)_34.Text="+"else _28:TweenSize(UDim2.new(0,360,0,240),Enum.EasingDirection.Out,Enum.EasingStyle.Quart,0.3,true,function()_38.Visible=true end)_34.Text="-"end end)_46.MouseButton1Click:Connect(function()_53=not _53 if _53 then _46.Text="Gojo 0.2: [ ON ]"_46.TextColor3=Color3.fromRGB(255,255,255)_47.Color=Color3.fromRGB(138,43,226)else _46.Text="Gojo 0.2: [ OFF ]"_46.TextColor3=Color3.fromRGB(200,200,200)_47.Color=Color3.fromRGB(60,60,80)end end)task.spawn(function()while true do task.wait(0.02)if _53 then local _59=_8.Character if _59 and _59:FindFirstChild("HumanoidRootPart")then local _60=_59.HumanoidRootPart local _61=_59:FindFirstChildOfClass("Tool")if not _61 and _8.Backpack then local _62=_8.Backpack:FindFirstChildOfClass("Tool")if _62 then _62.Parent=_59 _61=_62 end end local _63=_1:GetPlayers()for _64=1,#_63 do if not _53 then break end local _65=_63[_64]if _65~=_8 and _65.Character then local _66=_65.Character local _67=_66:FindFirstChildOfClass("Humanoid")local _68=_66:FindFirstChild("HumanoidRootPart")if _67 and _67.Health>0 and _68 then _60.AssemblyLinearVelocity=Vector3.zero _60.CFrame=_68.CFrame*CFrame.new(0,0,-1.5)*CFrame.Angles(0,math.pi,0)if _61 then _61:Activate()end task.wait(0.05)end end end end end end end end)local _69=Instance.new("Frame")_69.Name="FlyControls"_69.Size=UDim2.new(1,0,1,0)_69.BackgroundTransparency=1 _69.Visible=false _69.Parent=_10 local _70=50 local function _71(_72,_73,_74,_75)local _76=Instance.new("TextButton")_76.Name=_72 _76.Size=UDim2.new(0,50,0,50)_76.Position=_74 _76.BackgroundColor3=Color3.fromRGB(30,30,45)_76.BackgroundTransparency=0.2 _76.Text=_73 _76.TextColor3=Color3.fromRGB(255,255,255)_76.TextSize=20 _76.Font=Enum.Font.GothamBold _76.Parent=_75 local _77=Instance.new("UICorner")_77.CornerRadius=UDim.new(0,12)_77.Parent=_76 local _78=Instance.new("UIStroke")_78.Color=Color3.fromRGB(138,43,226)_78.Thickness=1.5 _78.Parent=_76 return _76 end local _79=Instance.new("Frame")_79.Size=UDim2.new(0,160,0,160)_79.Position=UDim2.new(0,20,1,-180)_79.BackgroundTransparency=1 _79.Parent=_69 local _80=_71("Up","▲",UDim2.new(0.5,-25,0,0),_79)local _81=_71("Down","▼",UDim2.new(0.5,-25,1,-50),_79)local _82=_71("Left","◄",UDim2.new(0,0,0.5,-25),_79)local _83=_71("Right","►",UDim2.new(1,-50,0.5,-25),_79)local _84=Instance.new("Frame")_84.Size=UDim2.new(0,60,0,120)_84.Position=UDim2.new(1,-80,1,-160)_84.BackgroundTransparency=1 _84.Parent=_69 local _85=_71("Ascend","⬆",UDim2.new(0,0,0,0),_84)local _86=_71("Descend","⬇",UDim2.new(0,0,1,-50),_84)local _87={Forward=false,Backward=false,Left=false,Right=false,Up=false,Down=false}local function _88(_76,_89)_76.InputBegan:Connect(function(_57)if _57.UserInputType==Enum.UserInputType.MouseButton1 or _57.UserInputType==Enum.UserInputType.Touch then _87[_89]=true end end)_76.InputEnded:Connect(function(_57)if _57.UserInputType==Enum.UserInputType.MouseButton1 or _57.UserInputType==Enum.UserInputType.Touch then _87[_89]=false end end)end _88(_80,"Forward")_88(_81,"Backward")_88(_82,"Left")_88(_83,"Right")_88(_85,"Up")_88(_86,"Down")local function _90()local _59=_8.Character if not _59 then return end local _60=_59:FindFirstChild("HumanoidRootPart")if not _60 then return end local _91=_60:FindFirstChild("FlyBV")if not _91 then return end local _92=Vector3.zero local _93=workspace.CurrentCamera.CFrame if _87.Forward then _92=_92+_93.LookVector end if _87.Backward then _92=_92-_93.LookVector end if _87.Left then _92=_92-_93.RightVector end if _87.Right then _92=_92+_93.RightVector end if _87.Up then _92=_92+Vector3.new(0,1,0)end if _87.Down then _92=_92-Vector3.new(0,1,0)end _91.Velocity=_92.Magnitude>0 and _92.Unit*_70 or Vector3.zero end local _94=false _3.RenderStepped:Connect(function()if _94 then _90()end end)_48.MouseButton1Click:Connect(function()_94=not _94 _69.Visible=_94 local _59=_8.Character local _60=_59 and _59:FindFirstChild("HumanoidRootPart")if _94 then _48.Text="Fly Mobile: [ ON ]"_48.TextColor3=Color3.fromRGB(255,255,255)_49.Color=Color3.fromRGB(138,43,226)if _60 then local _91=Instance.new("BodyVelocity")_91.Name="FlyBV"_91.MaxForce=Vector3.new(1,1,1)*1e6 _91.Parent=_60 end else _48.Text="Fly Mobile: [ OFF ]"_48.TextColor3=Color3.fromRGB(200,200,200)_49.Color=Color3.fromRGB(60,60,80)for _95 in pairs(_87)do _87[_95]=false end if _60 then local _91=_60:FindFirstChild("FlyBV")if _91 then _91:Destroy()end end end end)
-  
+-- BYPASS LEVE
+pcall(function()
+    for _, v in pairs(game:GetDescendants()) do
+        if v:IsA("Script") and (string.find(string.lower(v.Name), "anti") or string.find(string.lower(v.Name), "detect")) then
+            v.Disabled = true
+        end
+    end
+    _G.antiban = true
+    _G.bypass = true
+    _G.allowTeleport = true
+    spawn(function()
+        while wait(2) do
+            _G.antiban = true
+            _G.bypass = true
+            _G.allowTeleport = true
+        end
+    end)
+end)
+
+local Players = game:GetService("Players")
+local TweenService = game:GetService("TweenService")
+local RunService = game:GetService("RunService")
+local UserInputService = game:GetService("UserInputService")
+local CoreGui = game:GetService("CoreGui")
+
+local LocalPlayer = Players.LocalPlayer
+local TargetParent = (gethui and gethui()) or CoreGui
+if TargetParent:FindFirstChild("VoidHubGui") then TargetParent.VoidHubGui:Destroy() end
+
+local CORRECT_KEY = "voidhubseguro"
+local isLocked = false
+local isMinimized = false
+local gojoActive = false
+local flyActive = false
+
+local ScreenGui = Instance.new("ScreenGui")
+ScreenGui.Name = "VoidHubGui"
+ScreenGui.ResetOnSpawn = false
+ScreenGui.Parent = TargetParent
+
+-- CONTADOR DE FPS
+local FpsFrame = Instance.new("Frame")
+FpsFrame.Name = "FpsFrame"
+FpsFrame.Size = UDim2.new(0, 100, 0, 30)
+FpsFrame.Position = UDim2.new(0, 15, 0, 15)
+FpsFrame.BackgroundColor3 = Color3.fromRGB(20, 20, 28)
+FpsFrame.BorderSizePixel = 0
+FpsFrame.Parent = ScreenGui
+
+local FpsCorner = Instance.new("UICorner")
+FpsCorner.CornerRadius = UDim.new(0, 8)
+FpsCorner.Parent = FpsFrame
+
+local FpsStroke = Instance.new("UIStroke")
+FpsStroke.Color = Color3.fromRGB(138, 43, 226)
+FpsStroke.Thickness = 1.5
+FpsStroke.Parent = FpsFrame
+
+local FpsLabel = Instance.new("TextLabel")
+FpsLabel.Size = UDim2.new(1, 0, 1, 0)
+FpsLabel.BackgroundTransparency = 1
+FpsLabel.Text = "FPS: 60"
+FpsLabel.TextColor3 = Color3.fromRGB(190, 140, 255)
+FpsLabel.TextSize = 13
+FpsLabel.Font = Enum.Font.GothamBold
+FpsLabel.Parent = FpsFrame
+
+local frameCount = 0
+local lastUpdate = tick()
+
+RunService.RenderStepped:Connect(function()
+    frameCount = frameCount + 1
+    local now = tick()
+    if now - lastUpdate >= 1 then
+        local fps = math.floor(frameCount / (now - lastUpdate))
+        FpsLabel.Text = "FPS: " .. tostring(fps)
+        frameCount = 0
+        lastUpdate = now
+    end
+end)
+
+-- SISTEMA DE KEY
+local KeyFrame = Instance.new("Frame")
+KeyFrame.Size = UDim2.new(0, 360, 0, 240)
+KeyFrame.Position = UDim2.new(0.5, -180, 0.5, -120)
+KeyFrame.BackgroundColor3 = Color3.fromRGB(20, 20, 28)
+KeyFrame.BorderSizePixel = 0
+KeyFrame.ClipsDescendants = true
+KeyFrame.Parent = ScreenGui
+
+local KeyCorner = Instance.new("UICorner")
+KeyCorner.CornerRadius = UDim.new(0, 12)
+KeyCorner.Parent = KeyFrame
+
+local KeyStroke = Instance.new("UIStroke")
+KeyStroke.Color = Color3.fromRGB(138, 43, 226)
+KeyStroke.Thickness = 2
+KeyStroke.Parent = KeyFrame
+
+local KeyTitle = Instance.new("TextLabel")
+KeyTitle.Size = UDim2.new(1, 0, 0, 40)
+KeyTitle.Position = UDim2.new(0, 0, 0, 10)
+KeyTitle.BackgroundTransparency = 1
+KeyTitle.Text = "VOID HUB"
+KeyTitle.TextColor3 = Color3.fromRGB(220, 220, 255)
+KeyTitle.TextSize = 16
+KeyTitle.Font = Enum.Font.GothamBold
+KeyTitle.Parent = KeyFrame
+
+local KeyInputBg = Instance.new("Frame")
+KeyInputBg.Size = UDim2.new(0.85, 0, 0, 40)
+KeyInputBg.Position = UDim2.new(0.075, 0, 0, 70)
+KeyInputBg.BackgroundColor3 = Color3.fromRGB(30, 30, 42)
+KeyInputBg.BorderSizePixel = 0
+KeyInputBg.Parent = KeyFrame
+
+local KeyInputCorner = Instance.new("UICorner")
+KeyInputCorner.CornerRadius = UDim.new(0, 8)
+KeyInputCorner.Parent = KeyInputBg
+
+local KeyTextBox = Instance.new("TextBox")
+KeyTextBox.Size = UDim2.new(1, -20, 1, 0)
+KeyTextBox.Position = UDim2.new(0, 10, 0, 0)
+KeyTextBox.BackgroundTransparency = 1
+KeyTextBox.Text = ""
+KeyTextBox.PlaceholderText = "Cole a Key aqui..."
+KeyTextBox.TextColor3 = Color3.fromRGB(255, 255, 255)
+KeyTextBox.TextSize = 13
+KeyTextBox.Font = Enum.Font.GothamSemibold
+KeyTextBox.Parent = KeyInputBg
+
+local VerifyBtn = Instance.new("TextButton")
+VerifyBtn.Size = UDim2.new(0.85, 0, 0, 40)
+VerifyBtn.Position = UDim2.new(0.075, 0, 0, 130)
+VerifyBtn.BackgroundColor3 = Color3.fromRGB(138, 43, 226)
+VerifyBtn.Text = "ENTRAR"
+VerifyBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+VerifyBtn.TextSize = 14
+VerifyBtn.Font = Enum.Font.GothamBold
+VerifyBtn.Parent = KeyFrame
+
+local VerifyCorner = Instance.new("UICorner")
+VerifyCorner.CornerRadius = UDim.new(0, 8)
+VerifyCorner.Parent = VerifyBtn
+
+local StatusLabel = Instance.new("TextLabel")
+StatusLabel.Size = UDim2.new(1, 0, 0, 20)
+StatusLabel.Position = UDim2.new(0, 0, 0, 185)
+StatusLabel.BackgroundTransparency = 1
+StatusLabel.Text = ""
+StatusLabel.TextSize = 12
+StatusLabel.Font = Enum.Font.GothamSemibold
+StatusLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+StatusLabel.Parent = KeyFrame
+
+-- JANELA PRINCIPAL
+local MainFrame = Instance.new("Frame")
+MainFrame.Name = "MainFrame"
+MainFrame.Size = UDim2.new(0, 360, 0, 240)
+MainFrame.Position = UDim2.new(0.5, -180, 0.5, -120)
+MainFrame.BackgroundColor3 = Color3.fromRGB(20, 20, 28)
+MainFrame.BorderSizePixel = 0
+MainFrame.ClipsDescendants = true
+MainFrame.Visible = false
+MainFrame.Parent = ScreenGui
+
+local MainUICorner = Instance.new("UICorner")
+MainUICorner.CornerRadius = UDim.new(0, 12)
+MainUICorner.Parent = MainFrame
+
+local MainUIStroke = Instance.new("UIStroke")
+MainUIStroke.Color = Color3.fromRGB(138, 43, 226)
+MainUIStroke.Thickness = 2
+MainUIStroke.Parent = MainFrame
+
+local TopBar = Instance.new("Frame")
+TopBar.Name = "TopBar"
+TopBar.Size = UDim2.new(1, 0, 0, 40)
+TopBar.BackgroundColor3 = Color3.fromRGB(30, 30, 42)
+TopBar.BorderSizePixel = 0
+TopBar.Parent = MainFrame
+
+local TopBarCorner = Instance.new("UICorner")
+TopBarCorner.CornerRadius = UDim.new(0, 12)
+TopBarCorner.Parent = TopBar
+
+local TitleLabel = Instance.new("TextLabel")
+TitleLabel.Size = UDim2.new(1, -90, 1, 0)
+TitleLabel.Position = UDim2.new(0, 40, 0, 0)
+TitleLabel.BackgroundTransparency = 1
+TitleLabel.Text = "VOID HUB"
+TitleLabel.TextColor3 = Color3.fromRGB(220, 220, 255)
+TitleLabel.TextSize = 16
+TitleLabel.Font = Enum.Font.GothamBold
+TitleLabel.TextXAlignment = Enum.TextXAlignment.Left
+TitleLabel.Parent = TopBar
+
+local MinimizeBtn = Instance.new("TextButton")
+MinimizeBtn.Name = "MinimizeBtn"
+MinimizeBtn.Size = UDim2.new(0, 30, 0, 30)
+MinimizeBtn.Position = UDim2.new(0, 5, 0.5, -15)
+MinimizeBtn.BackgroundColor3 = Color3.fromRGB(45, 45, 60)
+MinimizeBtn.Text = "-"
+MinimizeBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+MinimizeBtn.TextSize = 18
+MinimizeBtn.Font = Enum.Font.GothamBold
+MinimizeBtn.Parent = TopBar
+
+local MinCorner = Instance.new("UICorner")
+MinCorner.CornerRadius = UDim.new(0, 8)
+MinCorner.Parent = MinimizeBtn
+
+local LockBtn = Instance.new("TextButton")
+LockBtn.Name = "LockBtn"
+LockBtn.Size = UDim2.new(0, 30, 0, 30)
+LockBtn.Position = UDim2.new(1, -35, 0.5, -15)
+LockBtn.BackgroundColor3 = Color3.fromRGB(45, 45, 60)
+LockBtn.Text = "🔓"
+LockBtn.TextSize = 14
+LockBtn.Parent = TopBar
+
+local LockCorner = Instance.new("UICorner")
+LockCorner.CornerRadius = UDim.new(0, 8)
+LockCorner.Parent = LockBtn
+
+local ContentFrame = Instance.new("Frame")
+ContentFrame.Name = "ContentFrame"
+ContentFrame.Size = UDim2.new(1, -20, 1, -50)
+ContentFrame.Position = UDim2.new(0, 10, 0, 45)
+ContentFrame.BackgroundTransparency = 1
+ContentFrame.Parent = MainFrame
+
+local UIListLayout = Instance.new("UIListLayout")
+UIListLayout.Parent = ContentFrame
+UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+UIListLayout.Padding = UDim.new(0, 10)
+
+local function CreateHubButton(name, text)
+    local btn = Instance.new("TextButton")
+    btn.Name = name
+    btn.Size = UDim2.new(1, 0, 0, 40)
+    btn.BackgroundColor3 = Color3.fromRGB(35, 35, 50)
+    btn.Text = text
+    btn.TextColor3 = Color3.fromRGB(200, 200, 200)
+    btn.TextSize = 14
+    btn.Font = Enum.Font.GothamSemibold
+    btn.Parent = ContentFrame
+    local corner = Instance.new("UICorner")
+    corner.CornerRadius = UDim.new(0, 8)
+    corner.Parent = btn
+    local stroke = Instance.new("UIStroke")
+    stroke.Color = Color3.fromRGB(60, 60, 80)
+    stroke.Thickness = 1
+    stroke.Parent = btn
+    return btn, stroke
+end
+
+local GojoBtn, GojoStroke = CreateHubButton("GojoBtn", "Gojo 0.2: [ OFF ]")
+local FlyBtn, FlyStroke = CreateHubButton("FlyBtn", "Fly Mobile: [ OFF ]")
+
+-- LÓGICA DA KEY
+VerifyBtn.MouseButton1Click:Connect(function()
+    if KeyTextBox.Text == CORRECT_KEY then
+        StatusLabel.TextColor3 = Color3.fromRGB(100, 220, 120)
+        StatusLabel.Text = "Acesso Concedido!"
+        task.wait(0.4)
+        KeyFrame:Destroy()
+        MainFrame.Visible = true
+    else
+        StatusLabel.TextColor3 = Color3.fromRGB(240, 80, 80)
+        StatusLabel.Text = "Key Incorreta!"
+        task.wait(1.2)
+        StatusLabel.Text = ""
+    end
+end)
+
+-- DRAG
+local dragging = false
+local dragInput, dragStart, startPos
+
+TopBar.InputBegan:Connect(function(input)
+    if not isLocked and (input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch) then
+        dragging = true
+        dragStart = input.Position
+        startPos = MainFrame.Position
+        input.Changed:Connect(function()
+            if input.UserInputState == Enum.UserInputState.End then
+                dragging = false
+            end
+        end)
+    end
+end)
+
+TopBar.InputChanged:Connect(function(input)
+    if not isLocked and (input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch) then
+        dragInput = input
+    end
+end)
+
+UserInputService.InputChanged:Connect(function(input)
+    if input == dragInput and dragging and not isLocked then
+        local delta = input.Position - dragStart
+        MainFrame.Position = UDim2.new(
+            startPos.X.Scale, startPos.X.Offset + delta.X,
+            startPos.Y.Scale, startPos.Y.Offset + delta.Y
+        )
+    end
+end)
+
+-- CADEADO E MINIMIZAR
+LockBtn.MouseButton1Click:Connect(function()
+    isLocked = not isLocked
+    LockBtn.Text = isLocked and "🔒" or "🔓"
+    LockBtn.BackgroundColor3 = isLocked and Color3.fromRGB(120, 40, 40) or Color3.fromRGB(45, 45, 60)
+end)
+
+MinimizeBtn.MouseButton1Click:Connect(function()
+    isMinimized = not isMinimized
+    if isMinimized then
+        ContentFrame.Visible = false
+        MainFrame:TweenSize(UDim2.new(0, 360, 0, 40), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, 0.3, true)
+        MinimizeBtn.Text = "+"
+    else
+        MainFrame:TweenSize(UDim2.new(0, 360, 0, 240), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, 0.3, true, function()
+            ContentFrame.Visible = true
+        end)
+        MinimizeBtn.Text = "-"
+    end
+end)
+
+-- GOJO 0.2 (TELEPORTE + AUTO ATAQUE CONTINUO)
+GojoBtn.MouseButton1Click:Connect(function()
+    gojoActive = not gojoActive
+    if gojoActive then
+        GojoBtn.Text = "Gojo 0.2: [ ON ]"
+        GojoBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+        GojoStroke.Color = Color3.fromRGB(138, 43, 226)
+    else
+        GojoBtn.Text = "Gojo 0.2: [ OFF ]"
+        GojoBtn.TextColor3 = Color3.fromRGB(200, 200, 200)
+        GojoStroke.Color = Color3.fromRGB(60, 60, 80)
+    end
+end)
+
+task.spawn(function()
+    while true do
+        task.wait(0.02)
+        if gojoActive then
+            local myChar = LocalPlayer.Character
+            if myChar and myChar:FindFirstChild("HumanoidRootPart") then
+                local myHrp = myChar.HumanoidRootPart
+                
+                -- Procura ferramenta e equipa se necessário
+                local tool = myChar:FindFirstChildOfClass("Tool")
+                if not tool and LocalPlayer.Backpack then
+                    local backpackTool = LocalPlayer.Backpack:FindFirstChildOfClass("Tool")
+                    if backpackTool then
+                        backpackTool.Parent = myChar
+                        tool = backpackTool
+                    end
+                end
+
+                local allPlayers = Players:GetPlayers()
+                for i = 1, #allPlayers do
+                    if not gojoActive then break end
+                    local target = allPlayers[i]
+                    if target ~= LocalPlayer and target.Character then
+                        local tChar = target.Character
+                        local tHum = tChar:FindFirstChildOfClass("Humanoid")
+                        local tHrp = tChar:FindFirstChild("HumanoidRootPart")
+                        
+                        if tHum and tHum.Health > 0 and tHrp then
+                            -- Teleporta diretamente na frente do inimigo virado para ele
+                            myHrp.AssemblyLinearVelocity = Vector3.zero
+                            myHrp.CFrame = tHrp.CFrame * CFrame.new(0, 0, -1.5) * CFrame.Angles(0, math.pi, 0)
+                            
+                            -- Ativa o golpe da arma equipada
+                            if tool then
+                                tool:Activate()
+                            end
+                            
+                            task.wait(0.05)
+                        end
+                    end
+                end
+            end
+        end
+    end
+end)
+
+-- FLY MOBILE
+local FlyGui = Instance.new("Frame")
+FlyGui.Name = "FlyControls"
+FlyGui.Size = UDim2.new(1, 0, 1, 0)
+FlyGui.BackgroundTransparency = 1
+FlyGui.Visible = false
+FlyGui.Parent = ScreenGui
+
+local flySpeed = 50
+
+local function CreateArrowBtn(name, text, pos, parent)
+    local btn = Instance.new("TextButton")
+    btn.Name = name
+    btn.Size = UDim2.new(0, 50, 0, 50)
+    btn.Position = pos
+    btn.BackgroundColor3 = Color3.fromRGB(30, 30, 45)
+    btn.BackgroundTransparency = 0.2
+    btn.Text = text
+    btn.TextColor3 = Color3.fromRGB(255, 255, 255)
+    btn.TextSize = 20
+    btn.Font = Enum.Font.GothamBold
+    btn.Parent = parent
+    local corner = Instance.new("UICorner")
+    corner.CornerRadius = UDim.new(0, 12)
+    corner.Parent = btn
+    local stroke = Instance.new("UIStroke")
+    stroke.Color = Color3.fromRGB(138, 43, 226)
+    stroke.Thickness = 1.5
+    stroke.Parent = btn
+    return btn
+end
+
+local LeftPanel = Instance.new("Frame")
+LeftPanel.Size = UDim2.new(0, 160, 0, 160)
+LeftPanel.Position = UDim2.new(0, 20, 1, -180)
+LeftPanel.BackgroundTransparency = 1
+LeftPanel.Parent = FlyGui
+
+local BtnUp = CreateArrowBtn("Up", "▲", UDim2.new(0.5, -25, 0, 0), LeftPanel)
+local BtnDown = CreateArrowBtn("Down", "▼", UDim2.new(0.5, -25, 1, -50), LeftPanel)
+local BtnLeft = CreateArrowBtn("Left", "◄", UDim2.new(0, 0, 0.5, -25), LeftPanel)
+local BtnRight = CreateArrowBtn("Right", "►", UDim2.new(1, -50, 0.5, -25), LeftPanel)
+
+local RightPanel = Instance.new("Frame")
+RightPanel.Size = UDim2.new(0, 60, 0, 120)
+RightPanel.Position = UDim2.new(1, -80, 1, -160)
+RightPanel.BackgroundTransparency = 1
+RightPanel.Parent = FlyGui
+
+local BtnAscend = CreateArrowBtn("Ascend", "⬆", UDim2.new(0, 0, 0, 0), RightPanel)
+local BtnDescend = CreateArrowBtn("Descend", "⬇", UDim2.new(0, 0, 1, -50), RightPanel)
+
+local activeInputs = {Forward = false, Backward = false, Left = false, Right = false, Up = false, Down = false}
+
+local function BindHold(button, key)
+    button.InputBegan:Connect(function(input)
+        if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+            activeInputs[key] = true
+        end
+    end)
+    button.InputEnded:Connect(function(input)
+        if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+            activeInputs[key] = false
+        end
+    end)
+end
+
+BindHold(BtnUp, "Forward")
+BindHold(BtnDown, "Backward")
+BindHold(BtnLeft, "Left")
+BindHold(BtnRight, "Right")
+BindHold(BtnAscend, "Up")
+BindHold(BtnDescend, "Down")
+
+local function updateFlyPhysics()
+    local char = LocalPlayer.Character
+    if not char then return end
+    local root = char:FindFirstChild("HumanoidRootPart")
+    if not root then return end
+    
+    local bv = root:FindFirstChild("FlyBV")
+    if not bv then return end
+    
+    local vel = Vector3.zero
+    local camCF = workspace.CurrentCamera.CFrame
+    
+    if activeInputs.Forward then vel += camCF.LookVector end
+    if activeInputs.Backward then vel -= camCF.LookVector end
+    if activeInputs.Left then vel -= camCF.RightVector end
+    if activeInputs.Right then vel += camCF.RightVector end
+    if activeInputs.Up then vel += Vector3.new(0, 1, 0) end
+    if activeInputs.Down then vel -= Vector3.new(0, 1, 0) end
+    
+    bv.Velocity = (vel.Magnitude > 0) and (vel.Unit * flySpeed) or Vector3.zero
+end
+
+RunService.RenderStepped:Connect(function()
+    if flyActive then
+        updateFlyPhysics()
+    end
+end)
+
+FlyBtn.MouseButton1Click:Connect(function()
+    flyActive = not flyActive
+    FlyGui.Visible = flyActive
+    
+    local char = LocalPlayer.Character
+    local root = char and char:FindFirstChild("HumanoidRootPart")
+    
+    if flyActive then
+        FlyBtn.Text = "Fly Mobile: [ ON ]"
+        FlyBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+        FlyStroke.Color = Color3.fromRGB(138, 43, 226)
+        
+        if root then
+            local bv = Instance.new("BodyVelocity")
+            bv.Name = "FlyBV"
+            bv.MaxForce = Vector3.new(1, 1, 1) * 1e6
+            bv.Parent = root
+        end
+    else
+        FlyBtn.Text = "Fly Mobile: [ OFF ]"
+        FlyBtn.TextColor3 = Color3.fromRGB(200, 200, 200)
+        FlyStroke.Color = Color3.fromRGB(60, 60, 80)
+        
+        for k in pairs(activeInputs) do activeInputs[k] = false end
+        
+        if root then
+            local bv = root:FindFirstChild("FlyBV")
+            if bv then bv:Destroy() end
+        end
+    end
+end)
