@@ -1,1 +1,1296 @@
---[[ v1.0.0 https://wearedevs.net/obfuscator ]] return(function(...)local H={"\116\118\047\109";"\083\080\047\079\068\107\073\098\048\088\099\050\073\089\119\070\120\069\072\097\097\079\110\056\066\106\104\118\043\082\061\061";"\113\113\119\088\099\113\089\080\084\104\119\122\087\121\069\105\051\068\089\061","\085\070\098\057\120\087\061\061";"\067\101\072\114\057\080\083\079\089\050\083\106","\049\048\120\119\116\047\089\052\054\065\114\076\056\100\061\061";"\074\120\075\101","\048\100\078\099\106\104\089\077\112\101\109\061","\057\113\097\110\076\101\072\121\047\070\104\079\117\110\069\065\117\110\113\061";"\050\071\116\066\088\051\074\051\112\114\082\061";"\119\112\081\076\088\079\061\061";"\074\078\112\112\114\070\103\047\050\087\061\061";"\106\110\072\117";"\043\055\075\082\098\102\077\119\117\084\114\072\121\047\079\122\081\114\068\081\122\084\113\078\069\080\088\102\105\082\061\061";"\050\110\119\072";"\110\100\074\078\099\082\113\084\081\087\061\061";"\098\056\048\118\047\079\061\061";"\115\071\072\102\114\068\080\100\113\099\087\061","\069\104\087\051\068\117\097\086\075\100\061\061","\099\054\100\122\070\122\119\071\111\105\113\114","\100\052\049\071\050\076\068\086\121\054\081\047\120\100\061\061";"\084\114\106\047\101\073\070\061";"\115\122\066\067\084\082\061\061";"\068\114\098\071\114\072\056\061","\114\090\087\047","\076\111\085\119\090\083\097\043\084\082\061\061";"\072\067\071\074";"\115\081\118\083\117\097\098\077\083\073\103\049\066\118\105\117\043\055\106\107\109\087\061\061","\088\080\053\086\090\118\107\115\116\079\061\061";"\069\076\067\103\084\120\067\051\067\080\119\088\112\056\106\074\087\050\099\061","\053\079\077\049\075\110\077\107\084\079\097\084\077\087\061\061";"\104\067\115\072\065\068\047\061","\073\082\066\089\055\084\075\109\097\087\061\061","\069\067\067\104\111\079\099\108\067\112\090\071";"\118\074\052\090","\085\080\065\086\079\086\072\075\090\121\108\109\066\068\043\115\086\079\061\061";"\114\079\065\065\070\082\074\120\065\079\061\061","\047\088\049\055\112\068\072\111";"\077\072\086\074";"\071\098\075\118\068\115\069\104\105\069\076\076\068\100\120\067","\052\076\102\112\116\100\061\061";"\081\088\109\079\117\071\069\097\117\049\103\068\076\101\104\078","\103\057\108\098\072\043\100\066\049\055\089\082";"\065\069\114\112\083\109\109\114\051\053\050\098\115\098\073\122\103\083\080\113\113\098\114\113","\101\119\053\086\102\097\051\043";"\073\116\048\115\086\069\114\068\086\072\099\061";"\047\068\083\119\084\068\079\061";"\047\056\072\108\057\071\102\120\057\049\066\057\076\076\067\057";"\065\120\100\097\121\101\066\076\057\118\106\076\066\079\080\053\106\051\118\061","\119\085\097\065","\069\101\066\070\113\068\097\119\081\050\066\114\047\079\061\061","\056\106\105\122\117\087\061\061";"\089\101\119\119\047\100\061\061";"\078\113\087\065","\069\053\117\101\113\099\071\111\070\074\047\069\088\100\061\061","\102\099\052\071\110\066\087\053\103\073\056\098\081\100\061\061","\088\102\115\097";"\051\100\061\061";"\080\056\086\085\111\065\097\115\077\082\078\061";"\076\057\114\048\099\070\052\051\088\054\089\085";"\056\067\049\054\055\108\051\080\075\109\120\061";"\055\122\100\075\078\071\077\108\119\079\061\061","\108\105\121\067\112\052\049\103\083\115\089\061";"\066\084\089\076\088\098\087\048";"\117\121\083\102","\114\115\115\097","\110\108\083\083\110\107\074\053\089\067\113\056\073\100\061\061","\047\049\103\048\050\106\083\085\112\101\103\115\099\070\075\049","\047\080\069\114\057\050\075\110";"\115\106\066\078\118\089\050\115\068\079\061\061","\055\068\050\065\071\087\061\061";"\072\109\080\118\087\086\082\080\085\088\051\089","\073\104\055\078\083\109\118\052\084\103\116\056\083\074\120\103\072\100\061\061","\100\078\099\077","\049\071\101\116\056\056\111\119\069\078\047\061","\070\076\107\090\057\056\067\088\085\089\057\120\108\100\061\061","\102\116\098\049\109\057\043\075\108\086\104\121\119\072\121\102";"\110\085\113\078\050\070\073\121\084\088\047\061","\115\068\068\118","\083\121\049\087\083\066\120\070\051\113\097\117\066\050\072\071\113\079\061\061";"\087\100\112\057";"\086\119\078\100","\090\051\114\056\049\098\070\061";"\047\050\105\066\117\049\069\105\112\110\069\087\112\070\089\104\076\050\086\061";"\069\088\106\055\112\120\112\103\047\110\083\070\087\101\119\103\084\068\069\090\112\056\083\109\089\121\083\071","\107\122\110\076";"\081\068\112\117\057\110\049\070\112\050\103\079\084\106\112\121";"\084\068\070\086\050\088\097\103\050\106\067\086\099\100\061\061","\112\122\071\084","\073\072\103\048";"\082\043\066\113\057\119\117\101\105\051\113\061";"\051\086\122\074\076\047\053\052\075\119\068\114\112\052\067\104","\090\068\089\061";"\067\054\119\097\083\074\056\061";"\119\118\078\114\078\077\082\043\109\100\061\061","\097\049\114\050\106\076\118\121\103\110\100\097","\086\104\051\056\076\078\099\061";"\118\090\098\050\105\079\061\061";"\068\043\110\069\067\100\061\061";"\105\055\082\080\121\087\061\061";"\084\074\120\061";"\057\080\105\103\066\104\066\119\112\050\083\118\083\106\112\102","\087\083\102\110\076\116\084\101\104\087\061\061","\066\088\099\101\079\100\061\061","\066\050\119\108\113\104\087\086\047\120\105\114\069\088\105\074","\066\055\110\113\055\079\061\061";"\053\070\068\084\098\052\052\114\081\047\083\070","\051\048\086\053\043\079\061\061","\112\080\083\104\089\100\061\061","\054\098\076\073\043\097\107\097\051\090\101\043\077\090\106\121\105\100\061\061","\122\099\075\090\054\100\061\061","\047\071\105\113\057\068\111\071\050\065\112\105\076\049\066\097\113\087\061\061";"\076\082\086\081","\066\105\065\102";"\071\048\112\089\049\057\097\099\080\049\043\079\119\099\113\081\054\079\061\061","\054\077\081\099\108\082\061\061";"\088\070\105\109";"\069\101\066\070\113\068\097\119\081\050\066\114\069\110\105\085\084\113\083\118\089\121\105\119\089\080\069\106\047\100\061\061","\082\084\090\081";"\088\066\113\085\110\082\061\061";"\115\116\101\076";"\047\047\109\048\099\067\090\101\080\074\120\067\081\108\100\100\098\082\061\061","\052\084\090\104\087\043\048\109\103\066\113\121\104\079\061\061","\067\087\086\089\098\081\106\067\087\102\071\114\080\100\061\061";"\047\090\120\115\079\047\106\049\119\079\117\090\081\087\061\061","\109\102\065\118","\112\070\083\065\084\076\105\050\099\065\067\112\113\088\067\090\117\082\061\061";"\065\103\076\055\067\115\120\107\103\103\122\083\104\075\047\061";"\084\119\076\116\067\074\117\082\088\107\100\099\113\055\090\050\076\070\056\051\049\097\118\086\108\057\074\057\051\082\061\061","\082\118\121\083","\090\111\055\118\121\108\100\077\082\067\120\061";"\087\101\072\109\084\080\078\071";"\053\089\101\113\066\075\054\117\090\081\078\061","\119\054\119\067\119\052\105\109\087\100\061\061";"\119\079\118\061";"\120\083\113\074\067\118\043\078\107\110\119\088","\069\085\070\121\084\051\110\120\106\101\047\118","\113\052\071\049\054\115\086\061","\081\079\098\101\078\083\074\086\117\087\061\061";"\081\101\082\090\090\090\121\050","\067\088\074\117\102\112\114\066\052\089\120\061";"\108\066\100\050\118\104\121\102\098\052\069\050\067\087\061\061";"\086\113\052\105\065\082\061\061","\109\086\106\104\089\089\049\099\070\100\061\061";"\053\068\122\121\073\115\071\043\073\043\082\061";"\106\053\055\117\099\082\061\061","\065\121\065\115\085\054\118\098\121\053\104\117","\083\087\047\043","\084\101\112\076\117\066\106\109\084\101\089\070\089\050\067\053\099\100\061\061","\121\104\072\110\089\079\061\061","\106\105\070\121","\113\104\050\108\081\068\103\085\067\071\067\082","\090\053\106\086\052\079\061\061","\068\043\100\120\119\117\120\054\114\057\115\112\103\101\056\043\084\100\052\068\081\079\061\061","\109\047\110\120\122\100\061\061";"\119\071\102\057\081\116\100\081\110\110\083\116\049\052\068\099\098\050\076\074\098\080\090\069\113\080\122\073\102\107\111\119\074\078\100\061","\077\088\077\107\116\108\122\112\107\090\043\077\085\079\061\061";"\101\098\101\071","\069\101\066\070\087\101\119\103\084\068\069\114\112\050\086\061","\103\085\082\086\116\048\074\065\106\053\109\078\108\109\077\061","\066\076\081\082\057\090\087\067\118\066\086\061","\053\088\089\047\082\082\061\061";"\070\101\066\069";"\115\050\101\113\086\048\106\079\084\102\076\110\119\083\099\068","\055\108\120\085\072\078\089\098\098\054\089\061";"\053\052\105\067\097\106\090\050\105\117\078\061";"\119\114\057\102\081\072\087\074\112\056\075\105";"\077\108\085\084\103\117\108\055\085\107\121\109";"\085\077\102\119\097\043\053\089\113\117\099\077\108\116\054\097\055\082\061\061","\085\120\073\048";"\074\073\089\090\084\047\067\077\050\108\082\080\120\104\050\080\071\108\089\077\066\055\119\080\078\051\078\056\089\087\061\061","\122\106\115\116";"\056\103\069\082\052\048\077\074\086\116\072\051\113\115\057\111";"\088\077\086\085\076\111\067\098","\098\052\049\112";"\097\050\050\105\085\087\113\073\119\082\061\061","\099\079\070\068\047\107\085\114\054\072\107\085";"\051\079\109\057\088\065\083\065\077\043\122\114","\117\088\087\068\069\109\120\054\055\052\114\116\068\100\061\061";"\067\100\078\086\068\074\057\089\121\087\061\061","\078\110\083\077\107\070\114\074\074\103\089\061","\053\053\075\053\120\087\061\061";"\115\090\102\113\047\079\061\061","\112\117\121\097\088\100\061\061","\122\109\083\069\087\073\085\113\048\118\097\122","\113\121\066\110\082\120\107\056";"\048\069\107\077";"\080\076\051\115\111\054\050\080\090\099\120\061","\107\112\083\077\069\100\061\061","\100\078\081\077\043\070\067\074\101\100\061\061","\053\105\056\115\121\103\099\061","\057\068\070\104\113\110\049\121\051\050\097\102\047\101\069\089\113\066\082\061","\043\065\104\097\066\106\076\048\068\097\099\072\113\069\113\101\112\100\061\061";"\087\101\119\065\069\066\047\101\113\104\102\068\112\050\083\119\066\082\061\061","\108\099\076\083\086\119\056\088\121\055\050\069";"\051\049\119\118\084\113\118\086\069\120\112\110\083\076\049\118\084\100\061\061";"\100\081\071\110\085\116\122\070\104\122\099\061","\051\051\054\114\050\113\118\071\053\083\089\061";"\088\107\122\105\117\120\119\099";"\086\109\085\053\066\087\103\073\114\082\061\061","\114\051\043\105\089\082\055\073\073\073\089\061","\082\043\120\057\101\079\061\061";"\051\107\049\069\081\107\069\116\087\113\072\069\076\107\069\086";"\088\075\082\086";"\089\043\047\085\047\100\061\061","\117\050\075\071\067\068\049\055\089\101\113\061";"\084\056\067\119\089\121\049\102\112\066\112\049\051\050\109\101\112\065\120\061","\112\052\080\110\089\068\081\057\052\114\053\082\050\079\073\111\104\089\113\061","\069\113\078\083\053\105\047\061";"\052\050\113\110\043\122\055\067\047\081\118\100";"\098\049\080\069","\070\076\087\049\080\081\099\051\120\052\082\085\111\114\118\056\052\107\088\080\043\085\117\071\111\065\067\070\066\049\083\065\110\087\078\089\108\108\115\081\088\106\049\107\097\109\049\052\068\101\082\079\083\065\047\079\090\118\077\113\121\049\073\055\109\085\043\047\117\101\050\068\105\065\119\065\102\075\051\120\109\077\057\109\073\097\089\112\114\071\074\117\073\054\116\106\055\088\078\082";"\071\102\101\069\085\111\111\049\109\107\099\051\114\104\084\088\043\077\070\071\057\120\074\107","\113\051\066\054\099\082\061\061";"\099\118\076\082\079\085\100\097\111\117\052\087\083\074\119\049\115\075\103\055\077\097\056\117","\055\084\071\117";"\120\083\108\085\106\085\120\048","\110\115\080\065\107\082\061\061","\066\122\118\079\121\085\050\102\112\068\069\112\076\101\055\075\053\050\113\106\114\088\086\071\121\050\077\106\100\100\061\061";"\053\122\050\066\076\053\081\101\049\090\088\068\072\068\065\075\065\055\089\068\115\054\097\102\110\051\103\119\099\082\061\061";"\050\076\082\085\075\070\086\115\078\122\078\122\056\122\066\108\078\079\118\051\052\087\061\061","\083\053\067\070","\083\074\049\070\051\113\066\108\081\068\079\086\112\088\106\071";"\079\106\107\082\053\081\112\108\097\049\118\061","\050\083\077\055","\070\047\115\065\086\101\112\051\119\067\121\053";"\106\051\080\111\119\108\100\061";"\116\083\105\107\068\081\078\110\052\100\061\061","\047\101\086\104\066\080\100\071\117\049\113\070\067\066\067\088\087\079\061\061","\056\075\043\065\098\056\070\061","\073\113\043\049\106\109\113\076\066\088\088\049\107\119\048\080","\099\120\105\114\120\079\061\061";"\090\068\084\065\116\079\061\061","\100\104\073\068\104\082\100\061","\109\053\076\054\075\116\078\070\115\108\109\061";"\047\068\120\061";"\112\088\097\085\084\080\078\061";"\072\107\056\118\084\122\088\115\111\110\089\097\050\050\071\085\109\086\098\111\100\057\078\061";"\067\068\049\071\057\079\061\061";"\083\084\055\106\070\121\066\099";"\116\072\079\115\048\082\061\061","\070\067\116\048";"\118\108\056\103\078\082\061\061";"\080\052\112\051\100\119\112\080\084\082\061\061";"\083\109\079\113","\105\115\075\066";"\080\119\086\121\081\119\102\106\119\082\061\061";"\112\065\054\117\105\069\104\068\115\085\089\083";"\076\065\102\102\113\068\049\117\113\088\066\048\050\068\066\110\067\100\061\061";"\070\109\113\082\104\100\061\061","\113\053\073\056";"\047\055\105\087\075\106\069\069\104\052\103\051\112\081\079\053\066\111\104\098\119\082\061\061","\100\099\104\055\057\115\053\079\072\100\051\077\054\097\107\103","\085\111\050\109","\070\111\090\053\047\068\107\084\089\087\061\061","\066\113\069\103\084\076\078\061";"\080\119\116\073\099\081\099\061","\107\056\071\108\088\085\070\082\099\087\102\066\087\116\077\053\066\109\089\083\055\103\051\076\120\072\100\073\089\116\065\104\109\081\109\110\048\067\072\072\051\120\047\122\055\056\074\114\083\050\074\089\054\088\114\102\098\106\116\073\049\090\088\108\107\052\101\115\090\053\072\099\089\055\082\104\082\111\089\068\052\053\069\122\121\048\104\085\106\101\089\065\107\067\118\109\076\105\069\070\067\106\057\074\118\108\077\056\120\087\103\104\057\079\085\083\067\122\068\055\113\055\076\074\076\067\107\117\051\117\070\070\111\071\103\048\112\116\086\111\079\119\114\054\077\115\111\120";"\103\057\090\082\076\086\070\097\068\116\100\061";"\066\071\086\099\057\114\097\077\115\069\117\055\043\079\061\061","\069\107\111\082\112\085\104\049\083\070\099\047\076\055\084\048\117\087\119\068\090\086\115\111\121\098\065\065\067\043\054\108\098\070\099\113\101\051\100\087\098\071\077\056\104\069\111\110\048\097\116\052\043\079\110\104\047\043\104\056\121\084\119\075\117\050\074\121\084\083\080\043\075\053\078\068\089\098\082\056\084\071\077\061","\066\099\050\069\049\079\061\061","\066\121\083\065\083\068\079\075\084\106\049\048\051\049\112\105","\105\043\103\077\090\052\099\061";"\090\043\053\085\054\114\087\105\102\082\061\061";"\110\077\122\069\075\053\082\077\065\082\074\108\078\110\089\117\043\074\109\055\103\110\073\048\106\049\079\118\043\079\061\061";"\067\068\072\055\067\050\104\053\112\121\078\061","\073\087\052\071\087\087\061\061","\111\107\078\077\117\107\121\111\116\069\104\097\081\116\090\057","\122\050\084\083\121\080\069\082\084\086\119\112\106\085\054\103\068\088\050\078\070\077\057\104\110\100\061\061";"\069\074\066\111\076\120\105\048\117\068\097\110\066\113\083\069","\065\075\119\104";"\066\101\049\103\067\120\112\085\047\056\083\118\057\050\097\056";"\048\120\113\087\079\115\043\049\103\101\105\117\101\048\051\107\087\117\119\089\067\079\061\061";"\117\104\106\110\112\107\049\106\112\101\067\078\112\068\069\085\057\110\056\061","\119\112\108\121\106\057\090\117\054\079\061\061","\097\084\043\108\111\100\061\061","\076\113\070\118\120\103\099\089\056\078\107\111\107\108\100\104","\109\119\106\088","\100\048\085\053\114\067\070\087\049\117\066\050","\056\084\088\083\043\077\051\075\100\087\061\061","\047\097\099\112";"\107\089\083\104\097\115\087\119\087\079\061\061";"\085\071\086\053\108\099\103\097\074\050\113\061";"\057\075\086\122";"\117\107\069\070\047\120\067\106\067\082\061\061";"\047\068\049\103\047\110\099\061";"\115\101\121\106\078\087\061\061","\076\090\082\061";"\115\098\090\103\115\115\073\079\082\049\108\102\071\087\061\061","\115\103\068\053\113\082\116\065\105\118\067\102\102\084\081\083\047\073\078\061","\053\077\043\069\109\050\122\086\098\105\113\061","\057\106\112\076\087\084\077\061";"\087\085\119\110\048\075\102\104\114\087\061\061";"\088\051\113\101";"\113\118\121\080\110\073\100\053\111\115\075\071","\119\087\106\104","\067\068\072\071\067\107\105\103\084\088\047\061";"\110\079\071\050";"\113\110\105\087\087\071\102\069\067\050\066\099\051\050\103\114","\122\048\118\079\115\102\072\099\065\050\076\075\118\067\122\119\056\110\118\119\108\099\107\107\089\088\106\105\101\082\061\061","\122\102\106\043";"\055\109\074\047\084\111\118\061","\112\056\103\111\083\120\083\074\087\076\083\065\050\113\067\103","\071\067\066\083\110\070\120\097\084\107\081\119\104\081\075\098\100\057\102\114\082\082\061\061";"\051\053\100\106\112\048\118\103\051\100\061\061","\112\049\083\113\076\074\083\108\081\120\047\086\117\107\066\055","\121\120\066\100";"\118\077\107\122\120\098\109\061","\068\115\052\049\102\122\066\107\068\100\083\111\110\071\108\068\122\068\121\074\112\100\061\061","\074\099\112\068\083\048\099\061","\071\082\073\074\075\051\119\072\117\065\104\048\056\082\061\061";"\067\049\067\075\081\076\113\075\066\110\066\113\112\113\097\122";"\087\088\103\083\117\070\103\099\117\068\104\056\112\120\106\053";"\100\056\084\110\102\068\053\111";"\089\068\088\088\113\114\101\088\069\050\086\113\076\109\089\103\111\106\055\119\085\086\109\083\080\056\050\078\097\100\061\061";"\075\099\065\071";"\103\065\099\082\080\051\047\061","\077\071\051\075\055\114\051\116\114\107\054\106\069\121\043\115\117\047\069\090\115\079\061\061";"\076\100\061\061","\121\101\085\069\069\052\098\072\112\085\070\083\111\113\116\109\116\050\082\071\105\100\061\061";"\070\082\065\097\089\113\109\098\118\082\061\061","\102\117\122\066","\066\102\112\066";"\069\050\075\104\084\087\061\061";"\047\071\075\048\118\050\077\116\114\100\061\061","\054\109\053\072";"\106\086\088\056\067\100\061\061","\121\116\117\084\056\100\065\090\108\078\056\061";"\087\084\122\068\087\067\119\120\054\099\080\065\104\073\057\052\071\070\078\120\117\082\061\061","\117\119\102\073\048\070\117\112\109\054\097\079\109\106\054\085\057\100\061\061","\086\115\083\076\103\120\089\072\050\113\077\074","\050\097\085\107\067\088\068\117\109\048\083\051\083\112\105\072\073\052\089\114\115\079\061\061","\088\113\112\049\072\080\087\080\050\067\099\087\083\122\087\057\053\053\052\047\108\079\061\061","\072\114\099\117\089\073\082\073\054\047\056\061","\084\052\119\073\087\082\061\061";"\087\088\080\083\078\067\115\072\115\101\053\118\107\049\090\119\100\100\061\061";"\087\075\073\068\085\065\075\051\100\113\047\080\068\079\061\061","\085\115\079\118\047\079\110\047\103\079\061\061";"","\106\057\085\111\078\100\061\061";"\084\098\114\117\053\112\119\081\107\052\054\122\073\122\117\088","\112\102\112\066\118\079\061\061","\048\088\079\112\121\088\120\066\054\076\077\112\114\079\061\061","\099\080\103\087\099\080\067\049\099\070\111\056\066\050\119\076","\066\115\116\065\090\099\056\076\057\101\099\070\086\097\102\080\048\065\109\114\077\086\087\077\084\090\101\072\067\082\061\061","\075\088\054\079\111\114\100\068\082\066\047\061","\108\070\097\084\074\106\101\102\098\090\100\086\085\073\121\097";"\107\069\086\053\072\048\103\051\121\122\073\073\100\052\088\066";"\072\043\066\103\067\120\047\120\073\120\097\083","\049\065\050\100","\055\050\079\098\110\052\057\068\080\079\098\107";"\078\101\078\080\076\082\061\061";"\069\085\120\088";"\117\068\106\111\069\065\069\112\084\113\097\118\076\080\103\106\081\087\061\061","\067\065\112\088\067\087\061\061","\057\079\079\079";"\087\070\112\114\089\050\104\106";"\103\088\068\043\117\084\065\052\057\104\098\076";"\051\055\048\098\073\100\112\074\108\081\070\061","\082\109\118\110\070\111\116\052\072\097\073\047\090\079\061\061","\103\048\043\122","\103\103\077\066\098\098\051\075";"\106\100\061\061";"\047\101\066\070\084\050\066\070\089\121\069\119\089\088\097\106";"\112\121\105\114\084\080\078\061";"\047\074\069\118\057\074\089\086\112\080\083\080\066\071\112\086\069\104\118\061","\073\083\065\117","\069\075\090\080\0
+--[==[ Void Hub - Device Key + Server Hop + Test Bypass ]==]
+
+local Players = game:GetService("Players")
+local TweenService = game:GetService("TweenService")
+local CoreGui = game:GetService("CoreGui")
+local RunService = game:GetService("RunService")
+local UserInputService = game:GetService("UserInputService")
+local Stats = game:GetService("Stats")
+local Lighting = game:GetService("Lighting")
+local HttpService = game:GetService("HttpService")
+local TeleportService = game:GetService("TeleportService")
+local LocalPlayer = Players.LocalPlayer
+
+local existing = CoreGui:FindFirstChild("VoidHubSystem")
+if existing then existing:Destroy() end
+
+local voidHubSystem = Instance.new("ScreenGui")
+voidHubSystem.Name = "VoidHubSystem"
+voidHubSystem.ResetOnSpawn = false
+voidHubSystem.Parent = CoreGui
+
+local purpleColor = Color3.fromRGB(140, 40, 220)
+local DISCORD_LINK = "https://discord.gg/rkwe7eun8"
+
+local function getDeviceIdentifier()
+    local id = nil
+    pcall(function()
+        local service = game:GetService("RbxAnalyticsService")
+        if service and service.GetClientId then
+            id = service:GetClientId()
+        end
+    end)
+    if not id or id == "" then
+        pcall(function()
+            id = HttpService:GetUserAgent()
+        end)
+    end
+    if not id or id == "" then
+        id = tostring(LocalPlayer.UserId) .. "_" .. tostring(game.PlaceId)
+    end
+    return id
+end
+
+local deviceId = getDeviceIdentifier()
+
+local function generateDeviceKey()
+    local str = "VOIDHUB_" .. deviceId .. "_" .. tostring(LocalPlayer.UserId) .. "_" .. tostring(game.PlaceId)
+    local hash = 0
+    for i = 1, #str do
+        hash = (hash * 31 + string.byte(str, i)) % 4294967296
+    end
+    return string.format("VH-%08X-%04X", hash, (hash * 7) % 65536)
+end
+
+local deviceKey = generateDeviceKey()
+
+local keyContainer = Instance.new("Frame", voidHubSystem)
+keyContainer.Name = "KeyContainer"
+keyContainer.Size = UDim2.new(0, 400, 0, 240)
+keyContainer.Position = UDim2.new(0.5, 0, 0.5, 0)
+keyContainer.AnchorPoint = Vector2.new(0.5, 0.5)
+keyContainer.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+keyContainer.BackgroundTransparency = 0.3
+keyContainer.ClipsDescendants = true
+
+Instance.new("UICorner", keyContainer).CornerRadius = UDim.new(0, 28)
+
+local keyBg = Instance.new("ImageLabel", keyContainer)
+keyBg.Name = "KeyBackgroundImage"
+keyBg.Size = UDim2.new(1, 0, 1, 0)
+keyBg.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+keyBg.BackgroundTransparency = 1
+keyBg.Image = "rbxassetid://112459375607724"
+keyBg.ImageTransparency = 0
+keyBg.ScaleType = Enum.ScaleType.Crop
+keyBg.ZIndex = 0
+Instance.new("UICorner", keyBg).CornerRadius = UDim.new(0, 28)
+
+local keyStroke = Instance.new("UIStroke", keyContainer)
+keyStroke.Color = purpleColor
+keyStroke.Thickness = 2.5
+
+local titleKey = Instance.new("TextLabel", keyContainer)
+titleKey.Size = UDim2.new(1, 0, 0, 32)
+titleKey.Position = UDim2.new(0, 0, 0, 18)
+titleKey.BackgroundTransparency = 1
+titleKey.Text = "VOID HUB"
+titleKey.Font = Enum.Font.GothamBold
+titleKey.TextSize = 20
+titleKey.TextColor3 = Color3.fromRGB(255, 255, 255)
+titleKey.ZIndex = 3
+
+local subTitleKey = Instance.new("TextLabel", keyContainer)
+subTitleKey.Size = UDim2.new(1, 0, 0, 16)
+subTitleKey.Position = UDim2.new(0, 0, 0, 48)
+subTitleKey.BackgroundTransparency = 1
+subTitleKey.Text = "Digite sua Key para continuar"
+subTitleKey.Font = Enum.Font.Gotham
+subTitleKey.TextSize = 11
+subTitleKey.TextColor3 = Color3.fromRGB(180, 160, 200)
+subTitleKey.ZIndex = 3
+
+local textBox = Instance.new("TextBox", keyContainer)
+textBox.Size = UDim2.new(0, 340, 0, 40)
+textBox.Position = UDim2.new(0.5, -170, 0, 78)
+textBox.BackgroundColor3 = Color3.fromRGB(15, 10, 25)
+textBox.BackgroundTransparency = 0.4
+textBox.PlaceholderText = "Digite sua Key..."
+textBox.PlaceholderColor3 = Color3.fromRGB(140, 120, 160)
+textBox.Text = ""
+textBox.TextColor3 = Color3.fromRGB(255, 255, 255)
+textBox.Font = Enum.Font.Gotham
+textBox.TextSize = 13
+Instance.new("UICorner", textBox).CornerRadius = UDim.new(0, 10)
+textBox.ZIndex = 3
+
+local validateBtn = Instance.new("TextButton", keyContainer)
+validateBtn.Size = UDim2.new(0, 165, 0, 40)
+validateBtn.Position = UDim2.new(0, 30, 0, 130)
+validateBtn.BackgroundColor3 = purpleColor
+validateBtn.BackgroundTransparency = 0.2
+validateBtn.Text = "Verificar"
+validateBtn.Font = Enum.Font.GothamBold
+validateBtn.TextSize = 13
+validateBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+validateBtn.AutoButtonColor = false
+Instance.new("UICorner", validateBtn).CornerRadius = UDim.new(0, 10)
+validateBtn.ZIndex = 3
+
+local getKeyBtn = Instance.new("TextButton", keyContainer)
+getKeyBtn.Size = UDim2.new(0, 165, 0, 40)
+getKeyBtn.Position = UDim2.new(1, -195, 0, 130)
+getKeyBtn.BackgroundColor3 = Color3.fromRGB(20, 15, 30)
+getKeyBtn.BackgroundTransparency = 0.4
+getKeyBtn.Text = "Obter Key"
+getKeyBtn.Font = Enum.Font.GothamBold
+getKeyBtn.TextSize = 13
+getKeyBtn.TextColor3 = Color3.fromRGB(220, 180, 255)
+getKeyBtn.AutoButtonColor = false
+Instance.new("UICorner", getKeyBtn).CornerRadius = UDim.new(0, 10)
+getKeyBtn.ZIndex = 3
+local getKeyStroke = Instance.new("UIStroke", getKeyBtn)
+getKeyStroke.Color = purpleColor
+getKeyStroke.Thickness = 1.5
+
+local discordLink = Instance.new("TextLabel", keyContainer)
+discordLink.Size = UDim2.new(1, 0, 0, 18)
+discordLink.Position = UDim2.new(0, 0, 0, 188)
+discordLink.BackgroundTransparency = 1
+discordLink.Text = "discord.gg/rkwe7eun8"
+discordLink.Font = Enum.Font.GothamBold
+discordLink.TextSize = 11
+discordLink.TextColor3 = Color3.fromRGB(180, 150, 220)
+discordLink.ZIndex = 3
+
+getKeyBtn.MouseButton1Click:Connect(function()
+    if setclipboard then setclipboard(deviceKey) end
+    
+    local notif = Instance.new("TextLabel", voidHubSystem)
+    notif.Size = UDim2.new(0, 320, 0, 50)
+    notif.Position = UDim2.new(0.5, -160, 0, 20)
+    notif.BackgroundColor3 = Color3.fromRGB(20, 15, 30)
+    notif.BackgroundTransparency = 0.1
+    notif.TextColor3 = Color3.fromRGB(255, 255, 255)
+    notif.Text = "Sua Key: " .. deviceKey .. "\n(Copiada para a área de transferência)"
+    notif.Font = Enum.Font.GothamBold
+    notif.TextSize = 11
+    notif.TextWrapped = true
+    notif.ZIndex = 20
+    notif.Parent = voidHubSystem
+    Instance.new("UICorner", notif).CornerRadius = UDim.new(0, 8)
+    local st = Instance.new("UIStroke", notif)
+    st.Color = purpleColor
+    st.Thickness = 1.5
+    
+    task.delay(5, function()
+        if notif and notif.Parent then notif:Destroy() end
+    end)
+end)
+
+local voidHubMain = Instance.new("Frame", voidHubSystem)
+voidHubMain.Name = "VoidHubMain"
+voidHubMain.Size = UDim2.new(0, 360, 0, 400)
+voidHubMain.Position = UDim2.new(0.5, 0, 0.3, 0)
+voidHubMain.AnchorPoint = Vector2.new(0.5, 0)
+voidHubMain.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+voidHubMain.BackgroundTransparency = 0.6
+voidHubMain.ClipsDescendants = true
+voidHubMain.Visible = false
+
+Instance.new("UICorner", voidHubMain).CornerRadius = UDim.new(0, 28)
+local mainStroke = Instance.new("UIStroke", voidHubMain)
+mainStroke.Color = purpleColor
+mainStroke.Thickness = 2.5
+
+local mainBg = Instance.new("ImageLabel", voidHubMain)
+mainBg.Name = "BackgroundImage"
+mainBg.Size = UDim2.new(1, 0, 1, 0)
+mainBg.Position = UDim2.new(0, 0, 0, 0)
+mainBg.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+mainBg.BackgroundTransparency = 1
+mainBg.Image = "rbxassetid://112459375607724"
+mainBg.ImageTransparency = 0
+mainBg.ScaleType = Enum.ScaleType.Crop
+mainBg.ZIndex = 0
+Instance.new("UICorner", mainBg).CornerRadius = UDim.new(0, 28)
+
+local mainTitle = Instance.new("TextLabel", voidHubMain)
+mainTitle.Size = UDim2.new(1, -100, 0, 25)
+mainTitle.Position = UDim2.new(0.5, 0, 0, 12)
+mainTitle.AnchorPoint = Vector2.new(0.5, 0)
+mainTitle.BackgroundTransparency = 1
+mainTitle.Text = "Void Hub"
+mainTitle.Font = Enum.Font.GothamBold
+mainTitle.TextSize = 20
+mainTitle.TextColor3 = Color3.fromRGB(255, 255, 255)
+mainTitle.ZIndex = 3
+
+local subTitle = Instance.new("TextLabel", voidHubMain)
+subTitle.Size = UDim2.new(1, 0, 0, 15)
+subTitle.Position = UDim2.new(0.5, 0, 0, 38)
+subTitle.AnchorPoint = Vector2.new(0.5, 0)
+subTitle.BackgroundTransparency = 1
+subTitle.Text = "The best script"
+subTitle.Font = Enum.Font.GothamBold
+subTitle.TextSize = 10
+subTitle.TextColor3 = Color3.fromRGB(210, 150, 255)
+subTitle.ZIndex = 3
+
+local minimizeBtn = Instance.new("TextButton", voidHubMain)
+minimizeBtn.Size = UDim2.new(0, 30, 0, 30)
+minimizeBtn.Position = UDim2.new(0, 12, 0, 12)
+minimizeBtn.BackgroundColor3 = Color3.fromRGB(20, 15, 30)
+minimizeBtn.BackgroundTransparency = 0.5
+minimizeBtn.Text = "-"
+minimizeBtn.Font = Enum.Font.GothamBold
+minimizeBtn.TextSize = 20
+minimizeBtn.TextColor3 = purpleColor
+minimizeBtn.ZIndex = 5
+Instance.new("UICorner", minimizeBtn).CornerRadius = UDim.new(0, 9)
+
+local lockBtn = Instance.new("TextButton", voidHubMain)
+lockBtn.Size = UDim2.new(0, 30, 0, 30)
+lockBtn.Position = UDim2.new(1, -42, 0, 12)
+lockBtn.BackgroundColor3 = Color3.fromRGB(20, 15, 30)
+lockBtn.BackgroundTransparency = 0.5
+lockBtn.Text = "🔓"
+lockBtn.Font = Enum.Font.Gotham
+lockBtn.TextSize = 14
+lockBtn.ZIndex = 5
+Instance.new("UICorner", lockBtn).CornerRadius = UDim.new(0, 9)
+
+local bodyContainer = Instance.new("Frame", voidHubMain)
+bodyContainer.Name = "BodyContainer"
+bodyContainer.Size = UDim2.new(1, 0, 1, -55)
+bodyContainer.Position = UDim2.new(0, 0, 0, 55)
+bodyContainer.BackgroundTransparency = 1
+bodyContainer.ClipsDescendants = true
+bodyContainer.ZIndex = 3
+
+local statusFrame = Instance.new("Frame", bodyContainer)
+statusFrame.Size = UDim2.new(0, 300, 0, 24)
+statusFrame.Position = UDim2.new(0.5, -150, 0, 8)
+statusFrame.BackgroundColor3 = Color3.fromRGB(15, 10, 25)
+statusFrame.BackgroundTransparency = 0.6
+statusFrame.ZIndex = 3
+Instance.new("UICorner", statusFrame).CornerRadius = UDim.new(0, 7)
+
+local statusLabel = Instance.new("TextLabel", statusFrame)
+statusLabel.Size = UDim2.new(1, -10, 1, 0)
+statusLabel.Position = UDim2.new(0, 5, 0, 0)
+statusLabel.BackgroundTransparency = 1
+statusLabel.Text = "Status: Nada ativo"
+statusLabel.Font = Enum.Font.Gotham
+statusLabel.TextSize = 11
+statusLabel.TextColor3 = Color3.fromRGB(190, 170, 220)
+statusLabel.ZIndex = 4
+
+local contentArea = Instance.new("ScrollingFrame", bodyContainer)
+contentArea.Size = UDim2.new(1, -20, 1, -50)
+contentArea.Position = UDim2.new(0, 10, 0, 42)
+contentArea.BackgroundTransparency = 1
+contentArea.CanvasSize = UDim2.new(0, 0, 0, 500)
+contentArea.ScrollBarThickness = 3
+contentArea.ZIndex = 4
+
+local extrasArea = Instance.new("ScrollingFrame", bodyContainer)
+extrasArea.Size = UDim2.new(1, -20, 1, -50)
+extrasArea.Position = UDim2.new(0, 10, 0, 42)
+extrasArea.BackgroundTransparency = 1
+extrasArea.CanvasSize = UDim2.new(0, 0, 0, 550)
+extrasArea.ScrollBarThickness = 3
+extrasArea.Visible = false
+extrasArea.ZIndex = 4
+
+local scriptsArea = Instance.new("ScrollingFrame", bodyContainer)
+scriptsArea.Size = UDim2.new(1, -20, 1, -50)
+scriptsArea.Position = UDim2.new(0, 10, 0, 42)
+scriptsArea.BackgroundTransparency = 1
+scriptsArea.CanvasSize = UDim2.new(0, 0, 0, 400)
+scriptsArea.ScrollBarThickness = 3
+scriptsArea.Visible = false
+scriptsArea.ZIndex = 4
+
+local function createButton(parent, name, label, yPos)
+    local btn = Instance.new("TextButton", parent)
+    btn.Name = name
+    btn.Size = UDim2.new(1, -10, 0, 36)
+    btn.Position = UDim2.new(0, 5, 0, yPos)
+    btn.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+    btn.BackgroundTransparency = 1
+    btn.Text = label
+    btn.Font = Enum.Font.GothamBold
+    btn.TextSize = 12
+    btn.TextColor3 = Color3.fromRGB(240, 240, 240)
+    btn.AutoButtonColor = false
+    btn.ZIndex = 5
+    Instance.new("UICorner", btn).CornerRadius = UDim.new(0, 10)
+    local st = Instance.new("UIStroke", btn)
+    st.Color = Color3.fromRGB(160, 110, 210)
+    st.Thickness = 1.2
+    st.Transparency = 0.25
+    return btn, st
+end
+
+local activeFunction = nil
+local deactivateFuncs = {}
+local buttonRefs = {}
+
+local function handleToggle(name, btn, activateFn, deactivateFn)
+    if activeFunction == name then
+        if deactivateFn then pcall(deactivateFn) end
+        btn.BackgroundTransparency = 1
+        activeFunction = nil
+        statusLabel.Text = "Status: Nada ativo"
+    else
+        if activeFunction then
+            local prevDeactivate = deactivateFuncs[activeFunction]
+            if prevDeactivate then pcall(prevDeactivate) end
+            local prevBtn = buttonRefs[activeFunction]
+            if prevBtn then 
+                prevBtn.BackgroundTransparency = 1
+            end
+        end
+        deactivateFuncs[name] = deactivateFn
+        buttonRefs[name] = btn
+        activateFn()
+        btn.BackgroundTransparency = 0.55
+        activeFunction = name
+        statusLabel.Text = "Status: " .. name .. " ativo"
+    end
+end
+
+local killAllActive = false
+local killAllRemotes = {}
+
+local function cacheRemotesDeDano()
+    killAllRemotes = {}
+    local rs = game:GetService("ReplicatedStorage")
+    local palavras = {"damage", "hit", "attack", "kill", "deal", "punch", "slash", "sword", "combat", "touch"}
+    for _, obj in ipairs(rs:GetDescendants()) do
+        if obj:IsA("RemoteEvent") then
+            local n = obj.Name:lower()
+            for _, p in ipairs(palavras) do
+                if n:find(p) then
+                    table.insert(killAllRemotes, obj)
+                    break
+                end
+            end
+        end
+    end
+end
+
+local function killAllOn()
+    killAllActive = true
+    cacheRemotesDeDano()
+    task.spawn(function()
+        while killAllActive do
+            pcall(function()
+                local myChar = LocalPlayer.Character
+                local myRoot = myChar and myChar:FindFirstChild("HumanoidRootPart")
+                local myHum = myChar and myChar:FindFirstChildOfClass("Humanoid")
+                if not myRoot or not myHum or myHum.Health <= 0 then
+                    return
+                end
+
+                local tool = myChar:FindFirstChildOfClass("Tool")
+                if not tool and LocalPlayer.Backpack then
+                    local bt = LocalPlayer.Backpack:FindFirstChildOfClass("Tool")
+                    if bt then
+                        bt.Parent = myChar
+                        tool = bt
+                    end
+                end
+
+                for _, player in ipairs(Players:GetPlayers()) do
+                    if not killAllActive then break end
+                    if player ~= LocalPlayer and player.Character then
+                        local tHum = player.Character:FindFirstChildOfClass("Humanoid")
+                        local tRoot = player.Character:FindFirstChild("HumanoidRootPart")
+                        if tHum and tHum.Health > 0 and tRoot then
+                            myRoot.CFrame = tRoot.CFrame * CFrame.new(0, 0, 2)
+
+                            if tool then
+                                pcall(function() tool:Activate() end)
+                            end
+
+                            for _, remote in ipairs(killAllRemotes) do
+                                pcall(function() remote:FireServer(player.Character, 99999) end)
+                                pcall(function() remote:FireServer(tHum, 99999) end)
+                                pcall(function() remote:FireServer(tRoot, 99999) end)
+                            end
+
+                            task.wait(0.02)
+                        end
+                    end
+                end
+            end)
+            task.wait(0.15)
+        end
+    end)
+end
+local function killAllOff() killAllActive = false end
+
+local flyActive = false
+local flyGui = nil
+local flyBV = nil
+local flyDirection = Vector3.zero
+local VELOCIDADE_FLY = 250
+local function flyOn()
+    flyActive = true
+    flyGui = Instance.new("ScreenGui", CoreGui)
+    flyGui.Name = "VoidFlyGui"
+    flyGui.ResetOnSpawn = false
+    local function criarBotaoFly(parent, txt, pos, setDir)
+        local b = Instance.new("TextButton", parent)
+        b.Size = UDim2.new(0, 45, 0, 45)
+        b.Position = pos
+        b.BackgroundColor3 = Color3.fromRGB(20, 15, 30)
+        b.BackgroundTransparency = 0.4
+        b.Text = txt
+        b.TextColor3 = Color3.fromRGB(255, 255, 255)
+        b.TextSize = 18
+        b.Font = Enum.Font.GothamBold
+        b.AutoButtonColor = false
+        b.ZIndex = 100
+        Instance.new("UICorner", b).CornerRadius = UDim.new(0, 8)
+        local st = Instance.new("UIStroke", b)
+        st.Color = purpleColor
+        st.Thickness = 1.5
+        b.InputBegan:Connect(function(input)
+            if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+                flyDirection = setDir
+            end
+        end)
+        b.InputEnded:Connect(function(input)
+            if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+                flyDirection = Vector3.zero
+            end
+        end)
+    end
+    local leftPanel = Instance.new("Frame", flyGui)
+    leftPanel.Size = UDim2.new(0, 150, 0, 150)
+    leftPanel.Position = UDim2.new(0, 20, 0.55, 0)
+    leftPanel.BackgroundTransparency = 1
+    criarBotaoFly(leftPanel, "▲", UDim2.new(0.5, -22, 0, 0), Vector3.new(0, 0, -1))
+    criarBotaoFly(leftPanel, "◄", UDim2.new(0, 0, 0.5, -22), Vector3.new(-1, 0, 0))
+    criarBotaoFly(leftPanel, "►", UDim2.new(1, -45, 0.5, -22), Vector3.new(1, 0, 0))
+    criarBotaoFly(leftPanel, "▼", UDim2.new(0.5, -22, 1, -45), Vector3.new(0, 0, 1))
+    local rightPanel = Instance.new("Frame", flyGui)
+    rightPanel.Size = UDim2.new(0, 45, 0, 100)
+    rightPanel.Position = UDim2.new(1, -65, 0.55, 0)
+    rightPanel.BackgroundTransparency = 1
+    criarBotaoFly(rightPanel, "⬆", UDim2.new(0, 0, 0, 0), Vector3.new(0, 1, 0))
+    criarBotaoFly(rightPanel, "⬇", UDim2.new(0, 0, 1, -45), Vector3.new(0, -1, 0))
+    local char = LocalPlayer.Character
+    local hrp = char and char:FindFirstChild("HumanoidRootPart")
+    if hrp then
+        flyBV = Instance.new("BodyVelocity")
+        flyBV.Name = "VoidFlyBV"
+        flyBV.MaxForce = Vector3.new(math.huge, math.huge, math.huge)
+        flyBV.Velocity = Vector3.zero
+        flyBV.Parent = hrp
+    end
+    task.spawn(function()
+        while flyActive do
+            pcall(function()
+                local c = LocalPlayer.Character
+                local r = c and c:FindFirstChild("HumanoidRootPart")
+                local cam = workspace.CurrentCamera
+                if r and flyBV and flyBV.Parent then
+                    local vel = Vector3.zero
+                    if flyDirection.Magnitude > 0 then
+                        if flyDirection.Y ~= 0 then
+                            vel = flyDirection * VELOCIDADE_FLY
+                        else
+                            vel = (cam.CFrame.LookVector * -flyDirection.Z + cam.CFrame.RightVector * flyDirection.X) * VELOCIDADE_FLY
+                        end
+                    end
+                    flyBV.Velocity = vel
+                end
+            end)
+            task.wait()
+        end
+    end)
+end
+local function flyOff()
+    flyActive = false
+    if flyGui then flyGui:Destroy() flyGui = nil end
+    if flyBV then flyBV:Destroy() flyBV = nil end
+    flyDirection = Vector3.zero
+end
+
+local bypassActive = false
+
+local function escolherAlvoBypass()
+    local alvos = {}
+    for _, p in ipairs(Players:GetPlayers()) do
+        if p ~= LocalPlayer and p.Character then
+            local hrp = p.Character:FindFirstChild("HumanoidRootPart")
+            local hum = p.Character:FindFirstChildOfClass("Humanoid")
+            if hrp and hum and hum.Health > 0 then
+                table.insert(alvos, hrp)
+            end
+        end
+    end
+    if #alvos == 0 then return nil end
+    return alvos[math.random(1, #alvos)]
+end
+
+local function runBypassLogic()
+    local char = LocalPlayer.Character
+    local hum = char and char:FindFirstChildOfClass("Humanoid")
+    local hrp = char and char:FindFirstChild("HumanoidRootPart")
+    if not hum or not hrp then return end
+
+    local colisoes = {}
+    for _, part in ipairs(char:GetDescendants()) do
+        if part:IsA("BasePart") then
+            colisoes[part] = part.CanCollide
+            part.CanCollide = false
+        end
+    end
+
+    hum.PlatformStand = true
+
+    local bv = Instance.new("BodyVelocity")
+    bv.Name = "VoidBypassBV"
+    bv.MaxForce = Vector3.new(math.huge, math.huge, math.huge)
+    bv.Velocity = Vector3.zero
+    bv.Parent = hrp
+
+    local bg = Instance.new("BodyGyro")
+    bg.Name = "VoidBypassBG"
+    bg.MaxTorque = Vector3.new(math.huge, math.huge, math.huge)
+    bg.CFrame = hrp.CFrame
+    bg.Parent = hrp
+
+    local posInicial = hrp.Position
+
+    local params = RaycastParams.new()
+    params.FilterDescendantsInstances = {char}
+    params.FilterType = Enum.RaycastFilterType.Exclude
+
+    local dirs = {
+        Vector3.new(1, 0, 0),
+        Vector3.new(-1, 0, 0),
+        Vector3.new(0, 0, 1),
+        Vector3.new(0, 0, -1)
+    }
+    local menores = {}
+    for _, dir in ipairs(dirs) do
+        local result = workspace:Raycast(posInicial, dir * 5000, params)
+        local dist = result and result.Distance or 5000
+        table.insert(menores, { dist = dist, dir = dir })
+    end
+    table.sort(menores, function(a, b) return a.dist < b.dist end)
+    local melhorDir = menores[1].dir
+
+    local startTime = tick()
+    while hrp.Position.Y < 800 and tick() - startTime < 6 and bypassActive do
+        bv.Velocity = Vector3.new(0, 300, 0)
+        RunService.RenderStepped:Wait()
+    end
+
+    local targetForward = posInicial + (melhorDir * 1000)
+    local t2 = tick()
+    while tick() - t2 < 3 and bypassActive do
+        local diff = targetForward - hrp.Position
+        local diffH = Vector3.new(diff.X, 0, diff.Z)
+        if diffH.Magnitude < 20 then break end
+        bv.Velocity = diffH.Unit * 400
+        RunService.RenderStepped:Wait()
+    end
+
+    if bv then bv:Destroy() end
+    if bg then bg:Destroy() end
+
+    hum.PlatformStand = false
+    hrp.AssemblyLinearVelocity = Vector3.new(0, -100, 0)
+
+    task.delay(4, function()
+        if char and char.Parent then
+            for part, col in pairs(colisoes) do
+                if part.Parent then part.CanCollide = col end
+            end
+        end
+    end)
+end
+
+local function bypassOn()
+    bypassActive = true
+    task.spawn(function()
+        statusLabel.Text = "Status: Bypass Void..."
+
+        runBypassLogic()
+
+        local timeoutMorrer = tick() + 15
+        while bypassActive and tick() < timeoutMorrer do
+            local char = LocalPlayer.Character
+            local hum = char and char:FindFirstChildOfClass("Humanoid")
+            if hum and hum.Health <= 0 then break end
+            task.wait(0.2)
+        end
+
+        bypassActive = false
+
+        if buttonRefs["Bypass"] then
+            buttonRefs["Bypass"].BackgroundTransparency = 1
+        end
+        if activeFunction == "Bypass" then
+            activeFunction = nil
+        end
+        statusLabel.Text = "Status: Nada ativo"
+    end)
+end
+
+local function bypassOff()
+    bypassActive = false
+end
+
+local function testarBypass()
+    statusLabel.Text = "status: testando..."
+
+    local alvo = escolherAlvoBypass()
+    if not alvo then
+        statusLabel.Text = "status: falhou❌"
+        task.wait(2)
+        statusLabel.Text = "Status: Nada ativo"
+        return
+    end
+
+    local myHrp = LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
+    if not myHrp then
+        statusLabel.Text = "status: falhou❌"
+        task.wait(2)
+        statusLabel.Text = "Status: Nada ativo"
+        return
+    end
+
+    local destino = alvo.CFrame * CFrame.new(0, 0, 3)
+    myHrp.CFrame = destino
+    local posTeleporte = destino.Position
+
+    task.wait(2)
+
+    local currentHrp = LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
+    if currentHrp then
+        local dist = (currentHrp.Position - posTeleporte).Magnitude
+        if dist < 30 then
+            statusLabel.Text = "status: sucesso✅"
+        else
+            statusLabel.Text = "status: falhou❌"
+        end
+    else
+        statusLabel.Text = "status: falhou❌"
+    end
+
+    task.wait(2.5)
+    statusLabel.Text = "Status: Nada ativo"
+end
+
+local invisActive = false
+local invisBackup = nil
+
+local function aplicarInvisibilidade()
+    local char = LocalPlayer.Character
+    if not char then return end
+
+    for _, obj in ipairs(char:GetDescendants()) do
+        if obj:IsA("BasePart") or obj:IsA("Decal") or obj:IsA("Texture") then
+            obj.Transparency = 1
+            if obj:IsA("BasePart") then
+                obj.CanCollide = false
+                obj.CastShadow = false
+            end
+        elseif obj:IsA("ParticleEmitter") or obj:IsA("Trail") or obj:IsA("Beam") or obj:IsA("Fire") or obj:IsA("Smoke") or obj:IsA("Sparkles") then
+            obj.Enabled = false
+        elseif obj:IsA("BillboardGui") or obj:IsA("SurfaceGui") then
+            obj.Enabled = false
+        elseif obj:IsA("Highlight") then
+            obj.Enabled = false
+        end
+    end
+
+    local hum = char:FindFirstChildOfClass("Humanoid")
+    if hum then
+        hum.DisplayDistanceType = Enum.HumanoidDisplayDistanceType.None
+        hum.NameDisplayDistance = 0
+        hum.HealthDisplayDistance = 0
+    end
+end
+
+local function invisOn()
+    invisActive = true
+    local char = LocalPlayer.Character
+    if not char then return end
+
+    invisBackup = { parent = char.Parent }
+
+    aplicarInvisibilidade()
+
+    for _, player in ipairs(Players:GetPlayers()) do
+        if player ~= LocalPlayer and player.Character then
+            local hl = player.Character:FindFirstChild("PurpleHighlight")
+            if hl then hl:Destroy() end
+        end
+    end
+
+    local camera = workspace.CurrentCamera
+    if camera and char.Parent ~= camera then
+        char.Parent = camera
+    end
+
+    if not invisBackup.loop then
+        invisBackup.loop = task.spawn(function()
+            while invisActive do
+                pcall(function()
+                    local c = LocalPlayer.Character
+                    if c then
+                        aplicarInvisibilidade()
+                        if c.Parent ~= camera then
+                            c.Parent = camera
+                        end
+                    end
+                end)
+                task.wait(0.2)
+            end
+        end)
+    end
+end
+
+local function invisOff()
+    invisActive = false
+    local char = LocalPlayer.Character
+    if not char then
+        invisBackup = nil
+        return
+    end
+
+    if invisBackup and invisBackup.parent then
+        char.Parent = invisBackup.parent
+    else
+        char.Parent = workspace
+    end
+
+    local hum = char:FindFirstChildOfClass("Humanoid")
+    if hum then
+        hum.DisplayDistanceType = Enum.HumanoidDisplayDistanceType.Viewer
+        hum.NameDisplayDistance = 100
+        hum.HealthDisplayDistance = 100
+    end
+
+    invisBackup = nil
+end
+
+local function serverHop()
+    statusLabel.Text = "Status: Procurando servidor..."
+    task.spawn(function()
+        local success, result = pcall(function()
+            local url = "https://games.roblox.com/v1/games/" .. game.PlaceId .. "/servers/Public?sortOrder=Desc&limit=100"
+            local response = HttpService:JSONDecode(game:HttpGet(url))
+            return response
+        end)
+        
+        if success and result and result.data then
+            local candidatos = {}
+            for _, server in ipairs(result.data) do
+                if server.id ~= game.JobId and server.playing < server.maxPlayers and server.playing >= 3 then
+                    local razao = server.playing / server.maxPlayers
+                    if razao >= 0.25 and razao <= 0.75 then
+                        table.insert(candidatos, server)
+                    end
+                end
+            end
+
+            table.sort(candidatos, function(a, b)
+                local razaoA = a.playing / a.maxPlayers
+                local razaoB = b.playing / b.maxPlayers
+                return math.abs(razaoA - 0.5) < math.abs(razaoB - 0.5)
+            end)
+
+            for _, server in ipairs(candidatos) do
+                pcall(function()
+                    TeleportService:TeleportToPlaceInstance(game.PlaceId, server.id, LocalPlayer)
+                end)
+                return
+            end
+        end
+        
+        pcall(function()
+            TeleportService:Teleport(game.PlaceId, LocalPlayer)
+        end)
+    end)
+end
+
+local espDummyActive = false
+local function espDummyOn()
+    espDummyActive = true
+    task.spawn(function()
+        while espDummyActive do
+            pcall(function()
+                for _, obj in ipairs(workspace:GetDescendants()) do
+                    if obj.Name == "Dummy" and obj:FindFirstChild("HumanoidRootPart") and not obj:FindFirstChild("RGBHighlight") then
+                        local hl = Instance.new("Highlight", obj)
+                        hl.Name = "RGBHighlight"
+                        task.spawn(function()
+                            while hl and hl.Parent do
+                                hl.FillColor = Color3.fromHSV((tick() * 0.5) % 1, 1, 1)
+                                task.wait(0.1)
+                            end
+                        end)
+                    end
+                end
+            end)
+            task.wait(2)
+        end
+    end)
+end
+local function espDummyOff()
+    espDummyActive = false
+    for _, obj in ipairs(workspace:GetDescendants()) do
+        if obj.Name == "Dummy" then
+            local hl = obj:FindFirstChild("RGBHighlight")
+            if hl then hl:Destroy() end
+        end
+    end
+end
+
+local espJogadoresActive = false
+local function espJogadoresOn()
+    espJogadoresActive = true
+    task.spawn(function()
+        while espJogadoresActive do
+            pcall(function()
+                for _, player in ipairs(Players:GetPlayers()) do
+                    if player ~= LocalPlayer and player.Character and not player.Character:FindFirstChild("PurpleHighlight") then
+                        local hl = Instance.new("Highlight", player.Character)
+                        hl.Name = "PurpleHighlight"
+                        hl.FillColor = Color3.fromRGB(140, 40, 220)
+                        hl.OutlineColor = Color3.fromRGB(255, 255, 255)
+                    end
+                end
+            end)
+            task.wait(1)
+        end
+    end)
+end
+local function espJogadoresOff()
+    espJogadoresActive = false
+    for _, player in ipairs(Players:GetPlayers()) do
+        if player.Character then
+            local hl = player.Character:FindFirstChild("PurpleHighlight")
+            if hl then hl:Destroy() end
+        end
+    end
+end
+
+local espDomainActive = false
+local espDomainGui = nil
+local espDomainTxt = nil
+
+local function temDominioNoMapa()
+    local padroes = {"domain", "dominio", "domínio", "shrine", "expansion", "infinite void", "malevolent", "unlimited", "coffin", "chimera", "idle death", "horizon", "authentic", "mutual", "love"}
+    for _, obj in ipairs(workspace:GetDescendants()) do
+        local nome = obj.Name:lower()
+        for _, p in ipairs(padroes) do
+            if nome:find(p) then
+                if (obj:IsA("BasePart") and obj.Size.Magnitude > 20) or obj:IsA("Model") then
+                    return true
+                end
+            end
+        end
+    end
+    return false
+end
+
+local function espDomainOn()
+    espDomainActive = true
+    espDomainGui = Instance.new("ScreenGui", CoreGui)
+    espDomainGui.Name = "VoidEspDomain"
+    espDomainGui.ResetOnSpawn = false
+
+    local f = Instance.new("Frame", espDomainGui)
+    f.Size = UDim2.new(0, 200, 0, 34)
+    f.Position = UDim2.new(0.02, 0, 0.15, 0)
+    f.BackgroundColor3 = Color3.fromRGB(15, 10, 25)
+    f.BackgroundTransparency = 0.3
+    Instance.new("UICorner", f).CornerRadius = UDim.new(0, 10)
+    local fs = Instance.new("UIStroke", f)
+    fs.Color = purpleColor
+    fs.Thickness = 2
+
+    espDomainTxt = Instance.new("TextLabel", f)
+    espDomainTxt.Size = UDim2.new(1, -10, 1, 0)
+    espDomainTxt.Position = UDim2.new(0, 5, 0, 0)
+    espDomainTxt.BackgroundTransparency = 1
+    espDomainTxt.Text = "ESP Domain: OFF"
+    espDomainTxt.TextColor3 = Color3.fromRGB(255, 80, 80)
+    espDomainTxt.Font = Enum.Font.GothamBold
+    espDomainTxt.TextSize = 13
+
+    task.spawn(function()
+        while espDomainActive and espDomainGui and espDomainGui.Parent do
+            pcall(function()
+                if temDominioNoMapa() then
+                    espDomainTxt.Text = "ESP Domain: ON"
+                    espDomainTxt.TextColor3 = Color3.fromRGB(80, 255, 120)
+                else
+                    espDomainTxt.Text = "ESP Domain: OFF"
+                    espDomainTxt.TextColor3 = Color3.fromRGB(255, 80, 80)
+                end
+            end)
+            task.wait(1)
+        end
+    end)
+end
+
+local function espDomainOff()
+    espDomainActive = false
+    if espDomainGui then espDomainGui:Destroy() espDomainGui = nil end
+    espDomainTxt = nil
+end
+
+local fpsActive = false
+local function fpsOn()
+    fpsActive = true
+    pcall(function()
+        settings().Rendering.QualityLevel = Enum.QualityLevel.Level05
+        Lighting.GlobalShadows = false
+        Lighting.FogEnd = 999999
+        Lighting.Brightness = 2
+        for _, v in ipairs(Lighting:GetChildren()) do
+            if v:IsA("PostEffect") or v:IsA("Atmosphere") or v:IsA("Sky") or v:IsA("BloomEffect") or v:IsA("BlurEffect") or v:IsA("SunRaysEffect") then
+                v.Enabled = false
+            end
+        end
+        for _, v in ipairs(workspace:GetDescendants()) do
+            if v:IsA("BasePart") then
+                v.CastShadow = false
+                v.Reflectance = 0
+            elseif v:IsA("ParticleEmitter") or v:IsA("Trail") or v:IsA("Beam") or v:IsA("Fire") or v:IsA("Smoke") or v:IsA("Sparkles") then
+                v.Enabled = false
+            elseif v:IsA("PointLight") or v:IsA("SpotLight") or v:IsA("SurfaceLight") then
+                v.Enabled = false
+            end
+        end
+    end)
+end
+local function fpsOff() fpsActive = false end
+
+local panelGui = nil
+local function panelOn()
+    panelGui = Instance.new("ScreenGui", CoreGui)
+    panelGui.Name = "VoidFpsPingPanel"
+    panelGui.ResetOnSpawn = false
+    local f = Instance.new("Frame", panelGui)
+    f.Size = UDim2.new(0, 180, 0, 75)
+    f.Position = UDim2.new(0.78, 0, 0.1, 0)
+    f.BackgroundColor3 = Color3.fromRGB(15, 10, 25)
+    f.BackgroundTransparency = 0.3
+    Instance.new("UICorner", f).CornerRadius = UDim.new(0, 14)
+    local fs = Instance.new("UIStroke", f)
+    fs.Color = purpleColor
+    fs.Thickness = 2
+    local txt = Instance.new("TextLabel", f)
+    txt.Size = UDim2.new(1, 0, 1, 0)
+    txt.BackgroundTransparency = 1
+    txt.TextColor3 = Color3.fromRGB(255, 255, 255)
+    txt.Font = Enum.Font.GothamBold
+    txt.TextSize = 13
+    task.spawn(function()
+        while panelGui and f.Parent do
+            local fps = math.floor(1 / RunService.RenderStepped:Wait())
+            local ping = 0
+            pcall(function()
+                ping = math.floor(Stats.Network.ServerStatsItem["Data Ping"]:GetValue())
+            end)
+            txt.Text = string.format(" FPS: %d\n Ping: %d ms\n Players: %d", fps, ping, #Players:GetPlayers())
+            task.wait(1)
+        end
+    end)
+end
+local function panelOff()
+    if panelGui then panelGui:Destroy() panelGui = nil end
+end
+
+local btnKillAll = createButton(contentArea, "KillAll", "☠  Kill All (Mata todos)", 5)
+btnKillAll.MouseButton1Click:Connect(function()
+    handleToggle("KillAll", btnKillAll, killAllOn, killAllOff)
+end)
+
+local btnFly = createButton(contentArea, "Fly", "🛫  Fly com Botões", 48)
+btnFly.MouseButton1Click:Connect(function()
+    handleToggle("Fly", btnFly, flyOn, flyOff)
+end)
+
+local btnBypass = createButton(contentArea, "Bypass", "🛡  Bypass Void (Persistente)", 91)
+btnBypass.MouseButton1Click:Connect(function()
+    handleToggle("Bypass", btnBypass, bypassOn, bypassOff)
+end)
+
+local btnTestBypass = createButton(contentArea, "TesteBypass", "🔄  Testar Bypass (TP Player)", 134)
+btnTestBypass.MouseButton1Click:Connect(function()
+    btnTestBypass.BackgroundTransparency = 0.55
+    testarBypass()
+    btnTestBypass.BackgroundTransparency = 1
+end)
+
+local btnServerHop = createButton(contentArea, "ServerHop", "🌐  Server Hop (Trocar Servidor)", 177)
+btnServerHop.MouseButton1Click:Connect(function()
+    btnServerHop.BackgroundTransparency = 0.55
+    serverHop()
+    task.wait(2)
+    btnServerHop.BackgroundTransparency = 1
+end)
+
+local btnAbrirExtras = createButton(contentArea, "AbrirExtras", "⚡  Extras & Visuals", 220)
+btnAbrirExtras.MouseButton1Click:Connect(function()
+    contentArea.Visible = false
+    extrasArea.Visible = true
+end)
+
+local btnEspJogadores = createButton(extrasArea, "EspJogadores", "👁  ESP Jogadores", 5)
+btnEspJogadores.MouseButton1Click:Connect(function()
+    if not espJogadoresActive then
+        espJogadoresOn()
+        btnEspJogadores.BackgroundTransparency = 0.55
+    else
+        espJogadoresOff()
+        btnEspJogadores.BackgroundTransparency = 1
+    end
+end)
+
+local btnEspDummy = createButton(extrasArea, "EspDummy", "🎯  ESP Dummy", 48)
+btnEspDummy.MouseButton1Click:Connect(function()
+    if not espDummyActive then
+        espDummyOn()
+        btnEspDummy.BackgroundTransparency = 0.55
+    else
+        espDummyOff()
+        btnEspDummy.BackgroundTransparency = 1
+    end
+end)
+
+local btnEspDomain = createButton(extrasArea, "EspDomain", "👁  ESP Domain", 91)
+btnEspDomain.MouseButton1Click:Connect(function()
+    if not espDomainActive then
+        espDomainOn()
+        btnEspDomain.BackgroundTransparency = 0.55
+    else
+        espDomainOff()
+        btnEspDomain.BackgroundTransparency = 1
+    end
+end)
+
+local btnInvis = createButton(extrasArea, "Invisibilidade", "💎  Invisibilidade", 134)
+btnInvis.MouseButton1Click:Connect(function()
+    handleToggle("Invisibilidade", btnInvis, invisOn, invisOff)
+end)
+
+local btnFPS = createButton(extrasArea, "FPS", "🚀  FPS Booster", 177)
+btnFPS.MouseButton1Click:Connect(function()
+    if not fpsActive then
+        fpsOn()
+        btnFPS.BackgroundTransparency = 0.55
+    else
+        fpsOff()
+        btnFPS.BackgroundTransparency = 1
+    end
+end)
+
+local btnPainel = createButton(extrasArea, "Painel", "📊  Painel FPS/Ping", 220)
+btnPainel.MouseButton1Click:Connect(function()
+    if not panelGui then
+        panelOn()
+        btnPainel.BackgroundTransparency = 0.55
+    else
+        panelOff()
+        btnPainel.BackgroundTransparency = 1
+    end
+end)
+
+local btnCoresHub = createButton(extrasArea, "CoresHub", "🎨  Cores do Hub", 263)
+btnCoresHub.MouseButton1Click:Connect(function()
+    local picker = Instance.new("ScreenGui", CoreGui)
+    picker.Name = "VoidColorPicker"
+    picker.ResetOnSpawn = false
+    local f = Instance.new("Frame", picker)
+    f.Size = UDim2.new(0, 220, 0, 150)
+    f.Position = UDim2.new(0.5, -110, 0.5, -75)
+    f.BackgroundColor3 = Color3.fromRGB(15, 10, 25)
+    f.BackgroundTransparency = 0.1
+    Instance.new("UICorner", f).CornerRadius = UDim.new(0, 16)
+    local fs = Instance.new("UIStroke", f)
+    fs.Color = purpleColor
+    fs.Thickness = 2
+
+    local title = Instance.new("TextLabel", f)
+    title.Size = UDim2.new(1, 0, 0, 25)
+    title.Position = UDim2.new(0, 0, 0, 10)
+    title.BackgroundTransparency = 1
+    title.Text = "Cor do Hub"
+    title.Font = Enum.Font.GothamBold
+    title.TextSize = 13
+    title.TextColor3 = Color3.fromRGB(255, 255, 255)
+
+    local opcoesCores = {
+        { cor = Color3.fromRGB(140, 40, 220), img = "rbxassetid://112459375607724" },
+        { cor = Color3.fromRGB(40, 100, 240), img = "rbxassetid://102472450810637" },
+        { cor = Color3.fromRGB(40, 220, 100), img = "rbxassetid://75159994736056"  },
+        { cor = Color3.fromRGB(220, 40, 40),  img = "rbxassetid://136888893575149" },
+        { cor = Color3.fromRGB(240, 220, 40), img = "rbxassetid://71099604853241"  },
+        { cor = Color3.fromRGB(240, 240, 240),img = "rbxassetid://123694908192472" },
+    }
+
+    for i, opcao in ipairs(opcoesCores) do
+        local row = math.floor((i-1) / 3)
+        local col = (i-1) % 3
+        local b = Instance.new("TextButton", f)
+        b.Size = UDim2.new(0, 55, 0, 38)
+        b.Position = UDim2.new(0, 20 + col * 62, 0, 45 + row * 45)
+        b.BackgroundColor3 = opcao.cor
+        b.Text = ""
+        b.AutoButtonColor = false
+        Instance.new("UICorner", b).CornerRadius = UDim.new(0, 8)
+        local bs = Instance.new("UIStroke", b)
+        bs.Color = Color3.fromRGB(255, 255, 255)
+        bs.Thickness = 1
+        bs.Transparency = 0.6
+
+        b.MouseButton1Click:Connect(function()
+            mainStroke.Color = opcao.cor
+            keyStroke.Color = opcao.cor
+            mainBg.Image = opcao.img
+            keyBg.Image = opcao.img
+            picker:Destroy()
+        end)
+    end
+
+    local close = Instance.new("TextButton", f)
+    close.Size = UDim2.new(0, 80, 0, 24)
+    close.Position = UDim2.new(1, -90, 1, -30)
+    close.BackgroundColor3 = Color3.fromRGB(60, 30, 30)
+    close.Text = "Fechar"
+    close.Font = Enum.Font.GothamBold
+    close.TextSize = 11
+    close.TextColor3 = Color3.fromRGB(255, 255, 255)
+    Instance.new("UICorner", close).CornerRadius = UDim.new(0, 7)
+    close.MouseButton1Click:Connect(function() picker:Destroy() end)
+end)
+
+local btnAbrirScripts = createButton(extrasArea, "AbrirScripts", "📜  Scripts Especiais", 306)
+btnAbrirScripts.MouseButton1Click:Connect(function()
+    extrasArea.Visible = false
+    scriptsArea.Visible = true
+end)
+
+local btnVoltar = createButton(extrasArea, "Voltar", "⬅️  Voltar", 349)
+btnVoltar.MouseButton1Click:Connect(function()
+    extrasArea.Visible = false
+    contentArea.Visible = true
+end)
+
+local scriptsList = {
+    { "TBO", "🔥  TBO Script", "https://raw.githubusercontent.com/cool5013/TBO/main/TBOscript" },
+    { "Kokusen", "⚡  Kokusen Chain", "https://raw.githubusercontent.com/ggab2351-stack/Jjs/refs/heads/main/obfuscated_script-1770002780541.lua.txt" },
+    { "Kokusen2", "⚡  Kokusen 2", "https://raw.githubusercontent.com/dream77239/sss/refs/heads/main/yuji" },
+    { "LockOn", "🎯  Lock On", "https://raw.githubusercontent.com/b17111326-hue/Lock-On/refs/heads/main/obfuscated_script-1786226030102.lua.txt" },
+    { "Jujutsuer", "🔮  Jujutsuer V2", "https://raw.githubusercontent.com/solarastuff/tze/refs/heads/main/JujutsuerV2.lua" },
+    { "Yuki", "🌀  Black Hole Yuki", "https://raw.githubusercontent.com/Dragonfly5101/Minosr/refs/heads/main/InstantBlackHole.JJS" },
+}
+for i, data in ipairs(scriptsList) do
+    local btn = createButton(scriptsArea, data[1], data[2], 5 + (i-1) * 42)
+    btn.MouseButton1Click:Connect(function()
+        btn.BackgroundTransparency = 0.55
+        statusLabel.Text = "Status: Executando " .. data[1] .. "..."
+        pcall(function()
+            loadstring(game:HttpGet(data[3]))()
+        end)
+        task.wait(0.5)
+        btn.BackgroundTransparency = 1
+    end)
+end
+
+local btnVoltar2 = createButton(scriptsArea, "Voltar2", "⬅️  Voltar", 5 + #scriptsList * 42)
+btnVoltar2.MouseButton1Click:Connect(function()
+    scriptsArea.Visible = false
+    contentArea.Visible = true
+end)
+
+local isLocked = false
+local dragging = false
+local dragStart, startPos
+
+voidHubMain.InputBegan:Connect(function(input)
+    if isLocked then return end
+    if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+        local my = input.Position.Y
+        local abs = voidHubMain.AbsolutePosition
+        if my - abs.Y < 55 then
+            dragging = true
+            dragStart = input.Position
+            startPos = voidHubMain.Position
+        end
+    end
+end)
+voidHubMain.InputEnded:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+        dragging = false
+    end
+end)
+UserInputService.InputChanged:Connect(function(input)
+    if dragging and not isLocked then
+        local delta = input.Position - dragStart
+        voidHubMain.Position = UDim2.new(
+            startPos.X.Scale, startPos.X.Offset + delta.X,
+            startPos.Y.Scale, startPos.Y.Offset + delta.Y
+        )
+    end
+end)
+
+lockBtn.MouseButton1Click:Connect(function()
+    isLocked = not isLocked
+    lockBtn.Text = isLocked and "🔒" or "🔓"
+    lockBtn.BackgroundColor3 = isLocked and Color3.fromRGB(120, 40, 40) or Color3.fromRGB(20, 15, 30)
+end)
+
+local isMinimized = false
+local fullHeight = 400
+local minHeight = 55
+
+minimizeBtn.MouseButton1Click:Connect(function()
+    isMinimized = not isMinimized
+    if isMinimized then
+        bodyContainer.Visible = false
+        TweenService:Create(voidHubMain, TweenInfo.new(0.3, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {
+            Size = UDim2.new(0, 360, 0, minHeight)
+        }):Play()
+        minimizeBtn.Text = "+"
+    else
+        TweenService:Create(voidHubMain, TweenInfo.new(0.3, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {
+            Size = UDim2.new(0, 360, 0, fullHeight)
+        }):Play()
+        task.wait(0.3)
+        bodyContainer.Visible = true
+        minimizeBtn.Text = "-"
+    end
+end)
+
+local function abrirHub()
+    TweenService:Create(keyContainer, TweenInfo.new(0.4), {Size = UDim2.new(0,0,0,0)}):Play()
+    task.wait(0.4)
+    keyContainer:Destroy()
+    voidHubMain.Visible = true
+end
+
+validateBtn.MouseButton1Click:Connect(function()
+    if textBox.Text == deviceKey then
+        abrirHub()
+    else
+        validateBtn.Text = "Incorreta!"
+        task.wait(1.5)
+        validateBtn.Text = "Verificar"
+    end
+end)
+
+LocalPlayer.CharacterAdded:Connect(function()
+    if invisActive then
+        task.wait(1)
+        invisBackup = { parent = workspace }
+        invisOn()
+    end
+end)
+
+print("✅ Void Hub carregado com sucesso!")
