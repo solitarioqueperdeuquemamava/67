@@ -1,45 +1,42 @@
-return(function(U8JKr, ...)
-local plfzwE = {"wwyKqcmv2D";"7cQsPrXV8Rcp4C";"AOe0J2WdDlOdLy";"FE2XJ";"Rf4Rvo";"Rk6DYQ0NbFz5oZZ2V";"355s"}
-local bjs9e2KA = function(...)
 --[==[ Void Hub - Device Key + Server Hop + Test Bypass ]==]
 
-local Players = game:GetService(loadstring(base64decode("UGxheWVycw=="))())
-local TweenService = game:GetService(loadstring(base64decode("VHdlZW5TZXJ2aWNl"))())
-local CoreGui = game:GetService(loadstring(base64decode("Q29yZUd1aQ=="))())
-local RunService = game:GetService(loadstring(base64decode("UnVuU2VydmljZQ=="))())
-local UserInputService = game:GetService(loadstring(base64decode("VXNlcklucHV0U2VydmljZQ=="))())
-local Stats = game:GetService(loadstring(base64decode("U3RhdHM="))())
-local Lighting = game:GetService(loadstring(base64decode("TGlnaHRpbmc="))())
-local HttpService = game:GetService(loadstring(base64decode("SHR0cFNlcnZpY2U="))())
-local TeleportService = game:GetService(loadstring(base64decode("VGVsZXBvcnRTZXJ2aWNl"))())
+local Players = game:GetService("Players")
+local TweenService = game:GetService("TweenService")
+local CoreGui = game:GetService("CoreGui")
+local RunService = game:GetService("RunService")
+local UserInputService = game:GetService("UserInputService")
+local Stats = game:GetService("Stats")
+local Lighting = game:GetService("Lighting")
+local HttpService = game:GetService("HttpService")
+local TeleportService = game:GetService("TeleportService")
 local LocalPlayer = Players.LocalPlayer
 
-local existing = CoreGui:FindFirstChild(loadstring(base64decode("Vm9pZEh1YlN5c3RlbQ=="))())
+local existing = CoreGui:FindFirstChild("VoidHubSystem")
 if existing then existing:Destroy() end
 
-local voidHubSystem = Instance.new(loadstring(base64decode("U2NyZWVuR3Vp"))())
-voidHubSystem.Name = loadstring(base64decode("Vm9pZEh1YlN5c3RlbQ=="))()
+local voidHubSystem = Instance.new("ScreenGui")
+voidHubSystem.Name = "VoidHubSystem"
 voidHubSystem.ResetOnSpawn = false
 voidHubSystem.Parent = CoreGui
 
 local purpleColor = Color3.fromRGB(140, 40, 220)
-local DISCORD_LINK = loadstring(base64decode("aHR0cHM6Ly9kaXNjb3JkLmdnL3Jrd2U3ZXVuOA=="))()
+local DISCORD_LINK = "https://discord.gg/rkwe7eun8"
 
 local function getDeviceIdentifier()
     local id = nil
     pcall(function()
-        local service = game:GetService(loadstring(base64decode("UmJ4QW5hbHl0aWNzU2VydmljZQ=="))())
+        local service = game:GetService("RbxAnalyticsService")
         if service and service.GetClientId then
             id = service:GetClientId()
         end
     end)
-    if not id or id == loadstring(base64decode(""))() then
+    if not id or id == "" then
         pcall(function()
             id = HttpService:GetUserAgent()
         end)
     end
-    if not id or id == loadstring(base64decode(""))() then
-        id = tostring(LocalPlayer.UserId) .. loadstring(base64decode("Xw=="))() .. tostring(game.PlaceId)
+    if not id or id == "" then
+        id = tostring(LocalPlayer.UserId) .. "_" .. tostring(game.PlaceId)
     end
     return id
 end
@@ -47,18 +44,18 @@ end
 local deviceId = getDeviceIdentifier()
 
 local function generateDeviceKey()
-    local str = loadstring(base64decode("Vk9JREhVQl8="))() .. deviceId .. loadstring(base64decode("Xw=="))() .. tostring(LocalPlayer.UserId) .. loadstring(base64decode("Xw=="))() .. tostring(game.PlaceId)
+    local str = "VOIDHUB_" .. deviceId .. "_" .. tostring(LocalPlayer.UserId) .. "_" .. tostring(game.PlaceId)
     local hash = 0
     for i = 1, #str do
         hash = (hash * 31 + string.byte(str, i)) % 4294967296
     end
-    return string.format(loadstring(base64decode("VkgtJTA4WC0lMDRY"))(), hash, (hash * 7) % 65536)
+    return string.format("VH-%08X-%04X", hash, (hash * 7) % 65536)
 end
 
 local deviceKey = generateDeviceKey()
 
-local keyContainer = Instance.new(loadstring(base64decode("RnJhbWU="))(), voidHubSystem)
-keyContainer.Name = loadstring(base64decode("S2V5Q29udGFpbmVy"))()
+local keyContainer = Instance.new("Frame", voidHubSystem)
+keyContainer.Name = "KeyContainer"
 keyContainer.Size = UDim2.new(0, 400, 0, 240)
 keyContainer.Position = UDim2.new(0.5, 0, 0.5, 0)
 keyContainer.AnchorPoint = Vector2.new(0.5, 0.5)
@@ -66,91 +63,91 @@ keyContainer.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 keyContainer.BackgroundTransparency = 0.3
 keyContainer.ClipsDescendants = true
 
-Instance.new(loadstring(base64decode("VUlDb3JuZXI="))(), keyContainer).CornerRadius = UDim.new(0, 28)
+Instance.new("UICorner", keyContainer).CornerRadius = UDim.new(0, 28)
 
-local keyBg = Instance.new(loadstring(base64decode("SW1hZ2VMYWJlbA=="))(), keyContainer)
-keyBg.Name = loadstring(base64decode("S2V5QmFja2dyb3VuZEltYWdl"))()
+local keyBg = Instance.new("ImageLabel", keyContainer)
+keyBg.Name = "KeyBackgroundImage"
 keyBg.Size = UDim2.new(1, 0, 1, 0)
 keyBg.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 keyBg.BackgroundTransparency = 1
-keyBg.Image = loadstring(base64decode("cmJ4YXNzZXRpZDovLzExMjQ1OTM3NTYwNzcyNA=="))()
+keyBg.Image = "rbxassetid://112459375607724"
 keyBg.ImageTransparency = 0
 keyBg.ScaleType = Enum.ScaleType.Crop
 keyBg.ZIndex = 0
-Instance.new(loadstring(base64decode("VUlDb3JuZXI="))(), keyBg).CornerRadius = UDim.new(0, 28)
+Instance.new("UICorner", keyBg).CornerRadius = UDim.new(0, 28)
 
-local keyStroke = Instance.new(loadstring(base64decode("VUlTdHJva2U="))(), keyContainer)
+local keyStroke = Instance.new("UIStroke", keyContainer)
 keyStroke.Color = purpleColor
 keyStroke.Thickness = 2.5
 
-local titleKey = Instance.new(loadstring(base64decode("VGV4dExhYmVs"))(), keyContainer)
+local titleKey = Instance.new("TextLabel", keyContainer)
 titleKey.Size = UDim2.new(1, 0, 0, 32)
 titleKey.Position = UDim2.new(0, 0, 0, 18)
 titleKey.BackgroundTransparency = 1
-titleKey.Text = loadstring(base64decode("Vk9JRCBIVUI="))()
+titleKey.Text = "VOID HUB"
 titleKey.Font = Enum.Font.GothamBold
 titleKey.TextSize = 20
 titleKey.TextColor3 = Color3.fromRGB(255, 255, 255)
 titleKey.ZIndex = 3
 
-local subTitleKey = Instance.new(loadstring(base64decode("VGV4dExhYmVs"))(), keyContainer)
+local subTitleKey = Instance.new("TextLabel", keyContainer)
 subTitleKey.Size = UDim2.new(1, 0, 0, 16)
 subTitleKey.Position = UDim2.new(0, 0, 0, 48)
 subTitleKey.BackgroundTransparency = 1
-subTitleKey.Text = loadstring(base64decode("RGlnaXRlIHN1YSBLZXkgcGFyYSBjb250aW51YXI="))()
+subTitleKey.Text = "Digite sua Key para continuar"
 subTitleKey.Font = Enum.Font.Gotham
 subTitleKey.TextSize = 11
 subTitleKey.TextColor3 = Color3.fromRGB(180, 160, 200)
 subTitleKey.ZIndex = 3
 
-local textBox = Instance.new(loadstring(base64decode("VGV4dEJveA=="))(), keyContainer)
+local textBox = Instance.new("TextBox", keyContainer)
 textBox.Size = UDim2.new(0, 340, 0, 40)
 textBox.Position = UDim2.new(0.5, -170, 0, 78)
 textBox.BackgroundColor3 = Color3.fromRGB(15, 10, 25)
 textBox.BackgroundTransparency = 0.4
-textBox.PlaceholderText = loadstring(base64decode("RGlnaXRlIHN1YSBLZXkuLi4="))()
+textBox.PlaceholderText = "Digite sua Key..."
 textBox.PlaceholderColor3 = Color3.fromRGB(140, 120, 160)
-textBox.Text = loadstring(base64decode(""))()
+textBox.Text = ""
 textBox.TextColor3 = Color3.fromRGB(255, 255, 255)
 textBox.Font = Enum.Font.Gotham
 textBox.TextSize = 13
-Instance.new(loadstring(base64decode("VUlDb3JuZXI="))(), textBox).CornerRadius = UDim.new(0, 10)
+Instance.new("UICorner", textBox).CornerRadius = UDim.new(0, 10)
 textBox.ZIndex = 3
 
-local validateBtn = Instance.new(loadstring(base64decode("VGV4dEJ1dHRvbg=="))(), keyContainer)
+local validateBtn = Instance.new("TextButton", keyContainer)
 validateBtn.Size = UDim2.new(0, 165, 0, 40)
 validateBtn.Position = UDim2.new(0, 30, 0, 130)
 validateBtn.BackgroundColor3 = purpleColor
 validateBtn.BackgroundTransparency = 0.2
-validateBtn.Text = loadstring(base64decode("VmVyaWZpY2Fy"))()
+validateBtn.Text = "Verificar"
 validateBtn.Font = Enum.Font.GothamBold
 validateBtn.TextSize = 13
 validateBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
 validateBtn.AutoButtonColor = false
-Instance.new(loadstring(base64decode("VUlDb3JuZXI="))(), validateBtn).CornerRadius = UDim.new(0, 10)
+Instance.new("UICorner", validateBtn).CornerRadius = UDim.new(0, 10)
 validateBtn.ZIndex = 3
 
-local getKeyBtn = Instance.new(loadstring(base64decode("VGV4dEJ1dHRvbg=="))(), keyContainer)
+local getKeyBtn = Instance.new("TextButton", keyContainer)
 getKeyBtn.Size = UDim2.new(0, 165, 0, 40)
 getKeyBtn.Position = UDim2.new(1, -195, 0, 130)
 getKeyBtn.BackgroundColor3 = Color3.fromRGB(20, 15, 30)
 getKeyBtn.BackgroundTransparency = 0.4
-getKeyBtn.Text = loadstring(base64decode("T2J0ZXIgS2V5"))()
+getKeyBtn.Text = "Obter Key"
 getKeyBtn.Font = Enum.Font.GothamBold
 getKeyBtn.TextSize = 13
 getKeyBtn.TextColor3 = Color3.fromRGB(220, 180, 255)
 getKeyBtn.AutoButtonColor = false
-Instance.new(loadstring(base64decode("VUlDb3JuZXI="))(), getKeyBtn).CornerRadius = UDim.new(0, 10)
+Instance.new("UICorner", getKeyBtn).CornerRadius = UDim.new(0, 10)
 getKeyBtn.ZIndex = 3
-local getKeyStroke = Instance.new(loadstring(base64decode("VUlTdHJva2U="))(), getKeyBtn)
+local getKeyStroke = Instance.new("UIStroke", getKeyBtn)
 getKeyStroke.Color = purpleColor
 getKeyStroke.Thickness = 1.5
 
-local discordLink = Instance.new(loadstring(base64decode("VGV4dExhYmVs"))(), keyContainer)
+local discordLink = Instance.new("TextLabel", keyContainer)
 discordLink.Size = UDim2.new(1, 0, 0, 18)
 discordLink.Position = UDim2.new(0, 0, 0, 188)
 discordLink.BackgroundTransparency = 1
-discordLink.Text = loadstring(base64decode("ZGlzY29yZC5nZy9ya3dlN2V1bjg="))()
+discordLink.Text = "discord.gg/rkwe7eun8"
 discordLink.Font = Enum.Font.GothamBold
 discordLink.TextSize = 11
 discordLink.TextColor3 = Color3.fromRGB(180, 150, 220)
@@ -159,20 +156,20 @@ discordLink.ZIndex = 3
 getKeyBtn.MouseButton1Click:Connect(function()
     if setclipboard then setclipboard(deviceKey) end
     
-    local notif = Instance.new(loadstring(base64decode("VGV4dExhYmVs"))(), voidHubSystem)
+    local notif = Instance.new("TextLabel", voidHubSystem)
     notif.Size = UDim2.new(0, 320, 0, 50)
     notif.Position = UDim2.new(0.5, -160, 0, 20)
     notif.BackgroundColor3 = Color3.fromRGB(20, 15, 30)
     notif.BackgroundTransparency = 0.1
     notif.TextColor3 = Color3.fromRGB(255, 255, 255)
-    notif.Text = loadstring(base64decode("U3VhIEtleTog"))() .. deviceKey .. loadstring(base64decode("XG4oQ29waWFkYSBwYXJhIGEgw6FyZWEgZGUgdHJhbnNmZXLDqm5jaWEp"))()
+    notif.Text = "Sua Key: " .. deviceKey .. "\n(Copiada para a área de transferência)"
     notif.Font = Enum.Font.GothamBold
     notif.TextSize = 11
     notif.TextWrapped = true
     notif.ZIndex = 20
     notif.Parent = voidHubSystem
-    Instance.new(loadstring(base64decode("VUlDb3JuZXI="))(), notif).CornerRadius = UDim.new(0, 8)
-    local st = Instance.new(loadstring(base64decode("VUlTdHJva2U="))(), notif)
+    Instance.new("UICorner", notif).CornerRadius = UDim.new(0, 8)
+    local st = Instance.new("UIStroke", notif)
     st.Color = purpleColor
     st.Thickness = 1.5
     
@@ -181,8 +178,8 @@ getKeyBtn.MouseButton1Click:Connect(function()
     end)
 end)
 
-local voidHubMain = Instance.new(loadstring(base64decode("RnJhbWU="))(), voidHubSystem)
-voidHubMain.Name = loadstring(base64decode("Vm9pZEh1Yk1haW4="))()
+local voidHubMain = Instance.new("Frame", voidHubSystem)
+voidHubMain.Name = "VoidHubMain"
 voidHubMain.Size = UDim2.new(0, 360, 0, 400)
 voidHubMain.Position = UDim2.new(0.5, 0, 0.3, 0)
 voidHubMain.AnchorPoint = Vector2.new(0.5, 0)
@@ -191,95 +188,95 @@ voidHubMain.BackgroundTransparency = 0.6
 voidHubMain.ClipsDescendants = true
 voidHubMain.Visible = false
 
-Instance.new(loadstring(base64decode("VUlDb3JuZXI="))(), voidHubMain).CornerRadius = UDim.new(0, 28)
-local mainStroke = Instance.new(loadstring(base64decode("VUlTdHJva2U="))(), voidHubMain)
+Instance.new("UICorner", voidHubMain).CornerRadius = UDim.new(0, 28)
+local mainStroke = Instance.new("UIStroke", voidHubMain)
 mainStroke.Color = purpleColor
 mainStroke.Thickness = 2.5
 
-local mainBg = Instance.new(loadstring(base64decode("SW1hZ2VMYWJlbA=="))(), voidHubMain)
-mainBg.Name = loadstring(base64decode("QmFja2dyb3VuZEltYWdl"))()
+local mainBg = Instance.new("ImageLabel", voidHubMain)
+mainBg.Name = "BackgroundImage"
 mainBg.Size = UDim2.new(1, 0, 1, 0)
 mainBg.Position = UDim2.new(0, 0, 0, 0)
 mainBg.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 mainBg.BackgroundTransparency = 1
-mainBg.Image = loadstring(base64decode("cmJ4YXNzZXRpZDovLzExMjQ1OTM3NTYwNzcyNA=="))()
+mainBg.Image = "rbxassetid://112459375607724"
 mainBg.ImageTransparency = 0
 mainBg.ScaleType = Enum.ScaleType.Crop
 mainBg.ZIndex = 0
-Instance.new(loadstring(base64decode("VUlDb3JuZXI="))(), mainBg).CornerRadius = UDim.new(0, 28)
+Instance.new("UICorner", mainBg).CornerRadius = UDim.new(0, 28)
 
-local mainTitle = Instance.new(loadstring(base64decode("VGV4dExhYmVs"))(), voidHubMain)
+local mainTitle = Instance.new("TextLabel", voidHubMain)
 mainTitle.Size = UDim2.new(1, -100, 0, 25)
 mainTitle.Position = UDim2.new(0.5, 0, 0, 12)
 mainTitle.AnchorPoint = Vector2.new(0.5, 0)
 mainTitle.BackgroundTransparency = 1
-mainTitle.Text = loadstring(base64decode("Vm9pZCBIdWI="))()
+mainTitle.Text = "Void Hub"
 mainTitle.Font = Enum.Font.GothamBold
 mainTitle.TextSize = 20
 mainTitle.TextColor3 = Color3.fromRGB(255, 255, 255)
 mainTitle.ZIndex = 3
 
-local subTitle = Instance.new(loadstring(base64decode("VGV4dExhYmVs"))(), voidHubMain)
+local subTitle = Instance.new("TextLabel", voidHubMain)
 subTitle.Size = UDim2.new(1, 0, 0, 15)
 subTitle.Position = UDim2.new(0.5, 0, 0, 38)
 subTitle.AnchorPoint = Vector2.new(0.5, 0)
 subTitle.BackgroundTransparency = 1
-subTitle.Text = loadstring(base64decode("VGhlIGJlc3Qgc2NyaXB0"))()
+subTitle.Text = "The best script"
 subTitle.Font = Enum.Font.GothamBold
 subTitle.TextSize = 10
 subTitle.TextColor3 = Color3.fromRGB(210, 150, 255)
 subTitle.ZIndex = 3
 
-local minimizeBtn = Instance.new(loadstring(base64decode("VGV4dEJ1dHRvbg=="))(), voidHubMain)
+local minimizeBtn = Instance.new("TextButton", voidHubMain)
 minimizeBtn.Size = UDim2.new(0, 30, 0, 30)
 minimizeBtn.Position = UDim2.new(0, 12, 0, 12)
 minimizeBtn.BackgroundColor3 = Color3.fromRGB(20, 15, 30)
 minimizeBtn.BackgroundTransparency = 0.5
-minimizeBtn.Text = loadstring(base64decode("LQ=="))()
+minimizeBtn.Text = "-"
 minimizeBtn.Font = Enum.Font.GothamBold
 minimizeBtn.TextSize = 20
 minimizeBtn.TextColor3 = purpleColor
 minimizeBtn.ZIndex = 5
-Instance.new(loadstring(base64decode("VUlDb3JuZXI="))(), minimizeBtn).CornerRadius = UDim.new(0, 9)
+Instance.new("UICorner", minimizeBtn).CornerRadius = UDim.new(0, 9)
 
-local lockBtn = Instance.new(loadstring(base64decode("VGV4dEJ1dHRvbg=="))(), voidHubMain)
+local lockBtn = Instance.new("TextButton", voidHubMain)
 lockBtn.Size = UDim2.new(0, 30, 0, 30)
 lockBtn.Position = UDim2.new(1, -42, 0, 12)
 lockBtn.BackgroundColor3 = Color3.fromRGB(20, 15, 30)
 lockBtn.BackgroundTransparency = 0.5
-lockBtn.Text = loadstring(base64decode("8J+Ukw=="))()
+lockBtn.Text = "🔓"
 lockBtn.Font = Enum.Font.Gotham
 lockBtn.TextSize = 14
 lockBtn.ZIndex = 5
-Instance.new(loadstring(base64decode("VUlDb3JuZXI="))(), lockBtn).CornerRadius = UDim.new(0, 9)
+Instance.new("UICorner", lockBtn).CornerRadius = UDim.new(0, 9)
 
-local bodyContainer = Instance.new(loadstring(base64decode("RnJhbWU="))(), voidHubMain)
-bodyContainer.Name = loadstring(base64decode("Qm9keUNvbnRhaW5lcg=="))()
+local bodyContainer = Instance.new("Frame", voidHubMain)
+bodyContainer.Name = "BodyContainer"
 bodyContainer.Size = UDim2.new(1, 0, 1, -55)
 bodyContainer.Position = UDim2.new(0, 0, 0, 55)
 bodyContainer.BackgroundTransparency = 1
 bodyContainer.ClipsDescendants = true
 bodyContainer.ZIndex = 3
 
-local statusFrame = Instance.new(loadstring(base64decode("RnJhbWU="))(), bodyContainer)
+local statusFrame = Instance.new("Frame", bodyContainer)
 statusFrame.Size = UDim2.new(0, 300, 0, 24)
 statusFrame.Position = UDim2.new(0.5, -150, 0, 8)
 statusFrame.BackgroundColor3 = Color3.fromRGB(15, 10, 25)
 statusFrame.BackgroundTransparency = 0.6
 statusFrame.ZIndex = 3
-Instance.new(loadstring(base64decode("VUlDb3JuZXI="))(), statusFrame).CornerRadius = UDim.new(0, 7)
+Instance.new("UICorner", statusFrame).CornerRadius = UDim.new(0, 7)
 
-local statusLabel = Instance.new(loadstring(base64decode("VGV4dExhYmVs"))(), statusFrame)
+local statusLabel = Instance.new("TextLabel", statusFrame)
 statusLabel.Size = UDim2.new(1, -10, 1, 0)
 statusLabel.Position = UDim2.new(0, 5, 0, 0)
 statusLabel.BackgroundTransparency = 1
-statusLabel.Text = loadstring(base64decode("U3RhdHVzOiBOYWRhIGF0aXZv"))()
+statusLabel.Text = "Status: Nada ativo"
 statusLabel.Font = Enum.Font.Gotham
 statusLabel.TextSize = 11
 statusLabel.TextColor3 = Color3.fromRGB(190, 170, 220)
 statusLabel.ZIndex = 4
 
-local contentArea = Instance.new(loadstring(base64decode("U2Nyb2xsaW5nRnJhbWU="))(), bodyContainer)
+local contentArea = Instance.new("ScrollingFrame", bodyContainer)
 contentArea.Size = UDim2.new(1, -20, 1, -50)
 contentArea.Position = UDim2.new(0, 10, 0, 42)
 contentArea.BackgroundTransparency = 1
@@ -287,7 +284,7 @@ contentArea.CanvasSize = UDim2.new(0, 0, 0, 500)
 contentArea.ScrollBarThickness = 3
 contentArea.ZIndex = 4
 
-local extrasArea = Instance.new(loadstring(base64decode("U2Nyb2xsaW5nRnJhbWU="))(), bodyContainer)
+local extrasArea = Instance.new("ScrollingFrame", bodyContainer)
 extrasArea.Size = UDim2.new(1, -20, 1, -50)
 extrasArea.Position = UDim2.new(0, 10, 0, 42)
 extrasArea.BackgroundTransparency = 1
@@ -296,7 +293,7 @@ extrasArea.ScrollBarThickness = 3
 extrasArea.Visible = false
 extrasArea.ZIndex = 4
 
-local scriptsArea = Instance.new(loadstring(base64decode("U2Nyb2xsaW5nRnJhbWU="))(), bodyContainer)
+local scriptsArea = Instance.new("ScrollingFrame", bodyContainer)
 scriptsArea.Size = UDim2.new(1, -20, 1, -50)
 scriptsArea.Position = UDim2.new(0, 10, 0, 42)
 scriptsArea.BackgroundTransparency = 1
@@ -306,7 +303,7 @@ scriptsArea.Visible = false
 scriptsArea.ZIndex = 4
 
 local function createButton(parent, name, label, yPos)
-    local btn = Instance.new(loadstring(base64decode("VGV4dEJ1dHRvbg=="))(), parent)
+    local btn = Instance.new("TextButton", parent)
     btn.Name = name
     btn.Size = UDim2.new(1, -10, 0, 36)
     btn.Position = UDim2.new(0, 5, 0, yPos)
@@ -318,8 +315,8 @@ local function createButton(parent, name, label, yPos)
     btn.TextColor3 = Color3.fromRGB(240, 240, 240)
     btn.AutoButtonColor = false
     btn.ZIndex = 5
-    Instance.new(loadstring(base64decode("VUlDb3JuZXI="))(), btn).CornerRadius = UDim.new(0, 10)
-    local st = Instance.new(loadstring(base64decode("VUlTdHJva2U="))(), btn)
+    Instance.new("UICorner", btn).CornerRadius = UDim.new(0, 10)
+    local st = Instance.new("UIStroke", btn)
     st.Color = Color3.fromRGB(160, 110, 210)
     st.Thickness = 1.2
     st.Transparency = 0.25
@@ -335,7 +332,7 @@ local function handleToggle(name, btn, activateFn, deactivateFn)
         if deactivateFn then pcall(deactivateFn) end
         btn.BackgroundTransparency = 1
         activeFunction = nil
-        statusLabel.Text = loadstring(base64decode("U3RhdHVzOiBOYWRhIGF0aXZv"))()
+        statusLabel.Text = "Status: Nada ativo"
     else
         if activeFunction then
             local prevDeactivate = deactivateFuncs[activeFunction]
@@ -350,23 +347,29 @@ local function handleToggle(name, btn, activateFn, deactivateFn)
         activateFn()
         btn.BackgroundTransparency = 0.55
         activeFunction = name
-        statusLabel.Text = loadstring(base64decode("U3RhdHVzOiA="))() .. name .. loadstring(base64decode("IGF0aXZv"))()
+        statusLabel.Text = "Status: " .. name .. " ativo"
     end
 end
 
 local killAllActive = false
 local killAllRemotes = {}
+local killAllCacheFeito = false
 
 local function cacheRemotesDeDano()
+    if killAllCacheFeito then return end
+    killAllCacheFeito = true
     killAllRemotes = {}
-    local rs = game:GetService(loadstring(base64decode("UmVwbGljYXRlZFN0b3JhZ2U="))())
-    local palavras = {loadstring(base64decode("ZGFtYWdl"))(), loadstring(base64decode("aGl0"))(), loadstring(base64decode("YXR0YWNr"))(), loadstring(base64decode("a2lsbA=="))(), loadstring(base64decode("ZGVhbA=="))(), loadstring(base64decode("cHVuY2g="))(), loadstring(base64decode("c2xhc2g="))(), loadstring(base64decode("c3dvcmQ="))(), loadstring(base64decode("Y29tYmF0"))(), loadstring(base64decode("dG91Y2g="))()}
+    local rs = game:GetService("ReplicatedStorage")
+    local palavras = {"damage", "hit", "attack"}
+    local contador = 0
     for _, obj in ipairs(rs:GetDescendants()) do
-        if obj:IsA(loadstring(base64decode("UmVtb3RlRXZlbnQ="))()) then
+        if contador >= 15 then break end
+        if obj:IsA("RemoteEvent") then
             local n = obj.Name:lower()
             for _, p in ipairs(palavras) do
                 if n:find(p) then
                     table.insert(killAllRemotes, obj)
+                    contador = contador + 1
                     break
                 end
             end
@@ -376,20 +379,18 @@ end
 
 local function killAllOn()
     killAllActive = true
-    cacheRemotesDeDano()
     task.spawn(function()
+        cacheRemotesDeDano()
         while killAllActive do
             pcall(function()
                 local myChar = LocalPlayer.Character
-                local myRoot = myChar and myChar:FindFirstChild(loadstring(base64decode("SHVtYW5vaWRSb290UGFydA=="))())
-                local myHum = myChar and myChar:FindFirstChildOfClass(loadstring(base64decode("SHVtYW5vaWQ="))())
-                if not myRoot or not myHum or myHum.Health <= 0 then
-                    return
-                end
+                local myRoot = myChar and myChar:FindFirstChild("HumanoidRootPart")
+                local myHum = myChar and myChar:FindFirstChildOfClass("Humanoid")
+                if not myRoot or not myHum or myHum.Health <= 0 then return end
 
-                local tool = myChar:FindFirstChildOfClass(loadstring(base64decode("VG9vbA=="))())
+                local tool = myChar:FindFirstChildOfClass("Tool")
                 if not tool and LocalPlayer.Backpack then
-                    local bt = LocalPlayer.Backpack:FindFirstChildOfClass(loadstring(base64decode("VG9vbA=="))())
+                    local bt = LocalPlayer.Backpack:FindFirstChildOfClass("Tool")
                     if bt then
                         bt.Parent = myChar
                         tool = bt
@@ -399,27 +400,22 @@ local function killAllOn()
                 for _, player in ipairs(Players:GetPlayers()) do
                     if not killAllActive then break end
                     if player ~= LocalPlayer and player.Character then
-                        local tHum = player.Character:FindFirstChildOfClass(loadstring(base64decode("SHVtYW5vaWQ="))())
-                        local tRoot = player.Character:FindFirstChild(loadstring(base64decode("SHVtYW5vaWRSb290UGFydA=="))())
+                        local tHum = player.Character:FindFirstChildOfClass("Humanoid")
+                        local tRoot = player.Character:FindFirstChild("HumanoidRootPart")
                         if tHum and tHum.Health > 0 and tRoot then
                             myRoot.CFrame = tRoot.CFrame * CFrame.new(0, 0, 2)
-
                             if tool then
                                 pcall(function() tool:Activate() end)
                             end
-
                             for _, remote in ipairs(killAllRemotes) do
-                                pcall(function() remote:FireServer(player.Character, 99999) end)
                                 pcall(function() remote:FireServer(tHum, 99999) end)
-                                pcall(function() remote:FireServer(tRoot, 99999) end)
                             end
-
-                            task.wait(0.02)
+                            task.wait(0.08)
                         end
                     end
                 end
             end)
-            task.wait(0.15)
+            task.wait(0.4)
         end
     end)
 end
@@ -432,11 +428,11 @@ local flyDirection = Vector3.zero
 local VELOCIDADE_FLY = 250
 local function flyOn()
     flyActive = true
-    flyGui = Instance.new(loadstring(base64decode("U2NyZWVuR3Vp"))(), CoreGui)
-    flyGui.Name = loadstring(base64decode("Vm9pZEZseUd1aQ=="))()
+    flyGui = Instance.new("ScreenGui", CoreGui)
+    flyGui.Name = "VoidFlyGui"
     flyGui.ResetOnSpawn = false
     local function criarBotaoFly(parent, txt, pos, setDir)
-        local b = Instance.new(loadstring(base64decode("VGV4dEJ1dHRvbg=="))(), parent)
+        local b = Instance.new("TextButton", parent)
         b.Size = UDim2.new(0, 45, 0, 45)
         b.Position = pos
         b.BackgroundColor3 = Color3.fromRGB(20, 15, 30)
@@ -447,8 +443,8 @@ local function flyOn()
         b.Font = Enum.Font.GothamBold
         b.AutoButtonColor = false
         b.ZIndex = 100
-        Instance.new(loadstring(base64decode("VUlDb3JuZXI="))(), b).CornerRadius = UDim.new(0, 8)
-        local st = Instance.new(loadstring(base64decode("VUlTdHJva2U="))(), b)
+        Instance.new("UICorner", b).CornerRadius = UDim.new(0, 8)
+        local st = Instance.new("UIStroke", b)
         st.Color = purpleColor
         st.Thickness = 1.5
         b.InputBegan:Connect(function(input)
@@ -462,25 +458,25 @@ local function flyOn()
             end
         end)
     end
-    local leftPanel = Instance.new(loadstring(base64decode("RnJhbWU="))(), flyGui)
+    local leftPanel = Instance.new("Frame", flyGui)
     leftPanel.Size = UDim2.new(0, 150, 0, 150)
     leftPanel.Position = UDim2.new(0, 20, 0.55, 0)
     leftPanel.BackgroundTransparency = 1
-    criarBotaoFly(leftPanel, loadstring(base64decode("4pay"))(), UDim2.new(0.5, -22, 0, 0), Vector3.new(0, 0, -1))
-    criarBotaoFly(leftPanel, loadstring(base64decode("4peE"))(), UDim2.new(0, 0, 0.5, -22), Vector3.new(-1, 0, 0))
-    criarBotaoFly(leftPanel, loadstring(base64decode("4pa6"))(), UDim2.new(1, -45, 0.5, -22), Vector3.new(1, 0, 0))
-    criarBotaoFly(leftPanel, loadstring(base64decode("4pa8"))(), UDim2.new(0.5, -22, 1, -45), Vector3.new(0, 0, 1))
-    local rightPanel = Instance.new(loadstring(base64decode("RnJhbWU="))(), flyGui)
+    criarBotaoFly(leftPanel, "▲", UDim2.new(0.5, -22, 0, 0), Vector3.new(0, 0, -1))
+    criarBotaoFly(leftPanel, "◄", UDim2.new(0, 0, 0.5, -22), Vector3.new(-1, 0, 0))
+    criarBotaoFly(leftPanel, "►", UDim2.new(1, -45, 0.5, -22), Vector3.new(1, 0, 0))
+    criarBotaoFly(leftPanel, "▼", UDim2.new(0.5, -22, 1, -45), Vector3.new(0, 0, 1))
+    local rightPanel = Instance.new("Frame", flyGui)
     rightPanel.Size = UDim2.new(0, 45, 0, 100)
     rightPanel.Position = UDim2.new(1, -65, 0.55, 0)
     rightPanel.BackgroundTransparency = 1
-    criarBotaoFly(rightPanel, loadstring(base64decode("4qyG"))(), UDim2.new(0, 0, 0, 0), Vector3.new(0, 1, 0))
-    criarBotaoFly(rightPanel, loadstring(base64decode("4qyH"))(), UDim2.new(0, 0, 1, -45), Vector3.new(0, -1, 0))
+    criarBotaoFly(rightPanel, "⬆", UDim2.new(0, 0, 0, 0), Vector3.new(0, 1, 0))
+    criarBotaoFly(rightPanel, "⬇", UDim2.new(0, 0, 1, -45), Vector3.new(0, -1, 0))
     local char = LocalPlayer.Character
-    local hrp = char and char:FindFirstChild(loadstring(base64decode("SHVtYW5vaWRSb290UGFydA=="))())
+    local hrp = char and char:FindFirstChild("HumanoidRootPart")
     if hrp then
-        flyBV = Instance.new(loadstring(base64decode("Qm9keVZlbG9jaXR5"))())
-        flyBV.Name = loadstring(base64decode("Vm9pZEZseUJW"))()
+        flyBV = Instance.new("BodyVelocity")
+        flyBV.Name = "VoidFlyBV"
         flyBV.MaxForce = Vector3.new(math.huge, math.huge, math.huge)
         flyBV.Velocity = Vector3.zero
         flyBV.Parent = hrp
@@ -489,7 +485,7 @@ local function flyOn()
         while flyActive do
             pcall(function()
                 local c = LocalPlayer.Character
-                local r = c and c:FindFirstChild(loadstring(base64decode("SHVtYW5vaWRSb290UGFydA=="))())
+                local r = c and c:FindFirstChild("HumanoidRootPart")
                 local cam = workspace.CurrentCamera
                 if r and flyBV and flyBV.Parent then
                     local vel = Vector3.zero
@@ -520,8 +516,8 @@ local function escolherAlvoBypass()
     local alvos = {}
     for _, p in ipairs(Players:GetPlayers()) do
         if p ~= LocalPlayer and p.Character then
-            local hrp = p.Character:FindFirstChild(loadstring(base64decode("SHVtYW5vaWRSb290UGFydA=="))())
-            local hum = p.Character:FindFirstChildOfClass(loadstring(base64decode("SHVtYW5vaWQ="))())
+            local hrp = p.Character:FindFirstChild("HumanoidRootPart")
+            local hum = p.Character:FindFirstChildOfClass("Humanoid")
             if hrp and hum and hum.Health > 0 then
                 table.insert(alvos, hrp)
             end
@@ -533,13 +529,13 @@ end
 
 local function runBypassLogic()
     local char = LocalPlayer.Character
-    local hum = char and char:FindFirstChildOfClass(loadstring(base64decode("SHVtYW5vaWQ="))())
-    local hrp = char and char:FindFirstChild(loadstring(base64decode("SHVtYW5vaWRSb290UGFydA=="))())
+    local hum = char and char:FindFirstChildOfClass("Humanoid")
+    local hrp = char and char:FindFirstChild("HumanoidRootPart")
     if not hum or not hrp then return end
 
     local colisoes = {}
     for _, part in ipairs(char:GetDescendants()) do
-        if part:IsA(loadstring(base64decode("QmFzZVBhcnQ="))()) then
+        if part:IsA("BasePart") then
             colisoes[part] = part.CanCollide
             part.CanCollide = false
         end
@@ -547,14 +543,14 @@ local function runBypassLogic()
 
     hum.PlatformStand = true
 
-    local bv = Instance.new(loadstring(base64decode("Qm9keVZlbG9jaXR5"))())
-    bv.Name = loadstring(base64decode("Vm9pZEJ5cGFzc0JW"))()
+    local bv = Instance.new("BodyVelocity")
+    bv.Name = "VoidBypassBV"
     bv.MaxForce = Vector3.new(math.huge, math.huge, math.huge)
     bv.Velocity = Vector3.zero
     bv.Parent = hrp
 
-    local bg = Instance.new(loadstring(base64decode("Qm9keUd5cm8="))())
-    bg.Name = loadstring(base64decode("Vm9pZEJ5cGFzc0JH"))()
+    local bg = Instance.new("BodyGyro")
+    bg.Name = "VoidBypassBG"
     bg.MaxTorque = Vector3.new(math.huge, math.huge, math.huge)
     bg.CFrame = hrp.CFrame
     bg.Parent = hrp
@@ -614,27 +610,27 @@ end
 local function bypassOn()
     bypassActive = true
     task.spawn(function()
-        statusLabel.Text = loadstring(base64decode("U3RhdHVzOiBCeXBhc3MgVm9pZC4uLg=="))()
+        statusLabel.Text = "Status: Bypass Void..."
 
         runBypassLogic()
 
         local timeoutMorrer = tick() + 15
         while bypassActive and tick() < timeoutMorrer do
             local char = LocalPlayer.Character
-            local hum = char and char:FindFirstChildOfClass(loadstring(base64decode("SHVtYW5vaWQ="))())
+            local hum = char and char:FindFirstChildOfClass("Humanoid")
             if hum and hum.Health <= 0 then break end
             task.wait(0.2)
         end
 
         bypassActive = false
 
-        if buttonRefs[loadstring(base64decode("QnlwYXNz"))()] then
-            buttonRefs[loadstring(base64decode("QnlwYXNz"))()].BackgroundTransparency = 1
+        if buttonRefs["Bypass"] then
+            buttonRefs["Bypass"].BackgroundTransparency = 1
         end
-        if activeFunction == loadstring(base64decode("QnlwYXNz"))() then
+        if activeFunction == "Bypass" then
             activeFunction = nil
         end
-        statusLabel.Text = loadstring(base64decode("U3RhdHVzOiBOYWRhIGF0aXZv"))()
+        statusLabel.Text = "Status: Nada ativo"
     end)
 end
 
@@ -643,21 +639,21 @@ local function bypassOff()
 end
 
 local function testarBypass()
-    statusLabel.Text = loadstring(base64decode("c3RhdHVzOiB0ZXN0YW5kby4uLg=="))()
+    statusLabel.Text = "status: testando..."
 
     local alvo = escolherAlvoBypass()
     if not alvo then
-        statusLabel.Text = loadstring(base64decode("c3RhdHVzOiBmYWxob3XinYw="))()
+        statusLabel.Text = "status: falhou❌"
         task.wait(2)
-        statusLabel.Text = loadstring(base64decode("U3RhdHVzOiBOYWRhIGF0aXZv"))()
+        statusLabel.Text = "Status: Nada ativo"
         return
     end
 
-    local myHrp = LocalPlayer.Character and LocalPlayer.Character:FindFirstChild(loadstring(base64decode("SHVtYW5vaWRSb290UGFydA=="))())
+    local myHrp = LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
     if not myHrp then
-        statusLabel.Text = loadstring(base64decode("c3RhdHVzOiBmYWxob3XinYw="))()
+        statusLabel.Text = "status: falhou❌"
         task.wait(2)
-        statusLabel.Text = loadstring(base64decode("U3RhdHVzOiBOYWRhIGF0aXZv"))()
+        statusLabel.Text = "Status: Nada ativo"
         return
     end
 
@@ -667,121 +663,27 @@ local function testarBypass()
 
     task.wait(2)
 
-    local currentHrp = LocalPlayer.Character and LocalPlayer.Character:FindFirstChild(loadstring(base64decode("SHVtYW5vaWRSb290UGFydA=="))())
+    local currentHrp = LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
     if currentHrp then
         local dist = (currentHrp.Position - posTeleporte).Magnitude
         if dist < 30 then
-            statusLabel.Text = loadstring(base64decode("c3RhdHVzOiBzdWNlc3Nv4pyF"))()
+            statusLabel.Text = "status: sucesso✅"
         else
-            statusLabel.Text = loadstring(base64decode("c3RhdHVzOiBmYWxob3XinYw="))()
+            statusLabel.Text = "status: falhou❌"
         end
     else
-        statusLabel.Text = loadstring(base64decode("c3RhdHVzOiBmYWxob3XinYw="))()
+        statusLabel.Text = "status: falhou❌"
     end
 
     task.wait(2.5)
-    statusLabel.Text = loadstring(base64decode("U3RhdHVzOiBOYWRhIGF0aXZv"))()
-end
-
-local invisActive = false
-local invisBackup = nil
-
-local function aplicarInvisibilidade()
-    local char = LocalPlayer.Character
-    if not char then return end
-
-    for _, obj in ipairs(char:GetDescendants()) do
-        if obj:IsA(loadstring(base64decode("QmFzZVBhcnQ="))()) or obj:IsA(loadstring(base64decode("RGVjYWw="))()) or obj:IsA(loadstring(base64decode("VGV4dHVyZQ=="))()) then
-            obj.Transparency = 1
-            if obj:IsA(loadstring(base64decode("QmFzZVBhcnQ="))()) then
-                obj.CanCollide = false
-                obj.CastShadow = false
-            end
-        elseif obj:IsA(loadstring(base64decode("UGFydGljbGVFbWl0dGVy"))()) or obj:IsA(loadstring(base64decode("VHJhaWw="))()) or obj:IsA(loadstring(base64decode("QmVhbQ=="))()) or obj:IsA(loadstring(base64decode("RmlyZQ=="))()) or obj:IsA(loadstring(base64decode("U21va2U="))()) or obj:IsA(loadstring(base64decode("U3BhcmtsZXM="))()) then
-            obj.Enabled = false
-        elseif obj:IsA(loadstring(base64decode("QmlsbGJvYXJkR3Vp"))()) or obj:IsA(loadstring(base64decode("U3VyZmFjZUd1aQ=="))()) then
-            obj.Enabled = false
-        elseif obj:IsA(loadstring(base64decode("SGlnaGxpZ2h0"))()) then
-            obj.Enabled = false
-        end
-    end
-
-    local hum = char:FindFirstChildOfClass(loadstring(base64decode("SHVtYW5vaWQ="))())
-    if hum then
-        hum.DisplayDistanceType = Enum.HumanoidDisplayDistanceType.None
-        hum.NameDisplayDistance = 0
-        hum.HealthDisplayDistance = 0
-    end
-end
-
-local function invisOn()
-    invisActive = true
-    local char = LocalPlayer.Character
-    if not char then return end
-
-    invisBackup = { parent = char.Parent }
-
-    aplicarInvisibilidade()
-
-    for _, player in ipairs(Players:GetPlayers()) do
-        if player ~= LocalPlayer and player.Character then
-            local hl = player.Character:FindFirstChild(loadstring(base64decode("UHVycGxlSGlnaGxpZ2h0"))())
-            if hl then hl:Destroy() end
-        end
-    end
-
-    local camera = workspace.CurrentCamera
-    if camera and char.Parent ~= camera then
-        char.Parent = camera
-    end
-
-    if not invisBackup.loop then
-        invisBackup.loop = task.spawn(function()
-            while invisActive do
-                pcall(function()
-                    local c = LocalPlayer.Character
-                    if c then
-                        aplicarInvisibilidade()
-                        if c.Parent ~= camera then
-                            c.Parent = camera
-                        end
-                    end
-                end)
-                task.wait(0.2)
-            end
-        end)
-    end
-end
-
-local function invisOff()
-    invisActive = false
-    local char = LocalPlayer.Character
-    if not char then
-        invisBackup = nil
-        return
-    end
-
-    if invisBackup and invisBackup.parent then
-        char.Parent = invisBackup.parent
-    else
-        char.Parent = workspace
-    end
-
-    local hum = char:FindFirstChildOfClass(loadstring(base64decode("SHVtYW5vaWQ="))())
-    if hum then
-        hum.DisplayDistanceType = Enum.HumanoidDisplayDistanceType.Viewer
-        hum.NameDisplayDistance = 100
-        hum.HealthDisplayDistance = 100
-    end
-
-    invisBackup = nil
+    statusLabel.Text = "Status: Nada ativo"
 end
 
 local function serverHop()
-    statusLabel.Text = loadstring(base64decode("U3RhdHVzOiBQcm9jdXJhbmRvIHNlcnZpZG9yLi4u"))()
+    statusLabel.Text = "Status: Procurando servidor..."
     task.spawn(function()
         local success, result = pcall(function()
-            local url = loadstring(base64decode("aHR0cHM6Ly9nYW1lcy5yb2Jsb3guY29tL3YxL2dhbWVzLw=="))() .. game.PlaceId .. loadstring(base64decode("L3NlcnZlcnMvUHVibGljP3NvcnRPcmRlcj1EZXNjJmxpbWl0PTEwMA=="))()
+            local url = "https://games.roblox.com/v1/games/" .. game.PlaceId .. "/servers/Public?sortOrder=Desc&limit=100"
             local response = HttpService:JSONDecode(game:HttpGet(url))
             return response
         end)
@@ -823,10 +725,10 @@ local function espDummyOn()
     task.spawn(function()
         while espDummyActive do
             pcall(function()
-                for _, obj in ipairs(workspace:GetDescendants()) do
-                    if obj.Name == loadstring(base64decode("RHVtbXk="))() and obj:FindFirstChild(loadstring(base64decode("SHVtYW5vaWRSb290UGFydA=="))()) and not obj:FindFirstChild(loadstring(base64decode("UkdCSGlnaGxpZ2h0"))()) then
-                        local hl = Instance.new(loadstring(base64decode("SGlnaGxpZ2h0"))(), obj)
-                        hl.Name = loadstring(base64decode("UkdCSGlnaGxpZ2h0"))()
+                for _, obj in ipairs(workspace:GetChildren()) do
+                    if obj.Name == "Dummy" and obj:FindFirstChild("HumanoidRootPart") and not obj:FindFirstChild("RGBHighlight") then
+                        local hl = Instance.new("Highlight", obj)
+                        hl.Name = "RGBHighlight"
                         task.spawn(function()
                             while hl and hl.Parent do
                                 hl.FillColor = Color3.fromHSV((tick() * 0.5) % 1, 1, 1)
@@ -834,17 +736,29 @@ local function espDummyOn()
                             end
                         end)
                     end
+                    for _, sub in ipairs(obj:GetChildren()) do
+                        if sub.Name == "Dummy" and sub:FindFirstChild("HumanoidRootPart") and not sub:FindFirstChild("RGBHighlight") then
+                            local hl = Instance.new("Highlight", sub)
+                            hl.Name = "RGBHighlight"
+                            task.spawn(function()
+                                while hl and hl.Parent do
+                                    hl.FillColor = Color3.fromHSV((tick() * 0.5) % 1, 1, 1)
+                                    task.wait(0.1)
+                                end
+                            end)
+                        end
+                    end
                 end
             end)
-            task.wait(2)
+            task.wait(3)
         end
     end)
 end
 local function espDummyOff()
     espDummyActive = false
     for _, obj in ipairs(workspace:GetDescendants()) do
-        if obj.Name == loadstring(base64decode("RHVtbXk="))() then
-            local hl = obj:FindFirstChild(loadstring(base64decode("UkdCSGlnaGxpZ2h0"))())
+        if obj.Name == "Dummy" then
+            local hl = obj:FindFirstChild("RGBHighlight")
             if hl then hl:Destroy() end
         end
     end
@@ -857,9 +771,9 @@ local function espJogadoresOn()
         while espJogadoresActive do
             pcall(function()
                 for _, player in ipairs(Players:GetPlayers()) do
-                    if player ~= LocalPlayer and player.Character and not player.Character:FindFirstChild(loadstring(base64decode("UHVycGxlSGlnaGxpZ2h0"))()) then
-                        local hl = Instance.new(loadstring(base64decode("SGlnaGxpZ2h0"))(), player.Character)
-                        hl.Name = loadstring(base64decode("UHVycGxlSGlnaGxpZ2h0"))()
+                    if player ~= LocalPlayer and player.Character and not player.Character:FindFirstChild("PurpleHighlight") then
+                        local hl = Instance.new("Highlight", player.Character)
+                        hl.Name = "PurpleHighlight"
                         hl.FillColor = Color3.fromRGB(140, 40, 220)
                         hl.OutlineColor = Color3.fromRGB(255, 255, 255)
                     end
@@ -873,7 +787,7 @@ local function espJogadoresOff()
     espJogadoresActive = false
     for _, player in ipairs(Players:GetPlayers()) do
         if player.Character then
-            local hl = player.Character:FindFirstChild(loadstring(base64decode("UHVycGxlSGlnaGxpZ2h0"))())
+            local hl = player.Character:FindFirstChild("PurpleHighlight")
             if hl then hl:Destroy() end
         end
     end
@@ -884,13 +798,23 @@ local espDomainGui = nil
 local espDomainTxt = nil
 
 local function temDominioNoMapa()
-    local padroes = {loadstring(base64decode("ZG9tYWlu"))(), loadstring(base64decode("ZG9taW5pbw=="))(), loadstring(base64decode("ZG9tw61uaW8="))(), loadstring(base64decode("c2hyaW5l"))(), loadstring(base64decode("ZXhwYW5zaW9u"))(), loadstring(base64decode("aW5maW5pdGUgdm9pZA=="))(), loadstring(base64decode("bWFsZXZvbGVudA=="))(), loadstring(base64decode("dW5saW1pdGVk"))(), loadstring(base64decode("Y29mZmlu"))(), loadstring(base64decode("Y2hpbWVyYQ=="))(), loadstring(base64decode("aWRsZSBkZWF0aA=="))(), loadstring(base64decode("aG9yaXpvbg=="))(), loadstring(base64decode("YXV0aGVudGlj"))(), loadstring(base64decode("bXV0dWFs"))(), loadstring(base64decode("bG92ZQ=="))()}
-    for _, obj in ipairs(workspace:GetDescendants()) do
+    local padroes = {"domain", "dominio", "domínio", "shrine", "expansion", "infinite void", "malevolent", "unlimited", "coffin", "chimera", "idle death", "horizon", "authentic", "mutual", "love"}
+    for _, obj in ipairs(workspace:GetChildren()) do
         local nome = obj.Name:lower()
         for _, p in ipairs(padroes) do
             if nome:find(p) then
-                if (obj:IsA(loadstring(base64decode("QmFzZVBhcnQ="))()) and obj.Size.Magnitude > 20) or obj:IsA(loadstring(base64decode("TW9kZWw="))()) then
+                if (obj:IsA("BasePart") and obj.Size.Magnitude > 20) or obj:IsA("Model") then
                     return true
+                end
+            end
+        end
+        for _, sub in ipairs(obj:GetChildren()) do
+            local snome = sub.Name:lower()
+            for _, p in ipairs(padroes) do
+                if snome:find(p) then
+                    if (sub:IsA("BasePart") and sub.Size.Magnitude > 20) or sub:IsA("Model") then
+                        return true
+                    end
                 end
             end
         end
@@ -900,25 +824,25 @@ end
 
 local function espDomainOn()
     espDomainActive = true
-    espDomainGui = Instance.new(loadstring(base64decode("U2NyZWVuR3Vp"))(), CoreGui)
-    espDomainGui.Name = loadstring(base64decode("Vm9pZEVzcERvbWFpbg=="))()
+    espDomainGui = Instance.new("ScreenGui", CoreGui)
+    espDomainGui.Name = "VoidEspDomain"
     espDomainGui.ResetOnSpawn = false
 
-    local f = Instance.new(loadstring(base64decode("RnJhbWU="))(), espDomainGui)
+    local f = Instance.new("Frame", espDomainGui)
     f.Size = UDim2.new(0, 200, 0, 34)
     f.Position = UDim2.new(0.02, 0, 0.15, 0)
     f.BackgroundColor3 = Color3.fromRGB(15, 10, 25)
     f.BackgroundTransparency = 0.3
-    Instance.new(loadstring(base64decode("VUlDb3JuZXI="))(), f).CornerRadius = UDim.new(0, 10)
-    local fs = Instance.new(loadstring(base64decode("VUlTdHJva2U="))(), f)
+    Instance.new("UICorner", f).CornerRadius = UDim.new(0, 10)
+    local fs = Instance.new("UIStroke", f)
     fs.Color = purpleColor
     fs.Thickness = 2
 
-    espDomainTxt = Instance.new(loadstring(base64decode("VGV4dExhYmVs"))(), f)
+    espDomainTxt = Instance.new("TextLabel", f)
     espDomainTxt.Size = UDim2.new(1, -10, 1, 0)
     espDomainTxt.Position = UDim2.new(0, 5, 0, 0)
     espDomainTxt.BackgroundTransparency = 1
-    espDomainTxt.Text = loadstring(base64decode("RVNQIERvbWFpbjogT0ZG"))()
+    espDomainTxt.Text = "ESP Domain: OFF"
     espDomainTxt.TextColor3 = Color3.fromRGB(255, 80, 80)
     espDomainTxt.Font = Enum.Font.GothamBold
     espDomainTxt.TextSize = 13
@@ -927,14 +851,14 @@ local function espDomainOn()
         while espDomainActive and espDomainGui and espDomainGui.Parent do
             pcall(function()
                 if temDominioNoMapa() then
-                    espDomainTxt.Text = loadstring(base64decode("RVNQIERvbWFpbjogT04="))()
+                    espDomainTxt.Text = "ESP Domain: ON"
                     espDomainTxt.TextColor3 = Color3.fromRGB(80, 255, 120)
                 else
-                    espDomainTxt.Text = loadstring(base64decode("RVNQIERvbWFpbjogT0ZG"))()
+                    espDomainTxt.Text = "ESP Domain: OFF"
                     espDomainTxt.TextColor3 = Color3.fromRGB(255, 80, 80)
                 end
             end)
-            task.wait(1)
+            task.wait(3)
         end
     end)
 end
@@ -948,45 +872,37 @@ end
 local fpsActive = false
 local function fpsOn()
     fpsActive = true
-    pcall(function()
-        settings().Rendering.QualityLevel = Enum.QualityLevel.Level05
-        Lighting.GlobalShadows = false
-        Lighting.FogEnd = 999999
-        Lighting.Brightness = 2
-        for _, v in ipairs(Lighting:GetChildren()) do
-            if v:IsA(loadstring(base64decode("UG9zdEVmZmVjdA=="))()) or v:IsA(loadstring(base64decode("QXRtb3NwaGVyZQ=="))()) or v:IsA(loadstring(base64decode("U2t5"))()) or v:IsA(loadstring(base64decode("Qmxvb21FZmZlY3Q="))()) or v:IsA(loadstring(base64decode("Qmx1ckVmZmVjdA=="))()) or v:IsA(loadstring(base64decode("U3VuUmF5c0VmZmVjdA=="))()) then
-                v.Enabled = false
+    task.spawn(function()
+        pcall(function()
+            settings().Rendering.QualityLevel = Enum.QualityLevel.Level05
+            Lighting.GlobalShadows = false
+            Lighting.FogEnd = 999999
+            Lighting.Brightness = 2
+            for _, v in ipairs(Lighting:GetChildren()) do
+                if v:IsA("PostEffect") or v:IsA("Atmosphere") or v:IsA("Sky") or v:IsA("BloomEffect") or v:IsA("BlurEffect") or v:IsA("SunRaysEffect") then
+                    v.Enabled = false
+                end
             end
-        end
-        for _, v in ipairs(workspace:GetDescendants()) do
-            if v:IsA(loadstring(base64decode("QmFzZVBhcnQ="))()) then
-                v.CastShadow = false
-                v.Reflectance = 0
-            elseif v:IsA(loadstring(base64decode("UGFydGljbGVFbWl0dGVy"))()) or v:IsA(loadstring(base64decode("VHJhaWw="))()) or v:IsA(loadstring(base64decode("QmVhbQ=="))()) or v:IsA(loadstring(base64decode("RmlyZQ=="))()) or v:IsA(loadstring(base64decode("U21va2U="))()) or v:IsA(loadstring(base64decode("U3BhcmtsZXM="))()) then
-                v.Enabled = false
-            elseif v:IsA(loadstring(base64decode("UG9pbnRMaWdodA=="))()) or v:IsA(loadstring(base64decode("U3BvdExpZ2h0"))()) or v:IsA(loadstring(base64decode("U3VyZmFjZUxpZ2h0"))()) then
-                v.Enabled = false
-            end
-        end
+        end)
     end)
 end
 local function fpsOff() fpsActive = false end
 
 local panelGui = nil
 local function panelOn()
-    panelGui = Instance.new(loadstring(base64decode("U2NyZWVuR3Vp"))(), CoreGui)
-    panelGui.Name = loadstring(base64decode("Vm9pZEZwc1BpbmdQYW5lbA=="))()
+    panelGui = Instance.new("ScreenGui", CoreGui)
+    panelGui.Name = "VoidFpsPingPanel"
     panelGui.ResetOnSpawn = false
-    local f = Instance.new(loadstring(base64decode("RnJhbWU="))(), panelGui)
+    local f = Instance.new("Frame", panelGui)
     f.Size = UDim2.new(0, 180, 0, 75)
     f.Position = UDim2.new(0.78, 0, 0.1, 0)
     f.BackgroundColor3 = Color3.fromRGB(15, 10, 25)
     f.BackgroundTransparency = 0.3
-    Instance.new(loadstring(base64decode("VUlDb3JuZXI="))(), f).CornerRadius = UDim.new(0, 14)
-    local fs = Instance.new(loadstring(base64decode("VUlTdHJva2U="))(), f)
+    Instance.new("UICorner", f).CornerRadius = UDim.new(0, 14)
+    local fs = Instance.new("UIStroke", f)
     fs.Color = purpleColor
     fs.Thickness = 2
-    local txt = Instance.new(loadstring(base64decode("VGV4dExhYmVs"))(), f)
+    local txt = Instance.new("TextLabel", f)
     txt.Size = UDim2.new(1, 0, 1, 0)
     txt.BackgroundTransparency = 1
     txt.TextColor3 = Color3.fromRGB(255, 255, 255)
@@ -997,9 +913,9 @@ local function panelOn()
             local fps = math.floor(1 / RunService.RenderStepped:Wait())
             local ping = 0
             pcall(function()
-                ping = math.floor(Stats.Network.ServerStatsItem[loadstring(base64decode("RGF0YSBQaW5n"))()]:GetValue())
+                ping = math.floor(Stats.Network.ServerStatsItem["Data Ping"]:GetValue())
             end)
-            txt.Text = string.format(loadstring(base64decode("IEZQUzogJWRcbiBQaW5nOiAlZCBtc1xuIFBsYXllcnM6ICVk"))(), fps, ping, #Players:GetPlayers())
+            txt.Text = string.format(" FPS: %d\n Ping: %d ms\n Players: %d", fps, ping, #Players:GetPlayers())
             task.wait(1)
         end
     end)
@@ -1008,29 +924,29 @@ local function panelOff()
     if panelGui then panelGui:Destroy() panelGui = nil end
 end
 
-local btnKillAll = createButton(contentArea, loadstring(base64decode("S2lsbEFsbA=="))(), loadstring(base64decode("4pigICBLaWxsIEFsbCAoTWF0YSB0b2Rvcyk="))(), 5)
+local btnKillAll = createButton(contentArea, "KillAll", "☠  Kill All (Mata todos)", 5)
 btnKillAll.MouseButton1Click:Connect(function()
-    handleToggle(loadstring(base64decode("S2lsbEFsbA=="))(), btnKillAll, killAllOn, killAllOff)
+    handleToggle("KillAll", btnKillAll, killAllOn, killAllOff)
 end)
 
-local btnFly = createButton(contentArea, loadstring(base64decode("Rmx5"))(), loadstring(base64decode("8J+bqyAgRmx5IGNvbSBCb3TDtWVz"))(), 48)
+local btnFly = createButton(contentArea, "Fly", "🛫  Fly com Botões", 48)
 btnFly.MouseButton1Click:Connect(function()
-    handleToggle(loadstring(base64decode("Rmx5"))(), btnFly, flyOn, flyOff)
+    handleToggle("Fly", btnFly, flyOn, flyOff)
 end)
 
-local btnBypass = createButton(contentArea, loadstring(base64decode("QnlwYXNz"))(), loadstring(base64decode("8J+boSAgQnlwYXNzIFZvaWQgKFBlcnNpc3RlbnRlKQ=="))(), 91)
+local btnBypass = createButton(contentArea, "Bypass", "🛡  Bypass Void (Persistente)", 91)
 btnBypass.MouseButton1Click:Connect(function()
-    handleToggle(loadstring(base64decode("QnlwYXNz"))(), btnBypass, bypassOn, bypassOff)
+    handleToggle("Bypass", btnBypass, bypassOn, bypassOff)
 end)
 
-local btnTestBypass = createButton(contentArea, loadstring(base64decode("VGVzdGVCeXBhc3M="))(), loadstring(base64decode("8J+UhCAgVGVzdGFyIEJ5cGFzcyAoVFAgUGxheWVyKQ=="))(), 134)
+local btnTestBypass = createButton(contentArea, "TesteBypass", "🔄  Testar Bypass (TP Player)", 134)
 btnTestBypass.MouseButton1Click:Connect(function()
     btnTestBypass.BackgroundTransparency = 0.55
     testarBypass()
     btnTestBypass.BackgroundTransparency = 1
 end)
 
-local btnServerHop = createButton(contentArea, loadstring(base64decode("U2VydmVySG9w"))(), loadstring(base64decode("8J+MkCAgU2VydmVyIEhvcCAoVHJvY2FyIFNlcnZpZG9yKQ=="))(), 177)
+local btnServerHop = createButton(contentArea, "ServerHop", "🌐  Server Hop (Trocar Servidor)", 177)
 btnServerHop.MouseButton1Click:Connect(function()
     btnServerHop.BackgroundTransparency = 0.55
     serverHop()
@@ -1038,13 +954,13 @@ btnServerHop.MouseButton1Click:Connect(function()
     btnServerHop.BackgroundTransparency = 1
 end)
 
-local btnAbrirExtras = createButton(contentArea, loadstring(base64decode("QWJyaXJFeHRyYXM="))(), loadstring(base64decode("4pqhICBFeHRyYXMgJiBWaXN1YWxz"))(), 220)
+local btnAbrirExtras = createButton(contentArea, "AbrirExtras", "⚡  Extras & Visuals", 220)
 btnAbrirExtras.MouseButton1Click:Connect(function()
     contentArea.Visible = false
     extrasArea.Visible = true
 end)
 
-local btnEspJogadores = createButton(extrasArea, loadstring(base64decode("RXNwSm9nYWRvcmVz"))(), loadstring(base64decode("8J+RgSAgRVNQIEpvZ2Fkb3Jlcw=="))(), 5)
+local btnEspJogadores = createButton(extrasArea, "EspJogadores", "👁  ESP Jogadores", 5)
 btnEspJogadores.MouseButton1Click:Connect(function()
     if not espJogadoresActive then
         espJogadoresOn()
@@ -1055,7 +971,7 @@ btnEspJogadores.MouseButton1Click:Connect(function()
     end
 end)
 
-local btnEspDummy = createButton(extrasArea, loadstring(base64decode("RXNwRHVtbXk="))(), loadstring(base64decode("8J+OryAgRVNQIER1bW15"))(), 48)
+local btnEspDummy = createButton(extrasArea, "EspDummy", "🎯  ESP Dummy", 48)
 btnEspDummy.MouseButton1Click:Connect(function()
     if not espDummyActive then
         espDummyOn()
@@ -1066,7 +982,7 @@ btnEspDummy.MouseButton1Click:Connect(function()
     end
 end)
 
-local btnEspDomain = createButton(extrasArea, loadstring(base64decode("RXNwRG9tYWlu"))(), loadstring(base64decode("8J+RgSAgRVNQIERvbWFpbg=="))(), 91)
+local btnEspDomain = createButton(extrasArea, "EspDomain", "👁  ESP Domain", 91)
 btnEspDomain.MouseButton1Click:Connect(function()
     if not espDomainActive then
         espDomainOn()
@@ -1077,12 +993,7 @@ btnEspDomain.MouseButton1Click:Connect(function()
     end
 end)
 
-local btnInvis = createButton(extrasArea, loadstring(base64decode("SW52aXNpYmlsaWRhZGU="))(), loadstring(base64decode("8J+SjiAgSW52aXNpYmlsaWRhZGU="))(), 134)
-btnInvis.MouseButton1Click:Connect(function()
-    handleToggle(loadstring(base64decode("SW52aXNpYmlsaWRhZGU="))(), btnInvis, invisOn, invisOff)
-end)
-
-local btnFPS = createButton(extrasArea, loadstring(base64decode("RlBT"))(), loadstring(base64decode("8J+agCAgRlBTIEJvb3N0ZXI="))(), 177)
+local btnFPS = createButton(extrasArea, "FPS", "🚀  FPS Booster", 134)
 btnFPS.MouseButton1Click:Connect(function()
     if not fpsActive then
         fpsOn()
@@ -1093,7 +1004,7 @@ btnFPS.MouseButton1Click:Connect(function()
     end
 end)
 
-local btnPainel = createButton(extrasArea, loadstring(base64decode("UGFpbmVs"))(), loadstring(base64decode("8J+TiiAgUGFpbmVsIEZQUy9QaW5n"))(), 220)
+local btnPainel = createButton(extrasArea, "Painel", "📊  Painel FPS/Ping", 177)
 btnPainel.MouseButton1Click:Connect(function()
     if not panelGui then
         panelOn()
@@ -1104,50 +1015,50 @@ btnPainel.MouseButton1Click:Connect(function()
     end
 end)
 
-local btnCoresHub = createButton(extrasArea, loadstring(base64decode("Q29yZXNIdWI="))(), loadstring(base64decode("8J+OqCAgQ29yZXMgZG8gSHVi"))(), 263)
+local btnCoresHub = createButton(extrasArea, "CoresHub", "🎨  Cores do Hub", 220)
 btnCoresHub.MouseButton1Click:Connect(function()
-    local picker = Instance.new(loadstring(base64decode("U2NyZWVuR3Vp"))(), CoreGui)
-    picker.Name = loadstring(base64decode("Vm9pZENvbG9yUGlja2Vy"))()
+    local picker = Instance.new("ScreenGui", CoreGui)
+    picker.Name = "VoidColorPicker"
     picker.ResetOnSpawn = false
-    local f = Instance.new(loadstring(base64decode("RnJhbWU="))(), picker)
+    local f = Instance.new("Frame", picker)
     f.Size = UDim2.new(0, 220, 0, 150)
     f.Position = UDim2.new(0.5, -110, 0.5, -75)
     f.BackgroundColor3 = Color3.fromRGB(15, 10, 25)
     f.BackgroundTransparency = 0.1
-    Instance.new(loadstring(base64decode("VUlDb3JuZXI="))(), f).CornerRadius = UDim.new(0, 16)
-    local fs = Instance.new(loadstring(base64decode("VUlTdHJva2U="))(), f)
+    Instance.new("UICorner", f).CornerRadius = UDim.new(0, 16)
+    local fs = Instance.new("UIStroke", f)
     fs.Color = purpleColor
     fs.Thickness = 2
 
-    local title = Instance.new(loadstring(base64decode("VGV4dExhYmVs"))(), f)
+    local title = Instance.new("TextLabel", f)
     title.Size = UDim2.new(1, 0, 0, 25)
     title.Position = UDim2.new(0, 0, 0, 10)
     title.BackgroundTransparency = 1
-    title.Text = loadstring(base64decode("Q29yIGRvIEh1Yg=="))()
+    title.Text = "Cor do Hub"
     title.Font = Enum.Font.GothamBold
     title.TextSize = 13
     title.TextColor3 = Color3.fromRGB(255, 255, 255)
 
     local opcoesCores = {
-        { cor = Color3.fromRGB(140, 40, 220), img = loadstring(base64decode("cmJ4YXNzZXRpZDovLzExMjQ1OTM3NTYwNzcyNA=="))() },
-        { cor = Color3.fromRGB(40, 100, 240), img = loadstring(base64decode("cmJ4YXNzZXRpZDovLzEwMjQ3MjQ1MDgxMDYzNw=="))() },
-        { cor = Color3.fromRGB(40, 220, 100), img = loadstring(base64decode("cmJ4YXNzZXRpZDovLzc1MTU5OTk0NzM2MDU2"))()  },
-        { cor = Color3.fromRGB(220, 40, 40),  img = loadstring(base64decode("cmJ4YXNzZXRpZDovLzEzNjg4ODg5MzU3NTE0OQ=="))() },
-        { cor = Color3.fromRGB(240, 220, 40), img = loadstring(base64decode("cmJ4YXNzZXRpZDovLzcxMDk5NjA0ODUzMjQx"))()  },
-        { cor = Color3.fromRGB(240, 240, 240),img = loadstring(base64decode("cmJ4YXNzZXRpZDovLzEyMzY5NDkwODE5MjQ3Mg=="))() },
+        { cor = Color3.fromRGB(140, 40, 220), img = "rbxassetid://112459375607724" },
+        { cor = Color3.fromRGB(40, 100, 240), img = "rbxassetid://102472450810637" },
+        { cor = Color3.fromRGB(40, 220, 100), img = "rbxassetid://75159994736056"  },
+        { cor = Color3.fromRGB(220, 40, 40),  img = "rbxassetid://136888893575149" },
+        { cor = Color3.fromRGB(240, 220, 40), img = "rbxassetid://71099604853241"  },
+        { cor = Color3.fromRGB(240, 240, 240),img = "rbxassetid://123694908192472" },
     }
 
     for i, opcao in ipairs(opcoesCores) do
         local row = math.floor((i-1) / 3)
         local col = (i-1) % 3
-        local b = Instance.new(loadstring(base64decode("VGV4dEJ1dHRvbg=="))(), f)
+        local b = Instance.new("TextButton", f)
         b.Size = UDim2.new(0, 55, 0, 38)
         b.Position = UDim2.new(0, 20 + col * 62, 0, 45 + row * 45)
         b.BackgroundColor3 = opcao.cor
-        b.Text = loadstring(base64decode(""))()
+        b.Text = ""
         b.AutoButtonColor = false
-        Instance.new(loadstring(base64decode("VUlDb3JuZXI="))(), b).CornerRadius = UDim.new(0, 8)
-        local bs = Instance.new(loadstring(base64decode("VUlTdHJva2U="))(), b)
+        Instance.new("UICorner", b).CornerRadius = UDim.new(0, 8)
+        local bs = Instance.new("UIStroke", b)
         bs.Color = Color3.fromRGB(255, 255, 255)
         bs.Thickness = 1
         bs.Transparency = 0.6
@@ -1161,43 +1072,43 @@ btnCoresHub.MouseButton1Click:Connect(function()
         end)
     end
 
-    local close = Instance.new(loadstring(base64decode("VGV4dEJ1dHRvbg=="))(), f)
+    local close = Instance.new("TextButton", f)
     close.Size = UDim2.new(0, 80, 0, 24)
     close.Position = UDim2.new(1, -90, 1, -30)
     close.BackgroundColor3 = Color3.fromRGB(60, 30, 30)
-    close.Text = loadstring(base64decode("RmVjaGFy"))()
+    close.Text = "Fechar"
     close.Font = Enum.Font.GothamBold
     close.TextSize = 11
     close.TextColor3 = Color3.fromRGB(255, 255, 255)
-    Instance.new(loadstring(base64decode("VUlDb3JuZXI="))(), close).CornerRadius = UDim.new(0, 7)
+    Instance.new("UICorner", close).CornerRadius = UDim.new(0, 7)
     close.MouseButton1Click:Connect(function() picker:Destroy() end)
 end)
 
-local btnAbrirScripts = createButton(extrasArea, loadstring(base64decode("QWJyaXJTY3JpcHRz"))(), loadstring(base64decode("8J+TnCAgU2NyaXB0cyBFc3BlY2lhaXM="))(), 306)
+local btnAbrirScripts = createButton(extrasArea, "AbrirScripts", "📜  Scripts Especiais", 263)
 btnAbrirScripts.MouseButton1Click:Connect(function()
     extrasArea.Visible = false
     scriptsArea.Visible = true
 end)
 
-local btnVoltar = createButton(extrasArea, loadstring(base64decode("Vm9sdGFy"))(), loadstring(base64decode("4qyF77iPICBWb2x0YXI="))(), 349)
+local btnVoltar = createButton(extrasArea, "Voltar", "⬅️  Voltar", 306)
 btnVoltar.MouseButton1Click:Connect(function()
     extrasArea.Visible = false
     contentArea.Visible = true
 end)
 
 local scriptsList = {
-    { loadstring(base64decode("VEJP"))(), loadstring(base64decode("8J+UpSAgVEJPIFNjcmlwdA=="))(), loadstring(base64decode("aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2Nvb2w1MDEzL1RCTy9tYWluL1RCT3NjcmlwdA=="))() },
-    { loadstring(base64decode("S29rdXNlbg=="))(), loadstring(base64decode("4pqhICBLb2t1c2VuIENoYWlu"))(), loadstring(base64decode("aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2dnYWIyMzUxLXN0YWNrL0pqcy9yZWZzL2hlYWRzL21haW4vb2JmdXNjYXRlZF9zY3JpcHQtMTc3MDAwMjc4MDU0MS5sdWEudHh0"))() },
-    { loadstring(base64decode("S29rdXNlbjI="))(), loadstring(base64decode("4pqhICBLb2t1c2VuIDI="))(), loadstring(base64decode("aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2RyZWFtNzcyMzkvc3NzL3JlZnMvaGVhZHMvbWFpbi95dWpp"))() },
-    { loadstring(base64decode("TG9ja09u"))(), loadstring(base64decode("8J+OryAgTG9jayBPbg=="))(), loadstring(base64decode("aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2IxNzExMTMyNi1odWUvTG9jay1Pbi9yZWZzL2hlYWRzL21haW4vb2JmdXNjYXRlZF9zY3JpcHQtMTc4NjIyNjAzMDEwMi5sdWEudHh0"))() },
-    { loadstring(base64decode("SnVqdXRzdWVy"))(), loadstring(base64decode("8J+UriAgSnVqdXRzdWVyIFYy"))(), loadstring(base64decode("aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL3NvbGFyYXN0dWZmL3R6ZS9yZWZzL2hlYWRzL21haW4vSnVqdXRzdWVyVjIubHVh"))() },
-    { loadstring(base64decode("WXVraQ=="))(), loadstring(base64decode("8J+MgCAgQmxhY2sgSG9sZSBZdWtp"))(), loadstring(base64decode("aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0RyYWdvbmZseTUxMDEvTWlub3NyL3JlZnMvaGVhZHMvbWFpbi9JbnN0YW50QmxhY2tIb2xlLkpKUw=="))() },
+    { "TBO", "🔥  TBO Script", "https://raw.githubusercontent.com/cool5013/TBO/main/TBOscript" },
+    { "Kokusen", "⚡  Kokusen Chain", "https://raw.githubusercontent.com/ggab2351-stack/Jjs/refs/heads/main/obfuscated_script-1770002780541.lua.txt" },
+    { "Kokusen2", "⚡  Kokusen 2", "https://raw.githubusercontent.com/dream77239/sss/refs/heads/main/yuji" },
+    { "LockOn", "🎯  Lock On", "https://raw.githubusercontent.com/b17111326-hue/Lock-On/refs/heads/main/obfuscated_script-1786226030102.lua.txt" },
+    { "Jujutsuer", "🔮  Jujutsuer V2", "https://raw.githubusercontent.com/solarastuff/tze/refs/heads/main/JujutsuerV2.lua" },
+    { "Yuki", "🌀  Black Hole Yuki", "https://raw.githubusercontent.com/Dragonfly5101/Minosr/refs/heads/main/InstantBlackHole.JJS" },
 }
 for i, data in ipairs(scriptsList) do
     local btn = createButton(scriptsArea, data[1], data[2], 5 + (i-1) * 42)
     btn.MouseButton1Click:Connect(function()
         btn.BackgroundTransparency = 0.55
-        statusLabel.Text = loadstring(base64decode("U3RhdHVzOiBFeGVjdXRhbmRvIA=="))() .. data[1] .. loadstring(base64decode("Li4u"))()
+        statusLabel.Text = "Status: Executando " .. data[1] .. "..."
         pcall(function()
             loadstring(game:HttpGet(data[3]))()
         end)
@@ -1206,7 +1117,7 @@ for i, data in ipairs(scriptsList) do
     end)
 end
 
-local btnVoltar2 = createButton(scriptsArea, loadstring(base64decode("Vm9sdGFyMg=="))(), loadstring(base64decode("4qyF77iPICBWb2x0YXI="))(), 5 + #scriptsList * 42)
+local btnVoltar2 = createButton(scriptsArea, "Voltar2", "⬅️  Voltar", 5 + #scriptsList * 42)
 btnVoltar2.MouseButton1Click:Connect(function()
     scriptsArea.Visible = false
     contentArea.Visible = true
@@ -1245,7 +1156,7 @@ end)
 
 lockBtn.MouseButton1Click:Connect(function()
     isLocked = not isLocked
-    lockBtn.Text = isLocked and loadstring(base64decode("8J+Ukg=="))() or loadstring(base64decode("8J+Ukw=="))()
+    lockBtn.Text = isLocked and "🔒" or "🔓"
     lockBtn.BackgroundColor3 = isLocked and Color3.fromRGB(120, 40, 40) or Color3.fromRGB(20, 15, 30)
 end)
 
@@ -1260,14 +1171,14 @@ minimizeBtn.MouseButton1Click:Connect(function()
         TweenService:Create(voidHubMain, TweenInfo.new(0.3, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {
             Size = UDim2.new(0, 360, 0, minHeight)
         }):Play()
-        minimizeBtn.Text = loadstring(base64decode("Kw=="))()
+        minimizeBtn.Text = "+"
     else
         TweenService:Create(voidHubMain, TweenInfo.new(0.3, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {
             Size = UDim2.new(0, 360, 0, fullHeight)
         }):Play()
         task.wait(0.3)
         bodyContainer.Visible = true
-        minimizeBtn.Text = loadstring(base64decode("LQ=="))()
+        minimizeBtn.Text = "-"
     end
 end)
 
@@ -1282,21 +1193,10 @@ validateBtn.MouseButton1Click:Connect(function()
     if textBox.Text == deviceKey then
         abrirHub()
     else
-        validateBtn.Text = loadstring(base64decode("SW5jb3JyZXRhIQ=="))()
+        validateBtn.Text = "Incorreta!"
         task.wait(1.5)
-        validateBtn.Text = loadstring(base64decode("VmVyaWZpY2Fy"))()
+        validateBtn.Text = "Verificar"
     end
 end)
 
-LocalPlayer.CharacterAdded:Connect(function()
-    if invisActive then
-        task.wait(1)
-        invisBackup = { parent = workspace }
-        invisOn()
-    end
-end)
-
-print(loadstring(base64decode("4pyFIFZvaWQgSHViIGNhcnJlZ2FkbyBjb20gc3VjZXNzbyE="))())
-end
-LjXXt75a(10mRS)
-end)(...)
+print("✅ Void Hub carregado com sucesso!")
