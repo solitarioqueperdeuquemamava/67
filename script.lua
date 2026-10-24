@@ -1,4 +1,4 @@
---[==[ VOID HUB - COMPLETO E CORRIGIDO (V33) ]==]
+--[==[ VOID HUB - COMPLETO E CORRIGIDO (V34 - API + GLITCH) ]==]
 local Players = game:GetService("Players")
 local TweenService = game:GetService("TweenService")
 local CoreGui = game:GetService("CoreGui")
@@ -67,110 +67,10 @@ local function salvarConfig(op)
 end
 
 VH.CorAtual = carregarConfig()
--- FORÇA O BYPASS A SEMPRE COMEÇAR BLOQUEADO AO INJETAR O SCRIPT
 VH.BypassConcluido = false 
 
 local isBranco = (VH.CorAtual.cor == Color3.fromRGB(220, 220, 220) or VH.CorAtual.cor == Color3.fromRGB(240, 240, 240))
 local corTextoInvertido = Color3.fromRGB(40, 40, 40)
-
--- ==================== KEY SYSTEM ====================
-local function generateDeviceKey()
-    local userIdStr = tostring(LocalPlayer.UserId)
-    local hash = 0
-    for i = 1, #userIdStr do
-        hash = (hash * 31 + string.byte(userIdStr, i)) % 4294967296
-    end
-    return string.format("VH-%08X-%04X", hash, (hash * 7) % 65536)
-end
-VH.DeviceKey = generateDeviceKey()
-
-local keyContainer = Instance.new("Frame", VH.Gui)
-keyContainer.Name = "KeyContainer"
-keyContainer.Size = UDim2.new(0, 400, 0, 240)
-keyContainer.Position = UDim2.new(0.5, 0, 0.5, 0)
-keyContainer.AnchorPoint = Vector2.new(0.5, 0.5)
-keyContainer.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-keyContainer.BackgroundTransparency = VH.CorAtual.transparente and 0.95 or 0.3
-keyContainer.ClipsDescendants = true
-Instance.new("UICorner", keyContainer).CornerRadius = UDim.new(0, 28)
-
-local keyBg = Instance.new("ImageLabel", keyContainer)
-keyBg.Size = UDim2.new(1, 0, 1, 0)
-keyBg.BackgroundTransparency = 1
-keyBg.Image = VH.CorAtual.img
-keyBg.ScaleType = Enum.ScaleType.Crop
-keyBg.ImageTransparency = VH.CorAtual.transparente and 0.95 or 0
-keyBg.ZIndex = 0
-Instance.new("UICorner", keyBg).CornerRadius = UDim.new(0, 28)
-
-local keyStroke = Instance.new("UIStroke", keyContainer)
-keyStroke.Color = VH.CorAtual.cor
-keyStroke.Thickness = 2.5
-keyStroke.Transparency = 0
-
-local titleKey = Instance.new("TextLabel", keyContainer)
-titleKey.Size = UDim2.new(1, 0, 0, 32)
-titleKey.Position = UDim2.new(0, 0, 0, 18)
-titleKey.BackgroundTransparency = 1
-titleKey.Text = "VOID HUB"
-titleKey.Font = Enum.Font.GothamBold
-titleKey.TextSize = 20
-titleKey.TextColor3 = isBranco and corTextoInvertido or Color3.fromRGB(255, 255, 255)
-titleKey.ZIndex = 3
-
-local subTitleKey = Instance.new("TextLabel", keyContainer)
-subTitleKey.Size = UDim2.new(1, 0, 0, 16)
-subTitleKey.Position = UDim2.new(0, 0, 0, 48)
-subTitleKey.BackgroundTransparency = 1
-subTitleKey.Text = "Digite sua Key para continuar"
-subTitleKey.Font = Enum.Font.Gotham
-subTitleKey.TextSize = 11
-subTitleKey.TextColor3 = isBranco and corTextoInvertido or Color3.fromRGB(180, 160, 200)
-subTitleKey.ZIndex = 3
-
-local textBox = Instance.new("TextBox", keyContainer)
-textBox.Size = UDim2.new(0, 340, 0, 40)
-textBox.Position = UDim2.new(0.5, -170, 0, 78)
-textBox.BackgroundColor3 = Color3.fromRGB(15, 10, 25)
-textBox.BackgroundTransparency = 0.4
-textBox.PlaceholderText = "Digite sua Key..."
-textBox.PlaceholderColor3 = Color3.fromRGB(140, 120, 160)
-textBox.Text = ""
-textBox.TextColor3 = Color3.fromRGB(255, 255, 255)
-textBox.Font = Enum.Font.Gotham
-textBox.TextSize = 13
-Instance.new("UICorner", textBox).CornerRadius = UDim.new(0, 10)
-textBox.ZIndex = 3
-
-local validateBtn = Instance.new("TextButton", keyContainer)
-validateBtn.Size = UDim2.new(0, 165, 0, 40)
-validateBtn.Position = UDim2.new(0, 30, 0, 130)
-validateBtn.BackgroundColor3 = VH.CorAtual.cor
-validateBtn.Text = "Verificar"
-validateBtn.Font = Enum.Font.GothamBold
-validateBtn.TextSize = 13
-validateBtn.TextColor3 = isBranco and corTextoInvertido or Color3.fromRGB(255, 255, 255)
-Instance.new("UICorner", validateBtn).CornerRadius = UDim.new(0, 10)
-validateBtn.ZIndex = 3
-
-local getKeyBtn = Instance.new("TextButton", keyContainer)
-getKeyBtn.Size = UDim2.new(0, 165, 0, 40)
-getKeyBtn.Position = UDim2.new(1, -195, 0, 130)
-getKeyBtn.BackgroundColor3 = Color3.fromRGB(20, 15, 30)
-getKeyBtn.Text = "Obter Key"
-getKeyBtn.Font = Enum.Font.GothamBold
-getKeyBtn.TextSize = 13
-getKeyBtn.TextColor3 = Color3.fromRGB(220, 180, 255)
-Instance.new("UICorner", getKeyBtn).CornerRadius = UDim.new(0, 10)
-getKeyBtn.ZIndex = 3
-local getKeyStroke = Instance.new("UIStroke", getKeyBtn)
-getKeyStroke.Color = VH.CorAtual.cor
-getKeyStroke.Thickness = 1.5
-
-getKeyBtn.MouseButton1Click:Connect(function()
-    if setclipboard then setclipboard(VH.DeviceKey) end
-    textBox.Text = VH.DeviceKey
-end)
 
 -- ==================== MAIN GUI ====================
 local voidHubMain = Instance.new("Frame", VH.Gui)
@@ -249,12 +149,6 @@ VH.MainStroke = mainStroke
 VH.MainTitle = mainTitle
 VH.SubTitle = subTitle
 VH.MainBg = mainBg
-VH.KeyContainer = keyContainer
-VH.KeyStroke = keyStroke
-VH.KeyTitle = titleKey
-VH.KeyBg = keyBg
-VH.ValidateBtn = validateBtn
-VH.TextBox = textBox
 VH.MinimizeBtn = minimizeBtn
 VH.LockBtn = lockBtn
 
@@ -525,7 +419,7 @@ local function flyOff()
     flyDirection = Vector3.zero
 end
 
--- ===== BYPASS ORIGINAL (IR PRO VOID) =====
+-- ===== BYPASS ORIGINAL =====
 local bypassActive = false
 
 local function runBypassLogic()
@@ -634,7 +528,6 @@ local function bypassOn()
 end
 local function bypassOff() bypassActive = false end
 
--- ===== TESTAR BYPASS ORIGINAL (TP E CHECAGEM DE ANTI-CHEAT) =====
 local function testarBypass()
     if VH.BypassConcluido then
         statusLabel.Text = "Status: Bypass já liberado ✅"
@@ -1219,108 +1112,530 @@ minimizeBtn.MouseButton1Click:Connect(function()
     end
 end)
 
--- ==================== LOADING SCREEN & KEY VALIDATION ====================
-local function abrirTelaCarregamento()
-    TweenService:Create(keyContainer, TweenInfo.new(0.3), {Size = UDim2.new(0,0,0,0)}):Play()
-    task.wait(0.3)
-    keyContainer:Destroy()
+-- ==================== NOVO SISTEMA DE KEY COM GLITCH ====================
+local KEY_W, KEY_H = 360, 240
+local SPLASH_TEMPO = 3
+local SPLASH_TEXTO = "VOID HUB"
+local KeyLiberada = false
+local rnd = Random.new()
+local VERDE = Color3.fromRGB(120, 255, 140)
+local VERMELHO = Color3.fromRGB(255, 90, 90)
+local AMARELO = Color3.fromRGB(255, 220, 110)
 
-    local loadFrame = Instance.new("Frame", VH.Gui)
-    loadFrame.Name = "LoadingFrame"
-    loadFrame.Size = UDim2.new(0, 400, 0, 260)
-    loadFrame.Position = UDim2.new(0.5, 0, 0.5, 0)
-    loadFrame.AnchorPoint = Vector2.new(0.5, 0.5)
-    loadFrame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-    loadFrame.BackgroundTransparency = 0.4
-    loadFrame.ClipsDescendants = true
-    Instance.new("UICorner", loadFrame).CornerRadius = UDim.new(0, 28)
+local KeyGui = Instance.new("Frame")
+KeyGui.Name = "AetherKeyGui"
+KeyGui.Size = UDim2.new(1, 0, 1, 0)
+KeyGui.BackgroundColor3 = Color3.fromRGB(5, 3, 10)
+KeyGui.BackgroundTransparency = 0.3
+KeyGui.BorderSizePixel = 0
+KeyGui.Active = true
+KeyGui.ZIndex = 50
+KeyGui.Parent = VH.Gui
 
-    local loadBg = Instance.new("ImageLabel", loadFrame)
-    loadBg.Size = UDim2.new(1, 0, 1, 0)
-    loadBg.BackgroundTransparency = 1
-    loadBg.Image = VH.CorAtual.img
-    loadBg.ScaleType = Enum.ScaleType.Crop
-    loadBg.ZIndex = 0
-    Instance.new("UICorner", loadBg).CornerRadius = UDim.new(0, 28)
+-- SPLASH
+local Splash = Instance.new("Frame")
+Splash.Name = "Splash"
+Splash.Size = UDim2.new(1, 0, 1, 0)
+Splash.BackgroundTransparency = 1
+Splash.ZIndex = 51
+Splash.Parent = KeyGui
 
-    local loadStroke = Instance.new("UIStroke", loadFrame)
-    loadStroke.Color = VH.CorAtual.cor
-    loadStroke.Thickness = 2.5
-    loadStroke.Transparency = 0
+local function criarGlitchLabel(cor, z)
+    local l = Instance.new("TextLabel")
+    l.AnchorPoint = Vector2.new(0.5, 0.5)
+    l.Position = UDim2.new(0.5, 0, 0.5, 0)
+    l.Size = UDim2.new(1, 0, 0, 60)
+    l.BackgroundTransparency = 1
+    l.Text = SPLASH_TEXTO
+    l.TextColor3 = cor
+    l.Font = Enum.Font.GothamBlack
+    l.TextSize = 40
+    l.TextTransparency = 1
+    l.ZIndex = z
+    l.Parent = Splash
+    return l
+end
 
-    local avatar = Instance.new("ImageLabel", loadFrame)
-    avatar.Size = UDim2.new(0, 80, 0, 80)
-    avatar.Position = UDim2.new(0.5, 0, 0, 30)
-    avatar.AnchorPoint = Vector2.new(0.5, 0)
-    avatar.BackgroundColor3 = Color3.fromRGB(20, 15, 30)
-    avatar.BorderSizePixel = 0
-    avatar.ZIndex = 2
-    Instance.new("UICorner", avatar).CornerRadius = UDim.new(1, 0)
+local GlitchR = criarGlitchLabel(Color3.fromRGB(255, 40, 80), 52)
+local GlitchC = criarGlitchLabel(Color3.fromRGB(40, 255, 255), 53)
+local GlitchM = criarGlitchLabel(Color3.fromRGB(235, 215, 255), 54)
 
-    local avStroke = Instance.new("UIStroke", avatar)
-    avStroke.Color = VH.CorAtual.cor
-    avStroke.Thickness = 2
+local Fatias = {}
+for i = 1, 3 do
+    local f = Instance.new("Frame")
+    f.AnchorPoint = Vector2.new(0.5, 0.5)
+    f.BorderSizePixel = 0
+    f.BackgroundColor3 = Color3.fromRGB(190, 150, 255)
+    f.BackgroundTransparency = 1
+    f.ZIndex = 55
+    f.Parent = Splash
+    Fatias[i] = f
+end
 
-    task.spawn(function()
-        local success, img = pcall(function()
-            return Players:GetUserThumbnailAsync(LocalPlayer.UserId, Enum.ThumbnailType.HeadShot, Enum.ThumbnailSize.Size100x100)
-        end)
-        if success and img then avatar.Image = img end
-    end)
+local BarraFundo = Instance.new("Frame")
+BarraFundo.AnchorPoint = Vector2.new(0.5, 0.5)
+BarraFundo.Position = UDim2.new(0.5, 0, 0.5, 50)
+BarraFundo.Size = UDim2.new(0, 220, 0, 3)
+BarraFundo.BackgroundColor3 = Color3.fromRGB(40, 25, 65)
+BarraFundo.BorderSizePixel = 0
+BarraFundo.ZIndex = 52
+BarraFundo.Parent = Splash
+Instance.new("UICorner", BarraFundo).CornerRadius = UDim.new(1, 0)
 
-    local novoIsBranco = (VH.CorAtual.cor == Color3.fromRGB(220, 220, 220) or VH.CorAtual.cor == Color3.fromRGB(240, 240, 240))
+local BarraFill = Instance.new("Frame")
+BarraFill.Size = UDim2.new(0, 0, 1, 0)
+BarraFill.BackgroundColor3 = Color3.fromRGB(190, 150, 255)
+BarraFill.BorderSizePixel = 0
+BarraFill.ZIndex = 53
+BarraFill.Parent = BarraFundo
+Instance.new("UICorner", BarraFill).CornerRadius = UDim.new(1, 0)
 
-    local nameLabel = Instance.new("TextLabel", loadFrame)
-    nameLabel.Size = UDim2.new(1, 0, 0, 25)
-    nameLabel.Position = UDim2.new(0, 0, 0, 120)
-    nameLabel.BackgroundTransparency = 1
-    nameLabel.Text = LocalPlayer.DisplayName .. " (@" .. LocalPlayer.Name .. ")"
-    nameLabel.Font = Enum.Font.GothamBold
-    nameLabel.TextSize = 18
-    nameLabel.TextColor3 = novoIsBranco and corTextoInvertido or Color3.fromRGB(255, 255, 255)
-    nameLabel.ZIndex = 2
+local GLIFOS = {"#", "@", "$", "%", "&", "!", "?", "<", ">", "/", "\\", "|", "0", "1", "X", "Z"}
+local function embaralhar(txt, qtd)
+    local chars = {}
+    for i = 1, #txt do chars[i] = txt:sub(i, i) end
+    for _ = 1, qtd do
+        local i = rnd:NextInteger(1, #txt)
+        if chars[i] ~= " " then chars[i] = GLIFOS[rnd:NextInteger(1, #GLIFOS)] end
+    end
+    return table.concat(chars)
+end
 
-    local welcomeLabel = Instance.new("TextLabel", loadFrame)
-    welcomeLabel.Size = UDim2.new(1, 0, 0, 20)
-    welcomeLabel.Position = UDim2.new(0, 0, 0, 150)
-    welcomeLabel.BackgroundTransparency = 1
-    welcomeLabel.Text = "Seja bem vindo, " .. LocalPlayer.DisplayName .. "! Aproveite o Hub 🪐"
-    welcomeLabel.Font = Enum.Font.Gotham
-    welcomeLabel.TextSize = 13
-    welcomeLabel.TextColor3 = novoIsBranco and corTextoInvertido or VH.NeonPurple
-    welcomeLabel.ZIndex = 2
+local function rodarSplash()
+    local FADE = 0.25
+    TweenService:Create(BarraFill, TweenInfo.new(SPLASH_TEMPO, Enum.EasingStyle.Linear), { Size = UDim2.new(1, 0, 1, 0) }):Play()
+    local t0 = os.clock()
+    
+    while os.clock() - t0 < SPLASH_TEMPO - FADE do
+        local t = os.clock() - t0
+        local forte = rnd:NextNumber() < 0.45
+        local d = forte and 12 or 2
+        local entrada = math.clamp(t / 0.25, 0, 1)
+        
+        GlitchR.Position = UDim2.new(0.5, rnd:NextNumber(-d, d), 0.5, rnd:NextNumber(-d / 3, d / 3))
+        GlitchC.Position = UDim2.new(0.5, rnd:NextNumber(-d, d), 0.5, rnd:NextNumber(-d / 3, d / 3))
+        GlitchM.Position = UDim2.new(0.5, forte and rnd:NextNumber(-3, 3) or 0, 0.5, 0)
+        
+        GlitchR.TextTransparency = 1 - (0.65 * entrada)
+        GlitchC.TextTransparency = 1 - (0.65 * entrada)
+        GlitchM.TextTransparency = 1 - entrada
+        
+        if forte then
+            GlitchM.Text = embaralhar(SPLASH_TEXTO, rnd:NextInteger(1, 3))
+            GlitchR.Text = embaralhar(SPLASH_TEXTO, rnd:NextInteger(0, 2))
+            GlitchC.Text = embaralhar(SPLASH_TEXTO, rnd:NextInteger(0, 2))
+            GlitchM.TextColor3 = (rnd:NextNumber() < 0.5) and Color3.fromRGB(255, 255, 255) or Color3.fromRGB(190, 150, 255)
+        else
+            GlitchM.Text, GlitchR.Text, GlitchC.Text = SPLASH_TEXTO, SPLASH_TEXTO, SPLASH_TEXTO
+            GlitchM.TextColor3 = Color3.fromRGB(235, 215, 255)
+        end
+        
+        for _, f in ipairs(Fatias) do
+            if forte and rnd:NextNumber() < 0.7 then
+                f.Position = UDim2.new(0.5, rnd:NextNumber(-150, 150), 0.5, rnd:NextNumber(-28, 28))
+                f.Size = UDim2.new(0, rnd:NextNumber(80, 380), 0, rnd:NextNumber(2, 6))
+                f.BackgroundTransparency = rnd:NextNumber(0.3, 0.65)
+            else
+                f.BackgroundTransparency = 1
+            end
+        end
+        task.wait(rnd:NextNumber(0.03, 0.07))
+    end
 
-    local barBg = Instance.new("Frame", loadFrame)
-    barBg.Size = UDim2.new(0, 300, 0, 8)
-    barBg.Position = UDim2.new(0.5, -150, 0, 190)
-    barBg.BackgroundColor3 = Color3.fromRGB(20, 15, 30)
-    barBg.ZIndex = 2
-    Instance.new("UICorner", barBg).CornerRadius = UDim.new(1, 0)
+    GlitchM.Text, GlitchR.Text, GlitchC.Text = SPLASH_TEXTO, SPLASH_TEXTO, SPLASH_TEXTO
+    GlitchR.Position = UDim2.new(0.5, 0, 0.5, 0)
+    GlitchC.Position = UDim2.new(0.5, 0, 0.5, 0)
+    GlitchM.Position = UDim2.new(0.5, 0, 0.5, 0)
 
-    local barFill = Instance.new("Frame", barBg)
-    barFill.Size = UDim2.new(0, 0, 1, 0)
-    barFill.BackgroundColor3 = VH.CorAtual.cor
-    barFill.ZIndex = 3
-    Instance.new("UICorner", barFill).CornerRadius = UDim.new(1, 0)
+    local ti = TweenInfo.new(FADE, Enum.EasingStyle.Sine)
+    for _, l in ipairs({GlitchR, GlitchC, GlitchM}) do
+        TweenService:Create(l, ti, {TextTransparency = 1}):Play()
+    end
+    for _, f in ipairs(Fatias) do
+        f.BackgroundTransparency = 1
+    end
+    TweenService:Create(BarraFundo, ti, {BackgroundTransparency = 1}):Play()
+    TweenService:Create(BarraFill, ti, {BackgroundTransparency = 1}):Play()
+    task.wait(FADE)
+    Splash.Visible = false
+end
 
-    local tween = TweenService:Create(barFill, TweenInfo.new(2.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Size = UDim2.new(1, 0, 1, 0)})
-    tween:Play()
+-- JANELA DA KEY
+local KeyFrame = Instance.new("Frame")
+KeyFrame.Name = "KeyFrame"
+KeyFrame.AnchorPoint = Vector2.new(0.5, 0.5)
+KeyFrame.Position = UDim2.new(0.5, 0, 0.5, 0)
+KeyFrame.Size = UDim2.new(0, KEY_W, 0, KEY_H)
+KeyFrame.BackgroundColor3 = Color3.fromRGB(15, 10, 25)
+KeyFrame.BorderSizePixel = 0
+KeyFrame.Visible = false
+KeyFrame.ZIndex = 51
+KeyFrame.Parent = KeyGui
 
-    tween.Completed:Connect(function()
-        task.wait(0.3)
-        loadFrame:Destroy()
-        voidHubMain.Visible = true
+local KFC = Instance.new("UICorner"); KFC.CornerRadius = UDim.new(0, 12); KFC.Parent = KeyFrame
+local KeyScale = Instance.new("UIScale"); KeyScale.Scale = 1; KeyScale.Parent = KeyFrame
+local KFS = Instance.new("UIStroke")
+KFS.Color = VH.PurpleColor; KFS.Thickness = 2; KFS.Transparency = 0
+KFS.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+KFS.Parent = KeyFrame
+
+local KFG = Instance.new("UIGradient")
+KFG.Color = ColorSequence.new({
+    ColorSequenceKeypoint.new(0.0, Color3.fromRGB(110, 110, 110)),
+    ColorSequenceKeypoint.new(0.5, Color3.fromRGB(255, 255, 255)),
+    ColorSequenceKeypoint.new(1.0, Color3.fromRGB(110, 110, 110)),
+})
+KFG.Transparency = NumberSequence.new({
+    NumberSequenceKeypoint.new(0.0, 0.75),
+    NumberSequenceKeypoint.new(0.5, 0.0),
+    NumberSequenceKeypoint.new(1.0, 0.75),
+})
+KFG.Parent = KFS
+
+local Brilho = Instance.new("Frame")
+Brilho.AnchorPoint = Vector2.new(0.5, 0.5)
+Brilho.Position = UDim2.new(0.5, 0, 0.5, 0)
+Brilho.Size = UDim2.new(1, 10, 1, 10)
+Brilho.BackgroundTransparency = 1
+Brilho.ZIndex = 9
+Brilho.Parent = KeyFrame
+Instance.new("UICorner", Brilho).CornerRadius = UDim.new(0, 16)
+
+local BrilhoStroke = Instance.new("UIStroke")
+BrilhoStroke.Thickness = 6; BrilhoStroke.Transparency = 0.75
+BrilhoStroke.Color = VH.PurpleColor; BrilhoStroke.Parent = Brilho
+
+local KeyTitle = Instance.new("TextLabel")
+KeyTitle.Size = UDim2.new(1, 0, 0, 30)
+KeyTitle.Position = UDim2.new(0, 0, 0, 16)
+KeyTitle.BackgroundTransparency = 1
+KeyTitle.Text = SPLASH_TEXTO
+KeyTitle.TextColor3 = VH.PurpleColor
+KeyTitle.TextSize = 20
+KeyTitle.Font = Enum.Font.GothamBlack
+KeyTitle.Parent = KeyFrame
+
+local KeySub = Instance.new("TextLabel")
+KeySub.Size = UDim2.new(1, 0, 0, 16)
+KeySub.Position = UDim2.new(0, 0, 0, 48)
+KeySub.BackgroundTransparency = 1
+KeySub.Text = "Insira a key para liberar o Hub"
+KeySub.TextColor3 = Color3.fromRGB(150, 120, 200)
+KeySub.TextSize = 11
+KeySub.Font = Enum.Font.Gotham
+KeySub.Parent = KeyFrame
+
+local KeyInput = Instance.new("TextBox")
+KeyInput.Size = UDim2.new(0.84, 0, 0, 42)
+KeyInput.Position = UDim2.new(0.08, 0, 0, 78)
+KeyInput.BackgroundColor3 = Color3.fromRGB(30, 18, 48)
+KeyInput.TextColor3 = Color3.fromRGB(220, 180, 255)
+KeyInput.Text = ""
+KeyInput.PlaceholderText = "Digite a key..."
+KeyInput.PlaceholderColor3 = Color3.fromRGB(130, 100, 180)
+KeyInput.TextSize = 14
+KeyInput.Font = Enum.Font.Gotham
+KeyInput.BorderSizePixel = 0
+KeyInput.ClearTextOnFocus = false
+KeyInput.Parent = KeyFrame
+Instance.new("UICorner", KeyInput).CornerRadius = UDim.new(0, 8)
+
+local KIS = Instance.new("UIStroke")
+KIS.Color = VH.PurpleColor; KIS.Thickness = 1; KIS.Transparency = 0.4; KIS.Parent = KeyInput
+
+local SubmitButton = Instance.new("TextButton")
+SubmitButton.Size = UDim2.new(0.4, 0, 0, 40)
+SubmitButton.Position = UDim2.new(0.08, 0, 0, 132)
+SubmitButton.BackgroundColor3 = VH.NeonPurple
+SubmitButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+SubmitButton.Text = "CHECK KEY"
+SubmitButton.TextSize = 13
+SubmitButton.Font = Enum.Font.GothamBold
+SubmitButton.BorderSizePixel = 0
+SubmitButton.AutoButtonColor = true
+SubmitButton.Parent = KeyFrame
+Instance.new("UICorner", SubmitButton).CornerRadius = UDim.new(0, 8)
+
+local GetKeyButton = Instance.new("TextButton")
+GetKeyButton.Size = UDim2.new(0.4, 0, 0, 40)
+GetKeyButton.Position = UDim2.new(0.52, 0, 0, 132)
+GetKeyButton.BackgroundColor3 = Color3.fromRGB(30, 18, 48)
+GetKeyButton.TextColor3 = Color3.fromRGB(220, 180, 255)
+GetKeyButton.Text = "GET KEY"
+GetKeyButton.TextSize = 13
+GetKeyButton.Font = Enum.Font.GothamBold
+GetKeyButton.BorderSizePixel = 0
+GetKeyButton.Parent = KeyFrame
+Instance.new("UICorner", GetKeyButton).CornerRadius = UDim.new(0, 8)
+
+local GKS = Instance.new("UIStroke")
+GKS.Color = VH.PurpleColor; GKS.Thickness = 1; GKS.Transparency = 0.3; GKS.Parent = GetKeyButton
+
+local KeyStatus = Instance.new("TextLabel")
+KeyStatus.Size = UDim2.new(0.9, 0, 0, 30)
+KeyStatus.Position = UDim2.new(0.05, 0, 0, 186)
+KeyStatus.BackgroundTransparency = 1
+KeyStatus.Text = ""
+KeyStatus.TextColor3 = Color3.fromRGB(150, 120, 200)
+KeyStatus.TextSize = 12
+KeyStatus.TextWrapped = true
+KeyStatus.Font = Enum.Font.Gotham
+KeyStatus.Parent = KeyFrame
+
+local function setStatus(txt, cor)
+    KeyStatus.Text = txt
+    KeyStatus.TextColor3 = cor
+end
+
+-- DESCARGA ELÉTRICA
+local Eletrico = Instance.new("Frame")
+Eletrico.Name = "Eletrico"
+Eletrico.Size = UDim2.new(1, 0, 1, 0)
+Eletrico.BackgroundTransparency = 1
+Eletrico.ZIndex = 10
+Eletrico.Parent = KeyFrame
+
+local PER = 2 * (KEY_W + KEY_H)
+
+local function pontoPerimetro(d)
+    d = d % PER
+    if d < KEY_W then return Vector2.new(d, 0)
+    elseif d < KEY_W + KEY_H then return Vector2.new(KEY_W, d - KEY_W)
+    elseif d < 2 * KEY_W + KEY_H then return Vector2.new(KEY_W - (d - KEY_W - KEY_H), KEY_H)
+    else return Vector2.new(0, KEY_H - (d - 2 * KEY_W - KEY_H)) end
+end
+
+local function novoSegmento(z, espessura, transp)
+    local f = Instance.new("Frame")
+    f.AnchorPoint = Vector2.new(0.5, 0.5)
+    f.BorderSizePixel = 0
+    f.BackgroundColor3 = Color3.new(1, 1, 1)
+    f.BackgroundTransparency = transp
+    f.Size = UDim2.fromOffset(0, espessura)
+    f.ZIndex = z
+    f.Visible = false
+    f.Parent = Eletrico
+    return f
+end
+
+local function posSeg(f, a, b)
+    local dv = b - a
+    local len = dv.Magnitude
+    if len < 0.5 then f.Visible = false; return end
+    local m = (a + b) / 2
+    f.Position = UDim2.fromOffset(m.X, m.Y)
+    f.Size = UDim2.fromOffset(len + 1.5, f.Size.Y.Offset)
+    f.Rotation = math.deg(math.atan2(dv.Y, dv.X))
+    f.Visible = true
+end
+
+local NUM_BOLTS, PONTOS = 3, 12
+local Bolts = {}
+for b = 1, NUM_BOLTS do
+    local bolt = {
+        pos = (PER / NUM_BOLTS) * (b - 1),
+        vel = rnd:NextNumber(200, 320) * ((b == 2) and -1 or 1),
+        comp = rnd:NextNumber(90, 140),
+        glow = {}, core = {}, fg = {}, fc = {},
+    }
+    for i = 1, PONTOS - 1 do
+        bolt.glow[i] = novoSegmento(11, 4, 0.55)
+        bolt.core[i] = novoSegmento(12, 1.5, 0)
+    end
+    for i = 1, 2 do
+        bolt.fg[i] = novoSegmento(11, 3, 0.6)
+        bolt.fc[i] = novoSegmento(12, 1, 0.1)
+    end
+    Bolts[b] = bolt
+end
+
+local ErroAte, FlashAte = 0, 0
+local function atualizarBolt(bolt, cor)
+    local branco = cor:Lerp(Color3.new(1, 1, 1), 0.75)
+    local pts = {}
+    for i = 1, PONTOS do
+        local p = pontoPerimetro(bolt.pos + (i - 1) * (bolt.comp / (PONTOS - 1)))
+        if i > 1 and i < PONTOS then
+            p = p + Vector2.new(rnd:NextNumber(-4.5, 4.5), rnd:NextNumber(-4.5, 4.5))
+        end
+        pts[i] = p
+    end
+    for i = 1, PONTOS - 1 do
+        posSeg(bolt.glow[i], pts[i], pts[i + 1])
+        posSeg(bolt.core[i], pts[i], pts[i + 1])
+        bolt.glow[i].BackgroundColor3 = cor
+        bolt.core[i].BackgroundColor3 = branco
+    end
+    if rnd:NextNumber() < 0.5 then
+        local ant = pts[rnd:NextInteger(3, PONTOS - 2)]
+        local dir = (Vector2.new(KEY_W / 2, KEY_H / 2) - ant).Unit
+        local perp = Vector2.new(-dir.Y, dir.X)
+        for i = 1, 2 do
+            local prox = ant + dir * rnd:NextNumber(8, 15) + perp * rnd:NextNumber(-7, 7)
+            posSeg(bolt.fg[i], ant, prox); posSeg(bolt.fc[i], ant, prox)
+            bolt.fg[i].BackgroundColor3 = cor; bolt.fc[i].BackgroundColor3 = branco
+            ant = prox
+        end
+    else
+        for i = 1, 2 do
+            bolt.fg[i].Visible = false; bolt.fc[i].Visible = false
+        end
+    end
+end
+
+local elecConn
+local function iniciarEletricidade()
+    if elecConn then return end
+    local acumulador, gradRot = 0, 0
+    elecConn = RunService.Heartbeat:Connect(function(dt)
+        gradRot = (gradRot + dt * 140) % 360
+        KFG.Rotation = gradRot
+        
+        for _, b in ipairs(Bolts) do
+            b.pos = (b.pos + b.vel * dt) % PER
+        end
+        
+        local agora = os.clock()
+        local cor = (agora < ErroAte) and Color3.fromRGB(255, 70, 70) or VH.PurpleColor
+        BrilhoStroke.Color = cor
+        
+        local flash = agora < FlashAte
+        BrilhoStroke.Transparency = flash and 0.3 or (0.72 + 0.12 * math.sin(agora * 6))
+        BrilhoStroke.Thickness = flash and 9 or 6
+        
+        acumulador = acumulador + dt
+        if acumulador >= 0.035 then
+            acumulador = 0
+            if rnd:NextNumber() < 0.03 then FlashAte = agora + 0.08 end
+            for _, b in ipairs(Bolts) do atualizarBolt(b, cor) end
+            KeyTitle.Text = (rnd:NextNumber() < 0.03) and embaralhar(SPLASH_TEXTO, 1) or SPLASH_TEXTO
+        end
     end)
 end
 
-validateBtn.MouseButton1Click:Connect(function()
-    if textBox.Text == VH.DeviceKey then
-        abrirTelaCarregamento()
+local function pararEletricidade()
+    if elecConn then elecConn:Disconnect(); elecConn = nil end
+end
+
+-- ==================== VALIDAÇÃO DA KEY (API DO SERVIDOR) ====================
+local KEY_API = "https://void-xtcnefsf.manus.space/api/verify"
+local KEY_LINK = "https://void-xtcnefsf.manus.space"
+
+local function pegarRequest()
+    return (syn and syn.request) or (http and http.request) or http_request or (fluxus and fluxus.request) or request
+end
+
+local function verificarNoServidor(chave)
+    local req = pegarRequest()
+    if not req then return false, "⚠️ Seu executor não suporta requisições HTTP", nil end
+    
+    local okReq, res = pcall(req, {
+        Url = KEY_API,
+        Method = "POST",
+        Headers = {["Content-Type"] = "application/json"},
+        Body = HttpService:JSONEncode({key = chave}),
+    })
+    
+    if not okReq or type(res) ~= "table" then
+        return false, "⚠️ Falha de conexão com o servidor", nil
+    end
+    
+    local codigo = res.StatusCode or res.status_code or 0
+    local okJson, dados = pcall(function() return HttpService:JSONDecode(res.Body or "") end)
+    if not okJson or type(dados) ~= "table" then dados = {} end
+    
+    if codigo == 400 then return false, "❌ Formato de key inválido!", dados
+    elseif codigo == 503 then return false, "⚠️ Servidor indisponível, tente novamente", dados
+    elseif codigo < 200 or codigo >= 300 then return false, "⚠️ Erro ao verificar a key (" .. tostring(codigo) .. ")", dados end
+    
+    if dados.valid == true then
+        local msg = "✅ Key válida! Liberando o Hub..."
+        if dados.status == "permanent" then msg = "✅ Key permanente! Liberando o Hub..." end
+        return true, msg, dados
+    end
+    
+    local st = dados.status
+    if st == "expired" then return false, "⏰ Key expirada!", dados
+    elseif st == "revoked" then return false, "🚫 Key revogada!", dados end
+    
+    return false, "❌ Key incorreta!", dados
+end
+
+local function liberarHub()
+    FlashAte = os.clock() + 0.6
+    task.wait(0.6)
+    
+    TweenService:Create(KeyScale, TweenInfo.new(0.3, Enum.EasingStyle.Back, Enum.EasingDirection.In), {Scale = 0}):Play()
+    TweenService:Create(KeyGui, TweenInfo.new(0.3), {BackgroundTransparency = 1}):Play()
+    task.wait(0.32)
+    
+    pararEletricidade()
+    KeyGui.Visible = false
+    
+    voidHubMain.Size = UDim2.new(0, 0, 0, 0)
+    voidHubMain.Position = UDim2.new(0.5, 0, 0.5, 0)
+    voidHubMain.Visible = true
+    
+    TweenService:Create(voidHubMain, TweenInfo.new(0.45, Enum.EasingStyle.Back, Enum.EasingDirection.Out), {
+        Size = UDim2.new(0, 360, 0, 440),
+        Position = UDim2.new(0.5, 0, 0.3, 0)
+    }):Play()
+end
+
+local verificando = false
+local function verificarKey()
+    if verificando or KeyLiberada then return end
+    local chave = KeyInput.Text:gsub("%s", "")
+    
+    if chave == "" then
+        setStatus("⚠️ Digite a key primeiro", AMARELO)
+        return
+    end
+    
+    verificando = true
+    SubmitButton.Text = "CHECKING..."
+    setStatus("🔎 Verificando no servidor...", Color3.fromRGB(200, 170, 255))
+    
+    local ok, msg = verificarNoServidor(chave)
+    verificando = false
+    SubmitButton.Text = "CHECK KEY"
+    
+    if ok then
+        KeyLiberada = true
+        setStatus(msg, VERDE)
+        liberarHub()
     else
-        validateBtn.Text = "Incorreta!"
-        task.wait(1.5)
-        validateBtn.Text = "Verificar"
+        KeyInput.Text = ""
+        setStatus(msg, VERMELHO)
+        ErroAte = os.clock() + 0.7
+        for i = 1, 6 do
+            KeyFrame.Position = UDim2.new(0.5, (i % 2 == 0) and 8 or -8, 0.5, 0)
+            task.wait(0.04)
+        end
+        KeyFrame.Position = UDim2.new(0.5, 0, 0.5, 0)
+    end
+end
+
+SubmitButton.MouseButton1Click:Connect(verificarKey)
+KeyInput.FocusLost:Connect(function(enter) if enter then verificarKey() end end)
+
+GetKeyButton.MouseButton1Click:Connect(function()
+    local ok = false
+    if setclipboard then ok = pcall(setclipboard, KEY_LINK) end
+    if ok then
+        setStatus("🔗 Link copiado! Cole no navegador", VERDE)
+    else
+        setStatus(KEY_LINK, Color3.fromRGB(200, 170, 255))
     end
 end)
 
-print("Void Hub completo e Corrigido (V33) 🪐")
+-- FLUXO
+task.spawn(function()
+    rodarSplash()
+    KeyFrame.Visible = true
+    KeyScale.Scale = 0.6
+    TweenService:Create(KeyScale, TweenInfo.new(0.4, Enum.EasingStyle.Back, Enum.EasingDirection.Out), {Scale = 1}):Play()
+    iniciarEletricidade()
+end)
+
+print("Void Hub completo e Corrigido (V34) 🪐")
