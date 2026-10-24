@@ -1,4 +1,4 @@
---[==[ VOID HUB - COMPLETO E CORRIGIDO (V10 - Cores Ajustadas) ]==]
+--[==[ VOID HUB - COMPLETO E CORRIGIDO (V33) ]==]
 local Players = game:GetService("Players")
 local TweenService = game:GetService("TweenService")
 local CoreGui = game:GetService("CoreGui")
@@ -26,31 +26,37 @@ VH.Gui.Name = "VoidHubSystem"
 VH.Gui.ResetOnSpawn = false
 VH.Gui.Parent = CoreGui
 
--- ==================== SISTEMA DE SALVAR COR ====================
+-- ==================== SISTEMA DE CONFIGURAÇÃO SALVA (SÓ COR) ====================
 local CONFIG_FILE = "VoidHub_Config.txt"
 local corPadrao = { cor = Color3.fromRGB(140, 40, 220), img = "rbxassetid://112459375607724", transparente = false }
 
 local function carregarConfig()
+    local config = corPadrao
     if readfile and isfile then
         local ok, content = pcall(function()
             if isfile(CONFIG_FILE) then return readfile(CONFIG_FILE) end
             return nil
         end)
-        if ok and content then
+        if ok and content and content ~= "" then
             local parts = string.split(content, "|")
             if #parts >= 2 then
                 local rgb = string.split(parts[1], ",")
                 if #rgb == 3 then
-                    return {
-                        cor = Color3.fromRGB(tonumber(rgb[1]) or 140, tonumber(rgb[2]) or 40, tonumber(rgb[3]) or 220),
-                        img = parts[2],
-                        transparente = parts[3] == "true"
-                    }
+                    local r = tonumber(rgb[1])
+                    local g = tonumber(rgb[2])
+                    local b = tonumber(rgb[3])
+                    if r and g and b then
+                        config = {
+                            cor = Color3.fromRGB(r, g, b),
+                            img = parts[2],
+                            transparente = parts[3] == "true"
+                        }
+                    end
                 end
             end
         end
     end
-    return corPadrao
+    return config
 end
 
 local function salvarConfig(op)
@@ -61,27 +67,19 @@ local function salvarConfig(op)
 end
 
 VH.CorAtual = carregarConfig()
--- Verifica se a cor salva é a branca (220, 220, 220) ou a antiga branca (240, 240, 240)
+-- FORÇA O BYPASS A SEMPRE COMEÇAR BLOQUEADO AO INJETAR O SCRIPT
+VH.BypassConcluido = false 
+
 local isBranco = (VH.CorAtual.cor == Color3.fromRGB(220, 220, 220) or VH.CorAtual.cor == Color3.fromRGB(240, 240, 240))
-local corTextoInvertido = Color3.fromRGB(40, 40, 40) -- Cinza escuro elegante em vez de preto puro
+local corTextoInvertido = Color3.fromRGB(40, 40, 40)
 
 -- ==================== KEY SYSTEM ====================
-local function getDeviceIdentifier()
-    local id = nil
-    pcall(function()
-        local s = game:GetService("RbxAnalyticsService")
-        if s and s.GetClientId then id = s:GetClientId() end
-    end)
-    if not id or id == "" then pcall(function() id = HttpService:GetUserAgent() end) end
-    if not id or id == "" then id = tostring(LocalPlayer.UserId) .. "_" .. tostring(game.PlaceId) end
-    return id
-end
-
-local deviceId = getDeviceIdentifier()
 local function generateDeviceKey()
-    local str = "VOIDHUB_" .. deviceId .. "_" .. tostring(LocalPlayer.UserId) .. "_" .. tostring(game.PlaceId)
+    local userIdStr = tostring(LocalPlayer.UserId)
     local hash = 0
-    for i = 1, #str do hash = (hash * 31 + string.byte(str, i)) % 4294967296 end
+    for i = 1, #userIdStr do
+        hash = (hash * 31 + string.byte(userIdStr, i)) % 4294967296
+    end
     return string.format("VH-%08X-%04X", hash, (hash * 7) % 65536)
 end
 VH.DeviceKey = generateDeviceKey()
@@ -92,7 +90,7 @@ keyContainer.Size = UDim2.new(0, 400, 0, 240)
 keyContainer.Position = UDim2.new(0.5, 0, 0.5, 0)
 keyContainer.AnchorPoint = Vector2.new(0.5, 0.5)
 keyContainer.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-keyContainer.BackgroundTransparency = 0.3
+keyContainer.BackgroundTransparency = VH.CorAtual.transparente and 0.95 or 0.3
 keyContainer.ClipsDescendants = true
 Instance.new("UICorner", keyContainer).CornerRadius = UDim.new(0, 28)
 
@@ -101,12 +99,14 @@ keyBg.Size = UDim2.new(1, 0, 1, 0)
 keyBg.BackgroundTransparency = 1
 keyBg.Image = VH.CorAtual.img
 keyBg.ScaleType = Enum.ScaleType.Crop
+keyBg.ImageTransparency = VH.CorAtual.transparente and 0.95 or 0
 keyBg.ZIndex = 0
 Instance.new("UICorner", keyBg).CornerRadius = UDim.new(0, 28)
 
 local keyStroke = Instance.new("UIStroke", keyContainer)
 keyStroke.Color = VH.CorAtual.cor
 keyStroke.Thickness = 2.5
+keyStroke.Transparency = 0
 
 local titleKey = Instance.new("TextLabel", keyContainer)
 titleKey.Size = UDim2.new(1, 0, 0, 32)
@@ -179,7 +179,7 @@ voidHubMain.Size = UDim2.new(0, 360, 0, 440)
 voidHubMain.Position = UDim2.new(0.5, 0, 0.3, 0)
 voidHubMain.AnchorPoint = Vector2.new(0.5, 0)
 voidHubMain.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-voidHubMain.BackgroundTransparency = 0.6
+voidHubMain.BackgroundTransparency = VH.CorAtual.transparente and 0.95 or 0.6
 voidHubMain.ClipsDescendants = true
 voidHubMain.Visible = false
 Instance.new("UICorner", voidHubMain).CornerRadius = UDim.new(0, 28)
@@ -187,12 +187,14 @@ Instance.new("UICorner", voidHubMain).CornerRadius = UDim.new(0, 28)
 local mainStroke = Instance.new("UIStroke", voidHubMain)
 mainStroke.Color = VH.CorAtual.cor
 mainStroke.Thickness = 2.5
+mainStroke.Transparency = 0
 
 local mainBg = Instance.new("ImageLabel", voidHubMain)
 mainBg.Size = UDim2.new(1, 0, 1, 0)
 mainBg.BackgroundTransparency = 1
 mainBg.Image = VH.CorAtual.img
 mainBg.ScaleType = Enum.ScaleType.Crop
+mainBg.ImageTransparency = VH.CorAtual.transparente and 0.95 or 0
 mainBg.ZIndex = 0
 Instance.new("UICorner", mainBg).CornerRadius = UDim.new(0, 28)
 
@@ -218,7 +220,6 @@ subTitle.TextSize = 10
 subTitle.TextColor3 = isBranco and corTextoInvertido or VH.CorAtual.cor
 subTitle.ZIndex = 3
 
--- Botões Minimizar e Cadeado agora usam a cor do tema
 local minimizeBtn = Instance.new("TextButton", voidHubMain)
 minimizeBtn.Size = UDim2.new(0, 30, 0, 30)
 minimizeBtn.Position = UDim2.new(0, 12, 0, 12)
@@ -414,7 +415,7 @@ local function handleToggle(name, btn, activateFn, deactivateFn)
     end
 end
 
--- ===== KILL ALL =====
+-- ===== KILL ALL ORIGINAL =====
 local killAllActive = false
 local killAllConn = nil
 
@@ -446,238 +447,6 @@ end
 local function killAllOff()
     killAllActive = false
     if killAllConn then task.cancel(killAllConn); killAllConn = nil end
-    statusLabel.Text = "Status: Nada ativo"
-end
-
--- ===== AUTO KILL ALL =====
-local autoActive = false
-local autoPunching = false
-local autoAntiAfk = false
-local autoPanelGui, autoPanelTxt
-
-local function getULTPercent()
-    for _, nome in ipairs({"Ultimate","Ult","UltValue","UltCharge","UltPercent","Awakening"}) do
-        local ok, val = pcall(function() return LocalPlayer:GetAttribute(nome) end)
-        if ok and val and type(val) == "number" then return math.clamp(val, 0, 100) end
-    end
-    for _, v in ipairs(LocalPlayer:GetChildren()) do
-        if v:IsA("NumberValue") and v.Name:lower():find("ult") then
-            return math.clamp(v.Value, 0, 100)
-        end
-    end
-    return nil
-end
-
-local function findDummy()
-    local melhor, melhorDist = nil, math.huge
-    local myC = LocalPlayer.Character
-    local myRoot = myC and myC:FindFirstChild("HumanoidRootPart")
-    for _, obj in ipairs(workspace:GetDescendants()) do
-        if obj:IsA("Model") then
-            local nome = obj.Name:lower()
-            if nome:find("dummy") or nome:find("train") or nome:find("npc") then
-                local hrp = obj:FindFirstChild("HumanoidRootPart")
-                local hum = obj:FindFirstChildOfClass("Humanoid")
-                if hrp and hum and hum.Health > 0 then
-                    if myRoot then
-                        local d = (hrp.Position - myRoot.Position).Magnitude
-                        if d < melhorDist then melhorDist = d; melhor = obj end
-                    else return obj end
-                end
-            end
-        end
-    end
-    return melhor
-end
-
-local function startAntiAfk()
-    autoAntiAfk = true
-    task.spawn(function()
-        while autoAntiAfk do
-            pcall(function()
-                VirtualUser:Button2Down(Vector2.new(0,0), workspace.CurrentCamera.CFrame)
-                task.wait(0.1)
-                VirtualUser:Button2Up(Vector2.new(0,0), workspace.CurrentCamera.CFrame)
-            end)
-            task.wait(30)
-        end
-    end)
-end
-local function stopAntiAfk() autoAntiAfk = false end
-
-local function startPunch()
-    if autoPunching then return end
-    autoPunching = true
-    task.spawn(function()
-        while autoPunching and autoActive do
-            pcall(function()
-                VirtualInputManager:SendMouseButtonEvent(0,0,0,true,game,1)
-                task.wait(0.03)
-                VirtualInputManager:SendMouseButtonEvent(0,0,0,false,game,1)
-            end)
-            task.wait(0.1)
-        end
-    end)
-end
-local function stopPunch() autoPunching = false end
-
-local function pressGandR()
-    pcall(function()
-        VirtualInputManager:SendKeyEvent(true, Enum.KeyCode.G, false, game); task.wait(0.05)
-        VirtualInputManager:SendKeyEvent(false, Enum.KeyCode.G, false, game); task.wait(0.1)
-        VirtualInputManager:SendKeyEvent(true, Enum.KeyCode.R, false, game); task.wait(0.05)
-        VirtualInputManager:SendKeyEvent(false, Enum.KeyCode.R, false, game)
-    end)
-end
-
-local function makeDraggable(frame, handle)
-    handle = handle or frame
-    local dragging, dragInput, dragStart, startPos
-    handle.InputBegan:Connect(function(input)
-        if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
-            dragging = true; dragStart = input.Position; startPos = frame.Position
-            input.Changed:Connect(function()
-                if input.UserInputState == Enum.UserInputState.End then dragging = false end
-            end)
-        end
-    end)
-    handle.InputChanged:Connect(function(input)
-        if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
-            dragInput = input
-        end
-    end)
-    UserInputService.InputChanged:Connect(function(input)
-        if input == dragInput and dragging then
-            local delta = input.Position - dragStart
-            frame.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
-        end
-    end)
-end
-
-local function abrirPainelULT()
-    if autoPanelGui then return end
-    autoPanelGui = Instance.new("ScreenGui", CoreGui)
-    autoPanelGui.Name = "VoidUltPanel"
-    autoPanelGui.ResetOnSpawn = false
-    autoPanelGui.DisplayOrder = 999
-    autoPanelGui.IgnoreGuiInset = true
-    local f = Instance.new("Frame", autoPanelGui)
-    f.Size = UDim2.new(0, 150, 0, 40)
-    f.Position = UDim2.new(0.02, 0, 0.3, 0)
-    f.BackgroundColor3 = Color3.fromRGB(10, 5, 20)
-    f.BackgroundTransparency = 0.1
-    f.Active = true
-    Instance.new("UICorner", f).CornerRadius = UDim.new(0, 10)
-    local fs = Instance.new("UIStroke", f)
-    fs.Color = VH.NeonPurple; fs.Thickness = 2
-    autoPanelTxt = Instance.new("TextLabel", f)
-    autoPanelTxt.Size = UDim2.new(1, -10, 1, 0)
-    autoPanelTxt.Position = UDim2.new(0, 5, 0, 0)
-    autoPanelTxt.BackgroundTransparency = 1
-    autoPanelTxt.Text = "ULT: --"
-    autoPanelTxt.TextColor3 = VH.NeonPurple
-    autoPanelTxt.Font = Enum.Font.GothamBold
-    autoPanelTxt.TextSize = 15
-    makeDraggable(f, f)
-    task.spawn(function()
-        while autoPanelGui and autoPanelGui.Parent do
-            local pct = getULTPercent()
-            if autoPanelTxt then
-                autoPanelTxt.Text = pct and ("ULT: " .. math.floor(pct) .. "%") or "ULT: --"
-            end
-            task.wait(0.2)
-        end
-    end)
-end
-
-local function fecharPainelULT()
-    if autoPanelGui then autoPanelGui:Destroy(); autoPanelGui = nil; autoPanelTxt = nil end
-end
-
-local function teleportKillTodos()
-    local myC = LocalPlayer.Character
-    local myRoot = myC and myC:FindFirstChild("HumanoidRootPart")
-    if not myRoot then return end
-    for _, p in ipairs(Players:GetPlayers()) do
-        if not autoActive then break end
-        if p ~= LocalPlayer and p.Character then
-            local tr = p.Character:FindFirstChild("HumanoidRootPart")
-            local hum = p.Character:FindFirstChildOfClass("Humanoid")
-            if tr and hum and hum.Health > 0 then
-                myRoot.CFrame = tr.CFrame
-                RunService.Heartbeat:Wait()
-            end
-        end
-    end
-end
-
-local function autoOn()
-    autoActive = true
-    abrirPainelULT()
-    startAntiAfk()
-
-    task.spawn(function()
-        local orbitAngle = 0
-        while autoActive do
-            local dummy = findDummy()
-            local c = LocalPlayer.Character
-            local r = c and c:FindFirstChild("HumanoidRootPart")
-            local ult = getULTPercent()
-            if dummy and r and (not ult or ult < 100) then
-                local dRoot = dummy:FindFirstChild("HumanoidRootPart")
-                if dRoot then
-                    orbitAngle = orbitAngle + 0.5
-                    local pos = dRoot.Position + Vector3.new(math.cos(orbitAngle)*3.5, 0, math.sin(orbitAngle)*3.5)
-                    r.CFrame = CFrame.lookAt(pos, dRoot.Position)
-                end
-            end
-            RunService.RenderStepped:Wait()
-        end
-    end)
-
-    task.spawn(function()
-        while autoActive do
-            local ult = getULTPercent()
-            if ult then
-                local pct = math.clamp(ult, 0, 100)
-                if pct < 100 then
-                    if not autoPunching then startPunch() end
-                    statusLabel.Text = "Status: Farmando ULT (" .. math.floor(pct) .. "%)"
-                    task.wait(0.15)
-                else
-                    if autoPunching then stopPunch() end
-                    statusLabel.Text = "Status: ULT 100%! Ativando G+R..."
-                    task.wait(0.3)
-                    if not autoActive then break end
-                    pressGandR()
-
-                    statusLabel.Text = "Status: Contando 14s..."
-                    local tStart = tick()
-                    while autoActive and tick() - tStart < 14 do
-                        local restante = math.max(0, 14 - (tick() - tStart))
-                        statusLabel.Text = "Status: Contando " .. string.format("%.1f", restante) .. "s..."
-                        task.wait(0.1)
-                    end
-                    if not autoActive then break end
-
-                    statusLabel.Text = "Status: Matando todos! ☠"
-                    teleportKillTodos()
-
-                    statusLabel.Text = "Status: Voltando pro dummy..."
-                    task.wait(1)
-                end
-            else
-                if not autoPunching then startPunch() end
-                statusLabel.Text = "Status: Farmando ULT..."
-                task.wait(0.15)
-            end
-        end
-    end)
-end
-
-local function autoOff()
-    autoActive = false
-    stopPunch(); stopAntiAfk(); fecharPainelULT()
     statusLabel.Text = "Status: Nada ativo"
 end
 
@@ -756,21 +525,8 @@ local function flyOff()
     flyDirection = Vector3.zero
 end
 
--- ===== BYPASS =====
+-- ===== BYPASS ORIGINAL (IR PRO VOID) =====
 local bypassActive = false
-
-local function escolherAlvoBypass()
-    local alvos = {}
-    for _, p in ipairs(Players:GetPlayers()) do
-        if p ~= LocalPlayer and p.Character then
-            local hrp = p.Character:FindFirstChild("HumanoidRootPart")
-            local hum = p.Character:FindFirstChildOfClass("Humanoid")
-            if hrp and hum and hum.Health > 0 then table.insert(alvos, {hrp = hrp, player = p}) end
-        end
-    end
-    if #alvos == 0 then return nil end
-    return alvos[math.random(1, #alvos)]
-end
 
 local function runBypassLogic()
     local char = LocalPlayer.Character
@@ -830,48 +586,113 @@ local function runBypassLogic()
     end)
 end
 
+local btnKillAll_Ref
+
+local function atualizarBotoesBloqueados()
+    if VH.BypassConcluido then
+        if btnKillAll_Ref then btnKillAll_Ref.Text = "☠  Kill All" end
+    else
+        if btnKillAll_Ref then btnKillAll_Ref.Text = "🔒 Faça o bypass primeiro" end
+    end
+end
+
+local function unlockBypass()
+    if not VH.BypassConcluido then
+        VH.BypassConcluido = true
+        atualizarBotoesBloqueados()
+        statusLabel.Text = "Status: Opções desbloqueadas! ✅"
+        task.wait(2)
+        statusLabel.Text = "Status: Nada ativo"
+    else
+        statusLabel.Text = "Status: Bypass já liberado ✅"
+        task.wait(2)
+        statusLabel.Text = "Status: Nada ativo"
+    end
+end
+
 local function bypassOn()
+    if VH.BypassConcluido then
+        statusLabel.Text = "Status: Bypass já liberado ✅"
+        task.wait(2)
+        statusLabel.Text = "Status: Nada ativo"
+        return
+    end
+
     bypassActive = true
     task.spawn(function()
-        statusLabel.Text = "Status: Bypass Void..."
+        statusLabel.Text = "Status: Executando Bypass..."
         runBypassLogic()
-        local timeoutMorrer = tick() + 20
-        while bypassActive and tick() < timeoutMorrer do
-            local char = LocalPlayer.Character
-            local hum = char and char:FindFirstChildOfClass("Humanoid")
-            if hum and hum.Health <= 0 then break end
-            task.wait(0.2)
-        end
         bypassActive = false
+        
+        statusLabel.Text = "Status: Bypass executado. Use 'Testar Bypass'!"
+        task.wait(3)
+        statusLabel.Text = "Status: Nada ativo"
+
         if buttonRefs["Bypass"] then buttonRefs["Bypass"].BackgroundTransparency = 1 end
         if activeFunction == "Bypass" then activeFunction = nil end
-        statusLabel.Text = "Status: Nada ativo"
     end)
 end
 local function bypassOff() bypassActive = false end
 
+-- ===== TESTAR BYPASS ORIGINAL (TP E CHECAGEM DE ANTI-CHEAT) =====
 local function testarBypass()
-    local alvo = escolherAlvoBypass()
-    if not alvo then
-        statusLabel.Text = "Status: ❌ nenhum alvo"; task.wait(2)
-        statusLabel.Text = "Status: Nada ativo"; return
+    if VH.BypassConcluido then
+        statusLabel.Text = "Status: Bypass já liberado ✅"
+        task.wait(2)
+        statusLabel.Text = "Status: Nada ativo"
+        return
     end
+
+    local alvos = {}
+    for _, p in ipairs(Players:GetPlayers()) do
+        if p ~= LocalPlayer and p.Character then
+            local hrp = p.Character:FindFirstChild("HumanoidRootPart")
+            local hum = p.Character:FindFirstChildOfClass("Humanoid")
+            if hrp and hum and hum.Health > 0 then table.insert(alvos, {hrp = hrp, player = p}) end
+        end
+    end
+
+    if #alvos == 0 then
+        statusLabel.Text = "Status: ❌ Nenhum player para testar."
+        task.wait(2)
+        statusLabel.Text = "Status: Nada ativo"
+        return
+    end
+
+    local alvo = alvos[math.random(1, #alvos)]
     statusLabel.Text = "Status: 🎯 TP p/ " .. alvo.player.Name
+    
     local myHrp = LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
-    if not myHrp then
-        statusLabel.Text = "Status: ❌ sem HRP"; task.wait(2)
-        statusLabel.Text = "Status: Nada ativo"; return
+    if not myHrp then return end
+
+    local destPos = alvo.hrp.Position
+    myHrp.CFrame = CFrame.new(destPos)
+
+    local falhou = false
+    for i = 1, 30 do
+        task.wait(0.1)
+        local c = LocalPlayer.Character
+        local cHrp = c and c:FindFirstChild("HumanoidRootPart")
+        
+        if not cHrp then
+            falhou = true
+            break
+        end
+
+        local distFromDest = (cHrp.Position - destPos).Magnitude
+        if distFromDest > 60 then
+            falhou = true
+            break
+        end
     end
-    local destino = alvo.hrp.CFrame * CFrame.new(0, 0, 3)
-    myHrp.CFrame = destino
-    task.wait(2)
-    local currentHrp = LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
-    if currentHrp then
-        local dist = (currentHrp.Position - destino.Position).Magnitude
-        statusLabel.Text = dist < 30 and ("Status: ✅ TP em " .. alvo.player.Name) or ("Status: ❌ falhou em " .. alvo.player.Name)
+
+    if falhou then
+        statusLabel.Text = "Status: ❌ Anti-cheat puxou você de volta."
+        task.wait(2)
+        statusLabel.Text = "Status: Nada ativo"
+    else
+        unlockBypass()
     end
-    task.wait(2.5)
-    statusLabel.Text = "Status: Nada ativo"
 end
 
 -- ===== SERVER HOP =====
@@ -911,24 +732,24 @@ local function mostrarConfirmacaoServerHop()
     local overlay = Instance.new("TextButton", confirmGui)
     overlay.Size = UDim2.new(1, 0, 1, 0)
     overlay.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-    overlay.BackgroundTransparency = 0.4
+    overlay.BackgroundTransparency = 1
     overlay.Text = ""
 
     local box = Instance.new("Frame", confirmGui)
     box.Size = UDim2.new(0, 340, 0, 190)
     box.Position = UDim2.new(0.5, -170, 0.5, -95)
-    box.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-    box.BackgroundTransparency = 0.4
+    box.BackgroundColor3 = voidHubMain.BackgroundColor3
+    box.BackgroundTransparency = voidHubMain.BackgroundTransparency
     box.ClipsDescendants = true
     box.ZIndex = 5
     Instance.new("UICorner", box).CornerRadius = UDim.new(0, 18)
-    
+
     local boxBg = Instance.new("ImageLabel", box)
     boxBg.Size = UDim2.new(1, 0, 1, 0)
     boxBg.BackgroundTransparency = 1
     boxBg.Image = VH.MainBg.Image
     boxBg.ScaleType = Enum.ScaleType.Crop
-    boxBg.ImageTransparency = 0.05
+    boxBg.ImageTransparency = mainBg.ImageTransparency
     boxBg.ZIndex = 0
     Instance.new("UICorner", boxBg).CornerRadius = UDim.new(0, 18)
 
@@ -939,25 +760,27 @@ local function mostrarConfirmacaoServerHop()
     local title = Instance.new("TextLabel", box)
     title.Size = UDim2.new(1, -20, 0, 26); title.Position = UDim2.new(0, 10, 0, 18)
     title.BackgroundTransparency = 1; title.Text = "⚠️ Trocar de Servidor?"
-    title.TextColor3 = Color3.fromRGB(255, 255, 255); title.Font = Enum.Font.GothamBold
-    title.TextSize = 17; title.ZIndex = 2
-    title.TextStrokeTransparency = 0.4
+    title.TextColor3 = isBranco and corTextoInvertido or Color3.fromRGB(255, 255, 255)
+    title.Font = Enum.Font.GothamBold
+    title.TextSize = 21; title.ZIndex = 2
+    title.TextStrokeTransparency = isBranco and 1 or 0
     title.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
 
     local desc = Instance.new("TextLabel", box)
     desc.Size = UDim2.new(1, -30, 0, 50); desc.Position = UDim2.new(0, 15, 0, 55)
     desc.BackgroundTransparency = 1
     desc.Text = "Você realmente deseja trocar de servidor?\nSua ULT será resetada!"
-    desc.TextColor3 = Color3.fromRGB(245, 240, 255); desc.Font = Enum.Font.Gotham
-    desc.TextSize = 12; desc.TextWrapped = true; desc.ZIndex = 2
-    desc.TextStrokeTransparency = 0.4
+    desc.TextColor3 = isBranco and corTextoInvertido or Color3.fromRGB(245, 240, 255)
+    desc.Font = Enum.Font.GothamBold
+    desc.TextSize = 14; desc.TextWrapped = true; desc.ZIndex = 2
+    desc.TextStrokeTransparency = isBranco and 1 or 0
     desc.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
 
     local btnSim = Instance.new("TextButton", box)
     btnSim.Size = UDim2.new(0, 130, 0, 42); btnSim.Position = UDim2.new(0, 25, 1, -58)
     btnSim.BackgroundColor3 = Color3.fromRGB(40, 160, 80); btnSim.Text = "✅ Confirmar"
     btnSim.TextColor3 = Color3.fromRGB(255, 255, 255); btnSim.Font = Enum.Font.GothamBold
-    btnSim.TextSize = 13; Instance.new("UICorner", btnSim).CornerRadius = UDim.new(0, 10)
+    btnSim.TextSize = 15; btnSim.TextStrokeTransparency = 0; Instance.new("UICorner", btnSim).CornerRadius = UDim.new(0, 10)
     btnSim.ZIndex = 2
     local simStroke = Instance.new("UIStroke", btnSim); simStroke.Color = Color3.fromRGB(120, 255, 160); simStroke.Thickness = 1.5
 
@@ -965,7 +788,7 @@ local function mostrarConfirmacaoServerHop()
     btnNao.Size = UDim2.new(0, 130, 0, 42); btnNao.Position = UDim2.new(1, -155, 1, -58)
     btnNao.BackgroundColor3 = Color3.fromRGB(160, 40, 40); btnNao.Text = "❌ Cancelar"
     btnNao.TextColor3 = Color3.fromRGB(255, 255, 255); btnNao.Font = Enum.Font.GothamBold
-    btnNao.TextSize = 13; Instance.new("UICorner", btnNao).CornerRadius = UDim.new(0, 10)
+    btnNao.TextSize = 15; btnNao.TextStrokeTransparency = 0; Instance.new("UICorner", btnNao).CornerRadius = UDim.new(0, 10)
     btnNao.ZIndex = 2
     local naoStroke = Instance.new("UIStroke", btnNao); naoStroke.Color = Color3.fromRGB(255, 120, 120); naoStroke.Thickness = 1.5
 
@@ -976,37 +799,53 @@ local function mostrarConfirmacaoServerHop()
 end
 
 -- ===== BOTÕES PRINCIPAIS =====
-local btnKillAll = createButton(contentArea, "KillAll", "☠  Kill All", 5)
+local btnKillAll = createButton(contentArea, "KillAll", "🔒 Faça o bypass primeiro", 5)
+btnKillAll_Ref = btnKillAll
 btnKillAll.MouseButton1Click:Connect(function()
+    if not VH.BypassConcluido then
+        statusLabel.Text = "Status: ❌ Use 'Testar Bypass' primeiro!"
+        task.wait(2)
+        statusLabel.Text = "Status: Nada ativo"
+        return
+    end
     handleToggle("KillAll", btnKillAll, killAllOn, killAllOff)
 end)
 
-local btnAutoKillAll = createButton(contentArea, "AutoKillAll", "🏋  Auto Kill All", 48)
-btnAutoKillAll.MouseButton1Click:Connect(function()
-    handleToggle("AutoKillAll", btnAutoKillAll, autoOn, autoOff)
-end)
-
-local btnFly = createButton(contentArea, "Fly", "🛫  Fly com Botões", 91)
+local btnFly = createButton(contentArea, "Fly", "🛫  Fly com Botões", 48)
 btnFly.MouseButton1Click:Connect(function()
     handleToggle("Fly", btnFly, flyOn, flyOff)
 end)
 
-local btnBypass = createButton(contentArea, "Bypass", "🛡  Bypass Void", 134)
+local btnBypass = createButton(contentArea, "Bypass", "🛡  Bypass Void", 91)
 btnBypass.MouseButton1Click:Connect(function()
+    if VH.BypassConcluido then
+        statusLabel.Text = "Status: Bypass já liberado ✅"
+        task.wait(2)
+        statusLabel.Text = "Status: Nada ativo"
+        return
+    end
     handleToggle("Bypass", btnBypass, bypassOn, bypassOff)
 end)
 
-local btnTestBypass = createButton(contentArea, "TesteBypass", "🔄  Testar Bypass", 177)
+local btnTestBypass = createButton(contentArea, "TesteBypass", "🔄  Testar Bypass (Único que libera)", 134)
 btnTestBypass.MouseButton1Click:Connect(function()
+    if VH.BypassConcluido then
+        statusLabel.Text = "Status: Bypass já liberado ✅"
+        task.wait(2)
+        statusLabel.Text = "Status: Nada ativo"
+        return
+    end
     btnTestBypass.BackgroundTransparency = 0.55
     testarBypass()
     btnTestBypass.BackgroundTransparency = 1
 end)
 
-local btnServerHop = createButton(contentArea, "ServerHop", "🌐  Server Hop", 220)
+local btnServerHop = createButton(contentArea, "ServerHop", "🌐  Server Hop", 177)
 btnServerHop.MouseButton1Click:Connect(function()
     mostrarConfirmacaoServerHop()
 end)
+
+atualizarBotoesBloqueados()
 
 -- ==================== PARTE 3: EXTRAS ====================
 local espJogadoresActive = false
@@ -1044,42 +883,40 @@ local function espDummyOn()
     task.spawn(function()
         while espDummyActive do
             pcall(function()
-                for _, obj in ipairs(workspace:GetChildren()) do
-                    if obj.Name == "Dummy" and obj:FindFirstChild("HumanoidRootPart") and not obj:FindFirstChild("RGBHighlight") then
+                for _, obj in ipairs(workspace:GetDescendants()) do
+                    if VH.ehDummy(obj) and not obj:FindFirstChild("DummyHighlight") then
                         local hl = Instance.new("Highlight", obj)
-                        hl.Name = "RGBHighlight"
-                        task.spawn(function()
-                            while hl and hl.Parent do
-                                hl.FillColor = Color3.fromHSV((tick()*0.5)%1, 1, 1)
-                                task.wait(0.1)
-                            end
-                        end)
+                        hl.Name = "DummyHighlight"
+                        local opColor = Color3.new(1 - VH.CorAtual.cor.R, 1 - VH.CorAtual.cor.G, 1 - VH.CorAtual.cor.B)
+                        hl.FillColor = opColor
+                        hl.OutlineColor = Color3.fromRGB(255,255,255)
                     end
                 end
             end)
-            task.wait(3)
+            task.wait(2)
         end
     end)
 end
 local function espDummyOff()
     espDummyActive = false
-    for _, obj in ipairs(workspace:GetDescendants()) do
-        if obj.Name == "Dummy" then
-            local hl = obj:FindFirstChild("RGBHighlight")
-            if hl then hl:Destroy() end
+    pcall(function()
+        for _, obj in ipairs(workspace:GetDescendants()) do
+            if obj:IsA("Highlight") and obj.Name == "DummyHighlight" then obj:Destroy() end
         end
-    end
+    end)
 end
 
 local espDomainActive = false
 local espDomainGui, espDomainTxt
 local function temDominioNoMapa()
-    local pad = {"domain","dominio","domínio","shrine","expansion","infinite void","malevolent","unlimited","coffin","chimera","idle death","horizon","authentic","mutual","love"}
+    local pad = {"domain", "dominio", "shrine", "expansion", "void", "malevolent", "unlimited", "coffin", "chimera", "idle death", "horizon"}
     for _, obj in ipairs(workspace:GetChildren()) do
-        local n = obj.Name:lower()
+        local n = string.lower(obj.Name)
         for _, p in ipairs(pad) do
-            if n:find(p) then
-                if (obj:IsA("BasePart") and obj.Size.Magnitude > 20) or obj:IsA("Model") then return true end
+            if string.find(n, p) then
+                if obj:IsA("Model") or (obj:IsA("BasePart") and obj.Size.Magnitude > 20) then
+                    return true 
+                end
             end
         end
     end
@@ -1098,15 +935,18 @@ local function espDomainOn()
     espDomainTxt = Instance.new("TextLabel", f)
     espDomainTxt.Size = UDim2.new(1, -10, 1, 0); espDomainTxt.Position = UDim2.new(0, 5, 0, 0)
     espDomainTxt.BackgroundTransparency = 1; espDomainTxt.Text = "ESP Domain: OFF"
-    espDomainTxt.TextColor3 = Color3.fromRGB(255,80,80); espDomainTxt.Font = Enum.Font.GothamBold
+    espDomainTxt.TextColor3 = Color3.fromRGB(80,255,120); espDomainTxt.Font = Enum.Font.GothamBold
     espDomainTxt.TextSize = 13
+    
     task.spawn(function()
         while espDomainActive and espDomainGui and espDomainGui.Parent do
             pcall(function()
                 if temDominioNoMapa() then
-                    espDomainTxt.Text = "ESP Domain: ON"; espDomainTxt.TextColor3 = Color3.fromRGB(80,255,120)
+                    espDomainTxt.Text = "ESP Domain: ON" 
+                    espDomainTxt.TextColor3 = Color3.fromRGB(255,80,80)
                 else
-                    espDomainTxt.Text = "ESP Domain: OFF"; espDomainTxt.TextColor3 = Color3.fromRGB(255,80,80)
+                    espDomainTxt.Text = "ESP Domain: OFF" 
+                    espDomainTxt.TextColor3 = Color3.fromRGB(80,255,120)
                 end
             end)
             task.wait(3)
@@ -1141,13 +981,14 @@ local function panelOn()
     panelGui = Instance.new("ScreenGui", CoreGui)
     panelGui.Name = "VoidFpsPingPanel"; panelGui.ResetOnSpawn = false
     local f = Instance.new("Frame", panelGui)
-    f.Size = UDim2.new(0, 180, 0, 75); f.Position = UDim2.new(0.78, 0, 0.1, 0)
+    f.Size = UDim2.new(0, 160, 0, 70)
+    f.Position = UDim2.new(0, 15, 0, 15)
     f.BackgroundColor3 = Color3.fromRGB(15, 10, 25); f.BackgroundTransparency = 0.3
-    Instance.new("UICorner", f).CornerRadius = UDim.new(0, 14)
+    Instance.new("UICorner", f).CornerRadius = UDim.new(0, 12)
     local fs = Instance.new("UIStroke", f); fs.Color = VH.CorAtual.cor; fs.Thickness = 2
     local txt = Instance.new("TextLabel", f)
     txt.Size = UDim2.new(1, 0, 1, 0); txt.BackgroundTransparency = 1
-    txt.TextColor3 = Color3.fromRGB(255,255,255); txt.Font = Enum.Font.GothamBold; txt.TextSize = 13
+    txt.TextColor3 = Color3.fromRGB(255,255,255); txt.Font = Enum.Font.GothamBold; txt.TextSize = 12
     task.spawn(function()
         while panelGui and f.Parent do
             local fps = math.floor(1 / RunService.RenderStepped:Wait())
@@ -1192,7 +1033,7 @@ btnPainel.MouseButton1Click:Connect(function()
     else panelOff(); btnPainel.BackgroundTransparency = 1 end
 end)
 
--- 🎨 CORES DO HUB (COM PERSISTÊNCIA E COR BRANCA AJUSTADA)
+-- 🎨 CORES DO HUB
 local btnCoresHub = createButton(extrasArea, "CoresHub", "🎨  Cores do Hub", 220)
 btnCoresHub.MouseButton1Click:Connect(function()
     local picker = Instance.new("ScreenGui", CoreGui)
@@ -1213,10 +1054,10 @@ btnCoresHub.MouseButton1Click:Connect(function()
     local opcoes = {
         { cor = Color3.fromRGB(140, 40, 220), img = "rbxassetid://112459375607724" },
         { cor = Color3.fromRGB(40, 100, 240), img = "rbxassetid://102472450810637" },
-        { cor = Color3.fromRGB(40, 220, 100), img = "rbxassetid://75159994736056"  },
+        { cor = Color3.fromRGB(40, 220, 100), img = "rbxassetid://127946542596903" },
         { cor = Color3.fromRGB(220, 40, 40),  img = "rbxassetid://136888893575149" },
         { cor = Color3.fromRGB(240, 220, 40), img = "rbxassetid://71099604853241"  },
-        { cor = Color3.fromRGB(220, 220, 220),img = "rbxassetid://123694908192472" }, -- Branco mais suave
+        { cor = Color3.fromRGB(220, 220, 220),img = "rbxassetid://123694908192472" },
         { cor = Color3.fromRGB(200, 200, 200),img = "rbxassetid://112459375607724", transparente = true },
     }
 
@@ -1247,25 +1088,25 @@ btnCoresHub.MouseButton1Click:Connect(function()
             salvarConfig(op)
 
             VH.MainStroke.Color = op.cor
-            VH.KeyStroke.Color = op.cor
+            VH.MainStroke.Transparency = 0
+            if VH.KeyStroke then VH.KeyStroke.Color = op.cor; VH.KeyStroke.Transparency = 0 end
             VH.MainBg.Image = op.img
-            VH.KeyBg.Image = op.img
-            
+            if VH.KeyBg then VH.KeyBg.Image = op.img end
+
             local novoIsBranco = (op.cor == Color3.fromRGB(220, 220, 220) or op.cor == Color3.fromRGB(240, 240, 240))
-            
+
             VH.MainTitle.TextColor3 = novoIsBranco and corTextoInvertido or Color3.fromRGB(255,255,255)
-            VH.KeyTitle.TextColor3 = novoIsBranco and corTextoInvertido or Color3.fromRGB(255,255,255)
+            if VH.KeyTitle then VH.KeyTitle.TextColor3 = novoIsBranco and corTextoInvertido or Color3.fromRGB(255,255,255) end
             VH.SubTitle.TextColor3 = novoIsBranco and corTextoInvertido or op.cor
 
-            -- Atualiza botões de minimizar e cadeado para a nova cor
             VH.MinimizeBtn.BackgroundColor3 = op.cor
             VH.MinimizeBtn.BackgroundTransparency = novoIsBranco and 0.2 or 0.5
             VH.MinimizeBtn.TextColor3 = novoIsBranco and corTextoInvertido or Color3.fromRGB(255, 255, 255)
-            
+
             VH.LockBtn.BackgroundColor3 = op.cor
             VH.LockBtn.BackgroundTransparency = novoIsBranco and 0.2 or 0.5
             VH.LockBtn.TextColor3 = novoIsBranco and corTextoInvertido or Color3.fromRGB(255, 255, 255)
-            
+
             if op.transparente then
                 voidHubMain.BackgroundTransparency = 0.95
                 mainBg.ImageTransparency = 0.95
@@ -1273,7 +1114,6 @@ btnCoresHub.MouseButton1Click:Connect(function()
                     keyContainer.BackgroundTransparency = 0.95
                     keyBg.ImageTransparency = 0.95
                 end
-                if btnTransp then btnTransp.Text = "💧  Transparência: 95%" end
             else
                 voidHubMain.BackgroundTransparency = 0.6
                 mainBg.ImageTransparency = 0
@@ -1281,7 +1121,6 @@ btnCoresHub.MouseButton1Click:Connect(function()
                     keyContainer.BackgroundTransparency = 0.3
                     keyBg.ImageTransparency = 0
                 end
-                if btnTransp then btnTransp.Text = "💧  Transparência: 60%" end
             end
             picker:Destroy()
         end)
@@ -1294,26 +1133,6 @@ btnCoresHub.MouseButton1Click:Connect(function()
     close.TextColor3 = Color3.fromRGB(255,255,255)
     Instance.new("UICorner", close).CornerRadius = UDim.new(0, 7)
     close.MouseButton1Click:Connect(function() picker:Destroy() end)
-end)
-
--- 💧 TRANSPARÊNCIA DO HUB
-local niveisTransp = {0, 0.2, 0.4, 0.6, 0.8, 0.95}
-local transpIndex = 4
-local btnTransp = createButton(extrasArea, "Transparencia", "💧  Transparência: 60%", 263)
-btnTransp.MouseButton1Click:Connect(function()
-    transpIndex = transpIndex + 1
-    if transpIndex > #niveisTransp then transpIndex = 1 end
-    local v = niveisTransp[transpIndex]
-    
-    voidHubMain.BackgroundTransparency = v
-    mainBg.ImageTransparency = v
-    
-    if keyContainer and keyContainer.Parent then
-        keyContainer.BackgroundTransparency = v
-        keyBg.ImageTransparency = v
-    end
-    
-    btnTransp.Text = "💧  Transparência: " .. math.floor(v * 100) .. "%"
 end)
 
 -- SCRIPTS
@@ -1369,7 +1188,6 @@ end)
 lockBtn.MouseButton1Click:Connect(function()
     isLocked = not isLocked
     lockBtn.Text = isLocked and "🔒" or "🔓"
-    -- Se destravar, volta pra cor original (evita ficar vermelho se for branco)
     if not isLocked then
         lockBtn.BackgroundColor3 = VH.CorAtual.cor
         lockBtn.TextColor3 = isBranco and corTextoInvertido or Color3.fromRGB(255, 255, 255)
@@ -1428,6 +1246,7 @@ local function abrirTelaCarregamento()
     local loadStroke = Instance.new("UIStroke", loadFrame)
     loadStroke.Color = VH.CorAtual.cor
     loadStroke.Thickness = 2.5
+    loadStroke.Transparency = 0
 
     local avatar = Instance.new("ImageLabel", loadFrame)
     avatar.Size = UDim2.new(0, 80, 0, 80)
@@ -1437,7 +1256,7 @@ local function abrirTelaCarregamento()
     avatar.BorderSizePixel = 0
     avatar.ZIndex = 2
     Instance.new("UICorner", avatar).CornerRadius = UDim.new(1, 0)
-    
+
     local avStroke = Instance.new("UIStroke", avatar)
     avStroke.Color = VH.CorAtual.cor
     avStroke.Thickness = 2
@@ -1486,7 +1305,7 @@ local function abrirTelaCarregamento()
 
     local tween = TweenService:Create(barFill, TweenInfo.new(2.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Size = UDim2.new(1, 0, 1, 0)})
     tween:Play()
-    
+
     tween.Completed:Connect(function()
         task.wait(0.3)
         loadFrame:Destroy()
@@ -1504,4 +1323,4 @@ validateBtn.MouseButton1Click:Connect(function()
     end
 end)
 
-print("Void Hub completo e Corrigido 🪐")
+print("Void Hub completo e Corrigido (V33) 🪐")
